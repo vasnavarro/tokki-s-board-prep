@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokki's Board Prep</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-dark: #334155;
+            --text-light: #64748b;
+            --correct: #22c55e;
+            --wrong: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+
+        .progress {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background-color: var(--bg-color);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: #e2e8f0;
+            border-color: #cbd5e1;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+        }
+
+        .option-btn.correct {
+            background-color: #dcfce7;
+            border-color: var(--correct);
+            color: #166534;
+        }
+
+        .option-btn.wrong {
+            background-color: #fee2e2;
+            border-color: var(--wrong);
+            color: #991b1b;
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #next-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.2s ease;
+        }
+
+        #next-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .results {
+            text-align: center;
+            display: none;
+        }
+
+        .results h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .results p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        #restart-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container" id="quiz">
+        <div class="header">
+            <h1>Tokki's Board Prep 🦷</h1>
+            <div class="progress" id="progress">Question 1 of 3</div>
+        </div>
+
+        <div id="quiz-block">
+            <div class="question" id="question">Loading question...</div>
+            <div class="options" id="options">
+                <!-- Options will be generated here -->
+            </div>
+            <div class="controls">
+                <button id="next-btn">Next Question</button>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2>You did great!</h2>
+            <p>You scored <strong id="score">0</strong> out of <span id="total">0</span>!</p>
+            <button id="restart-btn" onclick="location.reload()">Take it Again</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. PASTE YOUR QUESTIONS AND ANSWERS HERE ---
+        const quizData = [
+            {
+                question: "Which of the following nerves innervates the muscles of mastication?",
+                options: ["Facial nerve", "Trigeminal nerve (Mandibular division)", "Glossopharyngeal nerve", "Vagus nerve"],
+                correct: 1 // Index of the correct array item (0-based)
+            },
+            {
+                question: "What is the most common cell found in the healthy dental pulp?",
+                options: ["Odontoblast", "Fibroblast", "Macrophage", "Lymphocyte"],
+                correct: 1
+            },
+            {
+                question: "Which material is traditionally considered the gold standard for direct pulp capping?",
+                options: ["Glass Ionomer Cement", "Composite Resin", "Calcium Hydroxide", "Zinc Oxide Eugenol"],
+                correct: 2
+            }
+        ];
+
+        // --- 2. QUIZ LOGIC ---
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const progressEl = document.getElementById('progress');
+        const nextBtn = document.getElementById('next-btn');
+        const quizBlock = document.getElementById('quiz-block');
+        const resultsBlock = document.getElementById('results');
+
+        function loadQuestion() {
+            answered = false;
+            nextBtn.style.display = 'none';
+            
+            const currentQuizData = quizData[currentQuestion];
+            questionEl.innerText = currentQuizData.question;
+            progressEl.innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
+            
+            optionsEl.innerHTML = '';
+
+            currentQuizData.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.classList.add('option-btn');
+                button.addEventListener('click', () => selectOption(button, index));
+                optionsEl.appendChild(button);
+            });
+        }
+
+        function selectOption(selectedBtn, selectedIndex) {
+            if (answered) return;
+            answered = true;
+
+            const correctIndex = quizData[currentQuestion].correct;
+            const allButtons = optionsEl.children;
+
+            // Check if correct
+            if (selectedIndex === correctIndex) {
+                selectedBtn.classList.add('correct');
+                score++;
+            } else {
+                selectedBtn.classList.add('wrong');
+                // Highlight the correct one so she can learn from mistakes
+                allButtons[correctIndex].classList.add('correct');
+            }
+
+            // Disable all buttons after answering
+            for (let btn of allButtons) {
+                btn.disabled = true;
+            }
+
+            nextBtn.style.display = 'block';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        function showResults() {
+            quizBlock.style.display = 'none';
+            document.querySelector('.header').style.display = 'none';
+            resultsBlock.style.display = 'block';
+            
+            document.getElementById('score').innerText = score;
+            document.getElementById('total').innerText = quizData.length;
+        }
+
+        // Initialize quiz
+        loadQuestion();
+    </script>
+</body>
+</html>
