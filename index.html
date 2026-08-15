@@ -14,6 +14,8 @@
             --text-light: #64748b;
             --correct: #22c55e;
             --wrong: #ef4444;
+            --rationale-bg: #e0f2fe;
+            --rationale-text: #0369a1;
         }
 
         body {
@@ -33,7 +35,7 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             padding: 40px;
             box-sizing: border-box;
         }
@@ -55,10 +57,10 @@
         }
 
         .question {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 600;
             margin-bottom: 25px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .options {
@@ -77,6 +79,7 @@
             cursor: pointer;
             text-align: left;
             transition: all 0.2s ease;
+            line-height: 1.4;
         }
 
         .option-btn:hover:not(:disabled) {
@@ -98,6 +101,24 @@
             background-color: #fee2e2;
             border-color: var(--wrong);
             color: #991b1b;
+        }
+
+        .rationale-box {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--rationale-bg);
+            color: var(--rationale-text);
+            border-left: 4px solid var(--primary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .rationale-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
         }
 
         .controls {
@@ -157,7 +178,7 @@
     <div class="quiz-container" id="quiz">
         <div class="header">
             <h1>Tokki's Board Prep 🦷</h1>
-            <div class="progress" id="progress">Question 1 of 3</div>
+            <div class="progress" id="progress">Question 1 of 30</div>
         </div>
 
         <div id="quiz-block">
@@ -165,39 +186,358 @@
             <div class="options" id="options">
                 <!-- Options will be generated here -->
             </div>
+            
+            <div class="rationale-box" id="rationale-box">
+                <strong>Explanation:</strong>
+                <span id="rationale-text"></span>
+            </div>
+
             <div class="controls">
                 <button id="next-btn">Next Question</button>
             </div>
         </div>
 
         <div class="results" id="results">
-            <h2>You did great!</h2>
+            <h2>Exam Complete!</h2>
             <p>You scored <strong id="score">0</strong> out of <span id="total">0</span>!</p>
             <button id="restart-btn" onclick="location.reload()">Take it Again</button>
         </div>
     </div>
 
     <script>
-        // --- 1. PASTE YOUR QUESTIONS AND ANSWERS HERE ---
         const quizData = [
             {
-                question: "Which of the following nerves innervates the muscles of mastication?",
-                options: ["Facial nerve", "Trigeminal nerve (Mandibular division)", "Glossopharyngeal nerve", "Vagus nerve"],
-                correct: 1 // Index of the correct array item (0-based)
+                question: "1. A 24-year-old patient requires a surgical extraction of an impacted mandibular third molar (#38). During the administration of the inferior alveolar nerve block (IANB), the needle is inserted too far posteriorly into the parotid gland. Which cranial nerve is most likely to be temporarily paralyzed, and what clinical sign would the patient exhibit?",
+                options: [
+                    "Trigeminal Nerve (CN V); Inability to close the mandible",
+                    "Facial Nerve (CN VII); Unilateral drooping of the facial muscles (Bell's palsy-like)",
+                    "Glossopharyngeal Nerve (CN IX); Loss of gag reflex",
+                    "Hypoglossal Nerve (CN XII); Deviation of the tongue to the affected side"
+                ],
+                correct: 1,
+                rationale: "The facial nerve (CN VII) runs directly through the parotid gland. If the needle goes too far posterior during an IANB and injects anesthetic into the parotid capsule, CN VII is temporarily blocked, causing a temporary unilateral facial paralysis (inability to close the eye, drooping lip) that lasts until the anesthetic wears off."
             },
             {
-                question: "What is the most common cell found in the healthy dental pulp?",
-                options: ["Odontoblast", "Fibroblast", "Macrophage", "Lymphocyte"],
-                correct: 1
+                question: "2. Which of the following root surface depressions is the deepest and most notorious for harboring calculus, making it extremely difficult to clean during periodontal root planing?",
+                options: [
+                    "The mesial surface of the maxillary first premolar",
+                    "The distal surface of the mandibular first molar",
+                    "The mesial surface of the maxillary central incisor",
+                    "The lingual surface of the mandibular canine"
+                ],
+                correct: 0,
+                rationale: "The mesial surface of the maxillary 1st premolar features a severe, deep developmental concavity that extends from the crown down the root. It is a notorious plaque trap and very difficult to adapt a curette to."
             },
             {
-                question: "Which material is traditionally considered the gold standard for direct pulp capping?",
-                options: ["Glass Ionomer Cement", "Composite Resin", "Calcium Hydroxide", "Zinc Oxide Eugenol"],
-                correct: 2
+                question: "3. Statement 1: Streptococcus mutans is primarily responsible for the initiation of enamel caries due to its ability to synthesize extracellular glucans from sucrose.\nStatement 2: Lactobacillus species are the primary organisms driving the progression of deep dentinal caries due to their highly aciduric nature.",
+                options: [
+                    "Both statements are TRUE.",
+                    "Both statements are FALSE.",
+                    "Statement 1 is TRUE; Statement 2 is FALSE.",
+                    "Statement 1 is FALSE; Statement 2 is TRUE."
+                ],
+                correct: 0,
+                rationale: "Both are strictly true. S. mutans thrives in the early, highly oxygenated oral environment and starts the cavity on the enamel. Once the cavity deepens into the dentin where oxygen is low and the environment is highly acidic, Lactobacilli take over and rapidly progress the decay."
+            },
+            {
+                question: "4. A 45-year-old female presents with a white, lace-like network of lines (Wickham striae) on her bilateral buccal mucosa. A biopsy reveals a dense, band-like infiltrate of T-lymphocytes just beneath the epithelium and destruction of the basal cell layer. What is the definitive diagnosis?",
+                options: [
+                    "Leukoplakia",
+                    "Oral Candidiasis",
+                    "Lichen Planus",
+                    "Pemphigus Vulgaris"
+                ],
+                correct: 2,
+                rationale: "Lichen planus is a classic T-cell mediated autoimmune disease. The clinical hallmark is the white lace-like Wickham striae on the cheeks, and the histological hallmark is the band-like T-cell infiltrate destroying the basal layer."
+            },
+            {
+                question: "5. During normal cardiac physiology, the Frank-Starling Law of the Heart states that:",
+                options: [
+                    "Cardiac output decreases as heart rate increases beyond 160 bpm.",
+                    "The critical volume of blood in the atria dictates the rate of the SA node firing.",
+                    "The force of ventricular contraction is directly proportional to the initial length of the cardiac muscle fibers (end-diastolic volume).",
+                    "The closure of the atrioventricular valves produces the first heart sound."
+                ],
+                correct: 2,
+                rationale: "The Frank-Starling law essentially states that the more the heart chamber fills with blood during diastole (stretching the muscle fibers), the harder it will contract to pump that blood out during systole."
+            },
+            {
+                question: "6. Which of the following anatomical spaces is the most common site for the spread of an odontogenic infection originating from the apices of the mandibular second or third molars, potentially leading to Ludwig's Angina?",
+                options: [
+                    "Canine space",
+                    "Submental space",
+                    "Submandibular space",
+                    "Buccal space"
+                ],
+                correct: 2,
+                rationale: "Because the apices of the mandibular 2nd and 3rd molars sit below the attachment of the mylohyoid muscle on the lingual aspect of the mandible, infections drain directly downward into the submandibular space. (Infections of incisors usually go to the submental space)."
+            },
+            {
+                question: "7. In the sliding filament theory of skeletal muscle contraction, which specific ion binds to troponin, causing tropomyosin to shift and expose the myosin-binding sites on the actin filament?",
+                options: [
+                    "Sodium (Na<sup>+</sup>)",
+                    "Potassium (K<sup>+</sup>)",
+                    "Calcium (Ca<sup>2+</sup>)",
+                    "Magnesium (Mg<sup>2+</sup>)"
+                ],
+                correct: 2,
+                rationale: "Calcium (Ca<sup>2+</sup>) is the key trigger. Released from the sarcoplasmic reticulum, it binds to troponin, physically pulling the tropomyosin rope off the actin, allowing the myosin heads to grab on and contract the muscle."
+            },
+            {
+                question: "8. All of the following are classic radiographic and histological features of an Odontogenic Keratocyst (OKC) EXCEPT:",
+                options: [
+                    "It typically presents as a multilocular radiolucency in the posterior mandible.",
+                    "It has a thick, heavily inflamed fibrous connective tissue wall.",
+                    "The epithelial lining is composed of a uniform layer of parakeratin 6-8 cells thick.",
+                    "It has a highly prominent, palisaded basal cell layer (picket-fence appearance)."
+                ],
+                correct: 1,
+                rationale: "This is the EXCEPT question. OKCs are distinct because their connective tissue walls are generally uninflamed and very thin. If they were heavily inflamed, the classic picket-fence histology of the epithelial lining would be destroyed."
+            },
+            {
+                question: "9. A patient complains of pain when biting down perfectly straight, but no pain when chewing side-to-side. You suspect a fractured cusp. Which major structural ridge connects the mesiolingual and distobuccal cusps of the maxillary first molar and is the strongest ridge on the tooth?",
+                options: [
+                    "Transverse ridge",
+                    "Oblique ridge",
+                    "Marginal ridge",
+                    "Cusp ridge"
+                ],
+                correct: 1,
+                rationale: "The oblique ridge is a defining feature of the maxillary 1st molar, crossing diagonally from the mesiolingual cusp to the distobuccal cusp. It must be preserved during cavity preparations whenever possible due to its structural strength."
+            },
+            {
+                question: "10. Which primary cell of acute inflammation arrives first at the site of tissue injury, utilizing the processes of margination, rolling, and diapedesis to exit the blood vessel?",
+                options: [
+                    "Macrophage",
+                    "Plasma cell",
+                    "Neutrophil (Polymorphonuclear leukocyte)",
+                    "Lymphocyte"
+                ],
+                correct: 2,
+                rationale: "Neutrophils (PMNs) are the rapid-response troops of the immune system. They arrive within minutes to hours of an injury or infection, squeezing out of the blood vessels (diapedesis) to eat bacteria."
+            },
+            {
+                question: "11. The submandibular duct (Wharton's duct) shares an intimate anatomical relationship with the lingual nerve in the floor of the mouth. As the duct travels anteriorly from the gland to the sublingual caruncle, the lingual nerve:",
+                options: [
+                    "Loops under the duct from lateral to medial.",
+                    "Travels strictly superior to the duct without crossing it.",
+                    "Pierces directly through the center of the duct.",
+                    "Travels strictly inferior to the duct without crossing it."
+                ],
+                correct: 0,
+                rationale: "This is a classic anatomy board question. As the submandibular duct runs forward, the lingual nerve loops under it, moving from the lateral side to the medial side of the duct."
+            },
+            {
+                question: "12. A 60-year-old male smoker presents with a painless, indurated (hard) ulcer on the lateral border of his tongue that has not healed in 4 weeks. What is the most statistically probable histopathological diagnosis?",
+                options: [
+                    "Traumatic ulcer",
+                    "Squamous Cell Carcinoma (SCC)",
+                    "Major Aphthous Ulcer",
+                    "Syphilitic chancre"
+                ],
+                correct: 1,
+                rationale: "A painless, hard, non-healing ulcer on the lateral border of the tongue in an older smoker is the textbook presentation of Squamous Cell Carcinoma until proven otherwise via biopsy."
+            },
+            {
+                question: "13. During tooth development (odontogenesis), which structure determines the size, shape, and number of roots a tooth will have?",
+                options: [
+                    "The enamel organ",
+                    "Hertwig's Epithelial Root Sheath (HERS)",
+                    "The dental follicle",
+                    "The rests of Serres"
+                ],
+                correct: 1,
+                rationale: "Hertwig's Epithelial Root Sheath (HERS) maps out the shape of the roots. If HERS invaginates properly, multiple roots form. If HERS fragments prematurely, accessory canals form."
+            },
+            {
+                question: "14. A patient in the dental chair suddenly experiences a severe Type I hypersensitivity (anaphylactic) reaction to a penicillin antibiotic. Which immunoglobulin is primarily mediating the massive degranulation of mast cells and release of histamine?",
+                options: [
+                    "IgA",
+                    "IgG",
+                    "IgM",
+                    "IgE"
+                ],
+                correct: 3,
+                rationale: "Type I hypersensitivity (anaphylaxis, asthma, hives) is strictly mediated by IgE antibodies binding to mast cells and basophils."
+            },
+            {
+                question: "15. Which muscle of mastication is unique because its primary action is to depress (open) the mandible and protrude it, rather than elevate (close) it?",
+                options: [
+                    "Masseter",
+                    "Temporalis",
+                    "Medial pterygoid",
+                    "Lateral pterygoid"
+                ],
+                correct: 3,
+                rationale: "The Lateral Pterygoid is the only muscle of mastication that opens the mouth (depresses). The Masseter, Temporalis, and Medial Pterygoid all close the mouth (elevate)."
+            },
+            {
+                question: "16. Radiographically, a 55-year-old female's skull shows a diffuse \"cotton-wool\" appearance. Her maxilla is significantly enlarged, causing her upper denture to no longer fit. Dental x-rays show generalized hypercementosis of her teeth. Her serum alkaline phosphatase levels are highly elevated. What is the diagnosis?",
+                options: [
+                    "Fibrous Dysplasia",
+                    "Paget's Disease of Bone (Osteitis Deformans)",
+                    "Multiple Myeloma",
+                    "Osteomalacia"
+                ],
+                correct: 1,
+                rationale: "\"Cotton-wool\" skull, hypercementosis, expanding maxilla, and high alkaline phosphatase are the absolute diagnostic keywords for Paget's Disease."
+            },
+            {
+                question: "17. In general cellular physiology, what is the primary function of the sodium-potassium pump (Na<sup>+</sup>/K<sup>+</sup> ATPase)?",
+                options: [
+                    "To move 3 Na<sup>+</sup> into the cell and 2 K<sup>+</sup> out of the cell to trigger an action potential.",
+                    "To move 3 Na<sup>+</sup> out of the cell and 2 K<sup>+</sup> into the cell to maintain the resting membrane potential.",
+                    "To passively allow sodium to diffuse across the membrane during depolarization.",
+                    "To synthesize ATP using the electrochemical gradient."
+                ],
+                correct: 1,
+                rationale: "The pump actively uses ATP to throw 3 Na<sup>+</sup> out and bring 2 K<sup>+</sup> in. This maintains the negative resting membrane potential of the cell. (Option A describes depolarization, which is a passive influx of sodium, not the pump)."
+            },
+            {
+                question: "18. A 9-year-old boy presents with a bluish, fluid-filled, dome-shaped swelling on the alveolar ridge exactly where tooth #11 is scheduled to emerge. The lesion is asymptomatic. What is the most appropriate management for this Eruption Cyst?",
+                options: [
+                    "Immediate surgical excision and biopsy",
+                    "Fine needle aspiration",
+                    "No treatment; allow the tooth to erupt through it naturally",
+                    "Marsupialization"
+                ],
+                correct: 2,
+                rationale: "An eruption cyst is simply a dentigerous cyst surrounding a tooth that has already popped out of the bone and is stuck right under the gums. The pressure of the tooth will naturally rupture it; no surgery is needed."
+            },
+            {
+                question: "19. When examining the occlusal anatomy of a mandibular second molar, what is the characteristic groove pattern formed by the intersection of the developmental grooves?",
+                options: [
+                    "Y-shaped pattern",
+                    "H-shaped pattern",
+                    "Cross-shaped (+) pattern",
+                    "U-shaped pattern"
+                ],
+                correct: 2,
+                rationale: "The mandibular 1st molar has a 5-cusp Y-pattern. The mandibular 2nd molar is highly symmetrical with 4 cusps, creating a distinct Cross (+) groove pattern on the occlusal surface."
+            },
+            {
+                question: "20. Which of the following is the most common benign salivary gland tumor, typically presenting as a slow-growing, painless, firm mass in the parotid gland, characterized histologically by a mixture of epithelial and mesenchymal-like tissues?",
+                options: [
+                    "Warthin's Tumor",
+                    "Mucoepidermoid Carcinoma",
+                    "Pleomorphic Adenoma (Benign Mixed Tumor)",
+                    "Adenoid Cystic Carcinoma"
+                ],
+                correct: 2,
+                rationale: "The Pleomorphic Adenoma is by far the most common salivary gland tumor (both benign and overall). \"Pleomorphic\" refers to its mixed tissue appearance under a microscope."
+            },
+            {
+                question: "21. Statement 1: The external carotid artery supplies the majority of the blood to the face and oral cavity.\nStatement 2: The internal carotid artery enters the skull to supply the brain and has no branches in the neck.",
+                options: [
+                    "Both statements are TRUE.",
+                    "Both statements are FALSE.",
+                    "Statement 1 is TRUE; Statement 2 is FALSE.",
+                    "Statement 1 is FALSE; Statement 2 is TRUE."
+                ],
+                correct: 0,
+                rationale: "Both statements are perfectly accurate anatomical facts."
+            },
+            {
+                question: "22. Which of the following periodontal pathogens is a Gram-negative, obligate anaerobe that produces black-pigmented colonies on blood agar and is a core member of the \"Red Complex\" associated with severe chronic periodontitis?",
+                options: [
+                    "Streptococcus sanguinis",
+                    "Actinomyces viscosus",
+                    "Porphyromonas gingivalis",
+                    "Fusobacterium nucleatum"
+                ],
+                correct: 2,
+                rationale: "Porphyromonas gingivalis, along with T. forsythia and T. denticola, make up the Socransky \"Red Complex\" which is the primary microbial driver of severe periodontal destruction."
+            },
+            {
+                question: "23. Which basic physiological process is defined as the programmed, highly regulated death of a cell that does not trigger an inflammatory response in the surrounding tissues?",
+                options: [
+                    "Coagulative necrosis",
+                    "Liquefactive necrosis",
+                    "Apoptosis",
+                    "Autolysis"
+                ],
+                correct: 2,
+                rationale: "Apoptosis is clean, programmed cell suicide. Necrosis is messy, traumatic cell death that causes the cell to rupture and trigger massive inflammation."
+            },
+            {
+                question: "24. What is the universal, defining morphological trait of a mandibular first premolar?",
+                options: [
+                    "Two roots (buccal and lingual)",
+                    "A prominent mesiolingual developmental groove",
+                    "A lingual cusp that is larger than the buccal cusp",
+                    "A deeply bifurcated root tip"
+                ],
+                correct: 1,
+                rationale: "The mesiolingual developmental groove is unique to the mandibular 1st premolar. (Option A is max 1st premolar. Option C is false, the buccal cusp is massive while the lingual cusp is almost non-functional)."
+            },
+            {
+                question: "25. An oral cytology smear from a patient with a wiping-off white plaque reveals branching pseudohyphae and budding yeast cells. This dimorphic organism is:",
+                options: [
+                    "Histoplasma capsulatum",
+                    "Mycobacterium tuberculosis",
+                    "Candida albicans",
+                    "Treponema pallidum"
+                ],
+                correct: 2,
+                rationale: "Candida albicans is the fungus responsible for thrush. It is dimorphic, meaning it can exist as both a yeast (spore) and a mold (pseudohyphae/hyphae) depending on the environment."
+            },
+            {
+                question: "26. The Temporomandibular Joint (TMJ) is a ginglymoarthrodial joint. During the maximum opening of the mouth, the condyle translates forward. Which ligament primarily restricts the excessive forward, inferior, and lateral movement of the mandible, preventing dislocation?",
+                options: [
+                    "Stylomandibular ligament",
+                    "Sphenomandibular ligament",
+                    "Temporomandibular (Lateral) ligament",
+                    "Pterygomandibular raphe"
+                ],
+                correct: 2,
+                rationale: "The Temporomandibular (Lateral) Ligament is the main reinforcing structure of the TMJ capsule, preventing the condyle from dropping too far down and dislocating anteriorly over the articular eminence."
+            },
+            {
+                question: "27. In the histology of enamel, what are the daily, rhythmic incremental growth lines called?",
+                options: [
+                    "Lines of von Ebner",
+                    "Contour Lines of Owen",
+                    "Striae of Retzius",
+                    "Hunter-Schreger bands"
+                ],
+                correct: 2,
+                rationale: "Striae of Retzius are the growth rings of enamel. (Lines of von Ebner are the growth rings of dentin. Hunter-Schreger bands are optical phenomenons caused by changes in rod direction to prevent fractures)."
+            },
+            {
+                question: "28. A patient complains of severe pain originating from the maxillary sinus. The roots of which teeth are in closest anatomical proximity to the floor of the maxillary sinus, making them the most likely source of odontogenic sinusitis or oroantral communication during extraction?",
+                options: [
+                    "Maxillary central incisors",
+                    "Maxillary canines",
+                    "Maxillary first and second molars",
+                    "Maxillary first premolars"
+                ],
+                correct: 2,
+                rationale: "The roots of the maxillary 1st and 2nd molars are frequently separated from the sinus cavity by only a paper-thin layer of bone, or sometimes jut directly into the sinus lining."
+            },
+            {
+                question: "29. Which cranial nerve provides parasympathetic secretomotor innervation to the parotid salivary gland?",
+                options: [
+                    "Facial Nerve (CN VII)",
+                    "Trigeminal Nerve (CN V)",
+                    "Glossopharyngeal Nerve (CN IX)",
+                    "Vagus Nerve (CN X)"
+                ],
+                correct: 2,
+                rationale: "While CN VII runs through the parotid, it does not supply it. The Glossopharyngeal nerve (CN IX) provides the secretomotor fibers (via the otic ganglion) that tell the parotid to secrete saliva."
+            },
+            {
+                question: "30. Osteoradionecrosis (ORN) is a severe complication following radiation therapy to the head and neck. Why is the mandible significantly more susceptible to ORN than the maxilla?",
+                options: [
+                    "The mandible absorbs more radiation due to gravity.",
+                    "The mandible relies heavily on a single primary blood supply (the inferior alveolar artery) and has less collateral blood flow than the highly vascular maxilla.",
+                    "The maxilla is protected by the sinus cavities.",
+                    "The bone marrow in the mandible contains more osteoclasts."
+                ],
+                correct: 1,
+                rationale: "The maxilla is fed by a massive, rich network of interconnected blood vessels. The mandible is essentially fed by one main hose (the inferior alveolar artery). Radiation damages blood vessels permanently. When the mandible's single blood supply is damaged, the bone dies (necrosis) because it has no backup flow."
             }
         ];
 
-        // --- 2. QUIZ LOGIC ---
         let currentQuestion = 0;
         let score = 0;
         let answered = false;
@@ -208,20 +548,25 @@
         const nextBtn = document.getElementById('next-btn');
         const quizBlock = document.getElementById('quiz-block');
         const resultsBlock = document.getElementById('results');
+        const rationaleBox = document.getElementById('rationale-box');
+        const rationaleText = document.getElementById('rationale-text');
 
         function loadQuestion() {
             answered = false;
             nextBtn.style.display = 'none';
+            rationaleBox.style.display = 'none'; // Hide rationale initially
             
             const currentQuizData = quizData[currentQuestion];
-            questionEl.innerText = currentQuizData.question;
+            // Render the question text (using innerHTML to allow HTML tags like <br> if needed)
+            questionEl.innerHTML = currentQuizData.question.replace(/\n/g, '<br>');
             progressEl.innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
             
             optionsEl.innerHTML = '';
 
             currentQuizData.options.forEach((option, index) => {
                 const button = document.createElement('button');
-                button.innerText = option;
+                // Render option allowing superscripts/subscripts
+                button.innerHTML = option;
                 button.classList.add('option-btn');
                 button.addEventListener('click', () => selectOption(button, index));
                 optionsEl.appendChild(button);
@@ -232,23 +577,25 @@
             if (answered) return;
             answered = true;
 
-            const correctIndex = quizData[currentQuestion].correct;
+            const currentQuizData = quizData[currentQuestion];
+            const correctIndex = currentQuizData.correct;
             const allButtons = optionsEl.children;
 
-            // Check if correct
             if (selectedIndex === correctIndex) {
                 selectedBtn.classList.add('correct');
                 score++;
             } else {
                 selectedBtn.classList.add('wrong');
-                // Highlight the correct one so she can learn from mistakes
                 allButtons[correctIndex].classList.add('correct');
             }
 
-            // Disable all buttons after answering
             for (let btn of allButtons) {
                 btn.disabled = true;
             }
+
+            // Show the rationale box after answering
+            rationaleText.innerHTML = currentQuizData.rationale;
+            rationaleBox.style.display = 'block';
 
             nextBtn.style.display = 'block';
         }
@@ -271,7 +618,6 @@
             document.getElementById('total').innerText = quizData.length;
         }
 
-        // Initialize quiz
         loadQuestion();
     </script>
 </body>
