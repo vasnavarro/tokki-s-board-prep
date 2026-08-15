@@ -35,7 +35,7 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             width: 100%;
-            max-width: 700px;
+            max-width: 750px;
             padding: 40px;
             box-sizing: border-box;
         }
@@ -161,6 +161,17 @@
             margin-bottom: 30px;
         }
 
+        .results-details {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
         #restart-btn {
             background-color: var(--primary);
             color: white;
@@ -178,7 +189,7 @@
     <div class="quiz-container" id="quiz">
         <div class="header">
             <h1>Tokki's Board Prep 🦷</h1>
-            <div class="progress" id="progress">Question 1 of 30</div>
+            <div class="progress" id="progress">Loading...</div>
         </div>
 
         <div id="quiz-block">
@@ -200,12 +211,13 @@
         <div class="results" id="results">
             <h2>Exam Complete!</h2>
             <p>You scored <strong id="score">0</strong> out of <span id="total">0</span>!</p>
-            <button id="restart-btn" onclick="location.reload()">Take it Again</button>
+            <div id="results-message" class="results-details"></div>
+            <button id="restart-btn" onclick="location.reload()">Take it Again (Questions will shuffle!)</button>
         </div>
     </div>
 
     <script>
-        const quizData = [
+        const rawQuizData = [
             {
                 question: "1. A 24-year-old patient requires a surgical extraction of an impacted mandibular third molar (#38). During the administration of the inferior alveolar nerve block (IANB), the needle is inserted too far posteriorly into the parotid gland. Which cranial nerve is most likely to be temporarily paralyzed, and what clinical sign would the patient exhibit?",
                 options: [
@@ -535,8 +547,790 @@
                 ],
                 correct: 1,
                 rationale: "The maxilla is fed by a massive, rich network of interconnected blood vessels. The mandible is essentially fed by one main hose (the inferior alveolar artery). Radiation damages blood vessels permanently. When the mandible's single blood supply is damaged, the bone dies (necrosis) because it has no backup flow."
+            },
+            {
+                question: "31. An 8-year-old boy presents to the clinic immediately after a bicycle accident. His maxillary right central incisor (#11) is avulsed but brought in a glass of cold milk. Before replantation, you evaluate the root development. Based on standard chronologies of tooth development, the apical foramen of this tooth is most likely:",
+                options: [
+                    "Completely closed, as the tooth erupted at age 6.",
+                    "Completely closed, as root formation finishes simultaneously with eruption.",
+                    "Wide open, as the root does not finish developing until approximately age 10-11.",
+                    "Resorbing, as it is preparing to exfoliate."
+                ],
+                correct: 2,
+                rationale: "A vital board rule: Roots take about 2.5 to 3 years to fully complete after the tooth erupts. Since centrals erupt at 7-8, the root is not complete until 10-11. Replanting an avulsed tooth with an open apex has a much higher chance of revascularizing (healing without a root canal) than one with a closed apex."
+            },
+            {
+                question: "32. In the physiology of a neuron's action potential, the rapid repolarization phase (bringing the cell's membrane potential back down to its negative resting state) is primarily caused by:",
+                options: [
+                    "The rapid influx of Sodium (Na<sup>+</sup>) into the cell.",
+                    "The rapid efflux of Potassium (K<sup>+</sup>) out of the cell.",
+                    "The active transport of Calcium (Ca<sup>2+</sup>) into the sarcoplasmic reticulum.",
+                    "The binding of acetylcholine to the postsynaptic receptors."
+                ],
+                correct: 1,
+                rationale: "During repolarization, the sodium channels snap shut, and the potassium channels swing open. Potassium rushes out of the cell, carrying its positive charge away, plunging the inside of the cell back to a negative voltage."
+            },
+            {
+                question: "33. During a cranial nerve examination, you ask the patient to stick their tongue straight out. Which specific intrinsic or extrinsic muscle of the tongue is responsible for protruding it?",
+                options: [
+                    "Hyoglossus",
+                    "Styloglossus",
+                    "Palatoglossus",
+                    "Genioglossus"
+                ],
+                correct: 3,
+                rationale: "The genioglossus (originating from the genial tubercles of the mandible) pulls the base of the tongue forward, causing the tongue to stick out."
+            },
+            {
+                question: "34. A routine panoramic radiograph of a 30-year-old male reveals a well-defined, heart-shaped radiolucency exactly between the roots of the vital maxillary central incisors. The teeth are asymptomatic. The most likely diagnosis is:",
+                options: [
+                    "Radicular cyst",
+                    "Nasopalatine duct cyst",
+                    "Globulomaxillary cyst",
+                    "Lateral periodontal cyst"
+                ],
+                correct: 1,
+                rationale: "This is a classic developmental cyst located in the incisive canal. On a 2D x-ray, the anterior nasal spine superimposes over the round cyst, creating the classic \"heart-shaped\" radiolucency. Because it is non-odontogenic, the adjacent incisors remain vital (alive)."
+            },
+            {
+                question: "35. To legally and ethically ensure that a dental clinic's steam autoclave is effectively destroying all microorganisms (including highly resistant endospores), the gold-standard biological indicator test uses which organism?",
+                options: [
+                    "Bacillus atrophaeus",
+                    "Mycobacterium tuberculosis",
+                    "Geobacillus stearothermophilus",
+                    "Clostridium tetani"
+                ],
+                correct: 2,
+                rationale: "This bacterium produces incredibly tough, heat-resistant spores. If the steam autoclave gets hot and pressurized enough to kill these specific spores, it is mathematically guaranteed to have killed every other pathogen (like HIV, Hep B, etc.)."
+            },
+            {
+                question: "36. In general pathology, which of the following characteristics is the ONLY absolute, definitive criterion that distinguishes a malignant neoplasm from a benign neoplasm?",
+                options: [
+                    "A rapid rate of cellular growth",
+                    "The presence of numerous mitotic figures",
+                    "The ability to metastasize to distant sites",
+                    "A lack of a fibrous connective tissue capsule"
+                ],
+                correct: 2,
+                rationale: "While malignant tumors usually grow fast, lack capsules, and have mitoses, some benign tumors do that too. The absolute, undeniable proof that a tumor is malignant (cancer) is if it spreads via blood/lymph to a secondary site (metastasis). Benign tumors never metastasize."
+            },
+            {
+                question: "37. When performing endodontic therapy on a permanent mandibular first molar, the clinician must assume the presence of a specific canal morphology until proven otherwise. What is the most common canal configuration for this tooth?",
+                options: [
+                    "One canal in the mesial root; one canal in the distal root.",
+                    "Two canals in the mesial root; one canal in the distal root.",
+                    "One canal in the mesial root; two canals in the distal root.",
+                    "Two canals in the mesial root; two canals in the palatal root."
+                ],
+                correct: 1,
+                rationale: "The standard anatomy of tooth #36/46 features a broad mesial root containing an MB and ML canal, and a broad distal root usually containing one large, ribbon-shaped canal (making 3 canals total). Note: About 30% of the time, the distal root has two canals, making 4. But \"2 mesial, 1 distal\" is the primary baseline."
+            },
+            {
+                question: "38. Saliva plays a critical role in the initial digestion of carbohydrates in the oral cavity. Which enzyme, secreted primarily by the parotid gland, is responsible for breaking down complex starches into maltose?",
+                options: [
+                    "Pepsin",
+                    "Lipase",
+                    "Salivary amylase (Ptyalin)",
+                    "Trypsin"
+                ],
+                correct: 2,
+                rationale: "Ptyalin begins the chemical digestion of carbohydrates in the mouth. It is why a piece of bread tastes slightly sweet if you chew it for a long time without swallowing."
+            },
+            {
+                question: "39. The Trigeminal nerve (CN V) has three major divisions. After the Maxillary division (V2) exits the cranial cavity, it immediately enters the pterygopalatine fossa. Through which specific opening does V2 exit the skull to reach this fossa?",
+                options: [
+                    "Superior orbital fissure",
+                    "Foramen ovale",
+                    "Foramen rotundum",
+                    "Foramen spinosum"
+                ],
+                correct: 2,
+                rationale: "Memory trick for Trigeminal exits: Standing Room Only. V1 (Ophthalmic) goes through the Superior orbital fissure. V2 (Maxillary) goes through foramen Rotundum. V3 (Mandibular) goes through foramen Ovale."
+            },
+            {
+                question: "40. A 22-year-old patient complains of localized pain around the mandibular right first molar. The tooth tests vital to cold. Radiographically, there is a well-circumscribed radiopaque mass fused directly to the apical third of the distal root, surrounded by a thin radiolucent halo. The diagnosis is:",
+                options: [
+                    "Condensing osteitis",
+                    "Cementoblastoma",
+                    "Complex odontoma",
+                    "Periapical cemento-osseous dysplasia"
+                ],
+                correct: 1,
+                rationale: "The hallmark is a radiopaque mass fused directly to the root of a vital molar, often causing pain and root expansion. The radiolucent halo is the PDL space pushed outward."
+            },
+            {
+                question: "41. A dental assistant suffers a deep needle-stick injury from a patient with an unknown medical history. A subsequent blood panel of the patient reveals the presence of HBsAg, but no Anti-HBs. What does this indicate?",
+                options: [
+                    "The patient has recovered from Hepatitis B and is immune.",
+                    "The patient was successfully vaccinated against Hepatitis B.",
+                    "The patient has an active Hepatitis B infection and is potentially highly infectious.",
+                    "The patient has Hepatitis C, not Hepatitis B."
+                ],
+                correct: 2,
+                rationale: "HBsAg (Hepatitis B surface Antigen) is the physical protein on the surface of the virus. If it is present in the blood, the virus is currently in the body. Anti-HBs (Antibody) means the body has fought it off and is immune. This patient has the virus, but no immunity."
+            },
+            {
+                question: "42. A patient with a history of severe deep vein thrombosis (DVT) in their lower extremities suddenly collapses in the dental reception area with severe shortness of breath and chest pain. If a piece of the thrombus broke off (embolized), where will it most likely lodge and cause a catastrophic blockage?",
+                options: [
+                    "The cerebral arteries (causing a stroke)",
+                    "The coronary arteries (causing a myocardial infarction)",
+                    "The pulmonary arteries (causing a pulmonary embolism)",
+                    "The hepatic portal vein (causing liver failure)"
+                ],
+                correct: 2,
+                rationale: "A clot in the leg vein travels up the vena cava &rarr; right atrium &rarr; right ventricle &rarr; out the pulmonary artery. The clot is too big to pass through the tiny capillaries of the lungs, so it gets stuck there, blocking blood from getting oxygenated."
+            },
+            {
+                question: "43. Statement 1: The first primary teeth to erupt are typically the mandibular central incisors around 6-8 months of age.\nStatement 2: In the primary dentition, the first molars erupt before the canines.",
+                options: [
+                    "Both statements are TRUE.",
+                    "Both statements are FALSE.",
+                    "Statement 1 is TRUE; Statement 2 is FALSE.",
+                    "Statement 1 is FALSE; Statement 2 is TRUE."
+                ],
+                correct: 0,
+                rationale: "The primary eruption sequence follows the letters A-B-D-C-E (Centrals &rarr; Laterals &rarr; 1st Molars &rarr; Canines &rarr; 2nd Molars). It is highly tested because the 1st molar erupts before the canine, unlike the permanent dentition."
+            },
+            {
+                question: "44. In the physiological regulation of blood calcium levels, which hormone is secreted in response to low serum calcium, functioning to increase blood calcium by stimulating osteoclastic bone resorption?",
+                options: [
+                    "Calcitonin",
+                    "Parathyroid hormone (PTH)",
+                    "Thyroid hormone (T3/T4)",
+                    "Aldosterone"
+                ],
+                correct: 1,
+                rationale: "When blood calcium drops, PTH is released. It acts like a \"bone miner,\" stimulating osteoclasts to break down bone matrix and release stored calcium back into the bloodstream."
+            },
+            {
+                question: "45. During the administration of an Inferior Alveolar Nerve Block, the needle tip must physically pass near the lingula of the mandible. Which accessory ligament of the TMJ attaches directly to this bony prominence?",
+                options: [
+                    "Stylomandibular ligament",
+                    "Temporomandibular ligament",
+                    "Sphenomandibular ligament",
+                    "Pterygomandibular raphe"
+                ],
+                correct: 2,
+                rationale: "It originates from the spine of the sphenoid bone and attaches directly to the lingula (the bony flap covering the mandibular foramen). It is the ligament most likely to be injured or pierced during a clumsy IANB injection."
+            },
+            {
+                question: "46. A 20-year-old male presents with severe, hemorrhagic crusting of his lips and multiple \"target\" or \"bulls-eye\" looking lesions on his hands and arms. He recently finished a course of antibiotics. What is the most likely immunological condition?",
+                options: [
+                    "Lupus Erythematosus",
+                    "Erythema Multiforme",
+                    "Pemphigus Vulgaris",
+                    "Mucous Membrane Pemphigoid"
+                ],
+                correct: 1,
+                rationale: "\"Target\" or \"bullseye\" skin lesions and bloody, hemorrhagic crusting of the lips in a young male are the absolute classic pathognomonic signs. It is often triggered by an infection (HSV) or medications (antibiotics)."
+            },
+            {
+                question: "47. An uncontrolled diabetic patient presenting with ketoacidosis develops massive, rapid tissue necrosis of the palate and nasal cavity. A biopsy reveals large, non-septate fungal hyphae branching at right angles. The diagnosis is:",
+                options: [
+                    "Histoplasmosis",
+                    "Oral Candidiasis",
+                    "Mucormycosis",
+                    "Actinomycosis"
+                ],
+                correct: 2,
+                rationale: "The fungus Mucor thrives in high-sugar, acidic environments (like the blood of an uncontrolled diabetic in ketoacidosis). It aggressively invades blood vessels, starving tissues of blood and causing massive, black necrotic destruction of the palate."
+            },
+            {
+                question: "48. Chronic irritation, such as severe acid reflux, can cause the normal stratified squamous epithelium of the lower esophagus to change into simple columnar epithelium to better withstand the acid. In general pathology, this reversible change from one mature adult cell type to another is called:",
+                options: [
+                    "Dysplasia",
+                    "Hyperplasia",
+                    "Metaplasia",
+                    "Anaplasia"
+                ],
+                correct: 2,
+                rationale: "Metaplasia is a reversible survival mechanism. The delicate squamous cells change into tough columnar cells to survive the stomach acid (Barrett's Esophagus)."
+            },
+            {
+                question: "49. When comparing the occlusal anatomy of the maxillary first premolar and the maxillary second premolar, the second premolar typically exhibits:",
+                options: [
+                    "A longer central developmental groove.",
+                    "A more wrinkled appearance due to numerous supplemental grooves.",
+                    "A prominent mesial marginal ridge developmental groove.",
+                    "A severely bifurcated root structure."
+                ],
+                correct: 1,
+                rationale: "The maxillary 2nd premolar is more rounded/symmetrical, has a very short central groove, and is highly wrinkled with supplemental grooves compared to the very angular 1st premolar."
+            },
+            {
+                question: "50. In the Renin-Angiotensin-Aldosterone System (RAAS) which regulates blood pressure, where is the enzyme renin initially secreted in response to a drop in blood volume?",
+                options: [
+                    "The liver",
+                    "The adrenal cortex",
+                    "The juxtaglomerular cells of the kidney",
+                    "The lungs"
+                ],
+                correct: 2,
+                rationale: "These specialized cells in the kidney constantly monitor blood pressure. If it drops, they secrete renin, which kicks off a chain reaction to constrict blood vessels and retain water."
+            },
+            {
+                question: "51. A patient presents with a suspicious ulceration strictly on the absolute tip (apex) of the tongue. If this lesion were to metastasize via the lymphatic system, which lymph nodes would be the VERY FIRST to receive the drainage?",
+                options: [
+                    "Submandibular lymph nodes",
+                    "Submental lymph nodes",
+                    "Deep cervical lymph nodes",
+                    "Parotid lymph nodes"
+                ],
+                correct: 1,
+                rationale: "The absolute tip/apex of the tongue, the lower lip, and the mandibular incisors all drain straight down into the submental nodes (located right under the chin)."
+            },
+            {
+                question: "52. A 48-year-old Black female presents for routine panoramic radiography. She has no symptoms. The x-ray reveals multiple dense, lobulated radiopaque masses scattered throughout the anterior and posterior regions of her mandible and maxilla. All teeth test vital. The diagnosis is:",
+                options: [
+                    "Florid cemento-osseous dysplasia",
+                    "Multiple osteomas (Gardner Syndrome)",
+                    "Paget's disease",
+                    "Cherubism"
+                ],
+                correct: 0,
+                rationale: "This specific demographic (middle-aged Black females), combined with widespread, painless radiopacities across multiple jaw quadrants and strictly vital teeth, is the exact textbook definition."
+            },
+            {
+                question: "53. Statement 1: Aggregatibacter actinomycetemcomitans (Aa) is heavily associated with severe, rapid localized bone loss in adolescents and young adults.\nStatement 2: A major virulence factor of Aa is its production of a leukotoxin that destroys human neutrophils and macrophages.",
+                options: [
+                    "Both statements are TRUE.",
+                    "Both statements are FALSE.",
+                    "Statement 1 is TRUE; Statement 2 is FALSE.",
+                    "Statement 1 is FALSE; Statement 2 is TRUE."
+                ],
+                correct: 0,
+                rationale: "A. actinomycetemcomitans is the absolute defining pathogen for Localized Aggressive Periodontitis (now staged as Periodontitis Stage III/IV Grade C). It survives by producing a leukotoxin that literally kills the white blood cells trying to hunt it down."
+            },
+            {
+                question: "54. A dental hygienist develops a severe, itchy, blistering rash on her hands 48 hours after using latex gloves. This delayed hypersensitivity reaction is classified as:",
+                options: [
+                    "Type I Hypersensitivity (IgE mediated)",
+                    "Type II Hypersensitivity (Cytotoxic)",
+                    "Type III Hypersensitivity (Immune complex)",
+                    "Type IV Hypersensitivity (T-cell mediated)"
+                ],
+                correct: 3,
+                rationale: "Any reaction that takes 48-72 hours to appear (like contact dermatitis to latex/nickel, poison ivy, or the TB skin test) is Type IV. It is \"delayed\" because it relies on T-cells physically traveling to the site, rather than immediate antibodies."
+            },
+            {
+                question: "55. In ideal \"mutually protected occlusion,\" what is the primary role of the maxillary canines during lateral excursions of the mandible?",
+                options: [
+                    "To balance the working side by grinding against the mandibular molars.",
+                    "To disclude (separate) all posterior teeth, preventing damaging lateral sheer forces on the molars.",
+                    "To prevent the anterior teeth from contacting in protrusive movements.",
+                    "To guide the condyle out of the articular fossa."
+                ],
+                correct: 1,
+                rationale: "Molars are designed to take heavy vertical forces, but sideways (lateral) forces destroy them. Canine guidance ensures that when the jaw moves sideways, the massive canine roots ride up against each other, prying the back teeth apart so they don't grind laterally."
+            },
+            {
+                question: "56. A patient is taking Warfarin (Coumadin) to prevent blood clots. This drug works by interfering with the liver's ability to utilize Vitamin K. Which specific blood clotting factors are strictly Vitamin K-dependent?",
+                options: [
+                    "Factors I, II, V, X",
+                    "Factors II, VII, IX, X",
+                    "Factors VIII, IX, XI, XII",
+                    "Factor VIII only"
+                ],
+                correct: 1,
+                rationale: "These four specific factors require Vitamin K for their synthesis in the liver. (Mnemonic: 2 + 7 = 9, and add 10. 1972). Warfarin blocks this, intentionally thinning the blood."
+            },
+            {
+                question: "57. Which tooth in the human primary dentition has a crown anatomy that is so completely unique it does NOT anatomically resemble any other tooth in either the primary or permanent dentitions?",
+                options: [
+                    "Primary maxillary first molar",
+                    "Primary mandibular first molar",
+                    "Primary maxillary second molar",
+                    "Primary mandibular second molar"
+                ],
+                correct: 1,
+                rationale: "It is the \"weirdest\" tooth in the human mouth. It has a bizarre, squashed shape, a prominent mesiobuccal cervical bulge, and does not resemble a permanent premolar OR a permanent molar."
+            },
+            {
+                question: "58. A 15-year-old patient presents with prolonged retention of primary teeth and multiple unerupted supernumerary teeth visible on a panoramic x-ray. During the exam, you notice the patient can touch their shoulders together in front of their chest due to absent clavicles. What is the syndrome?",
+                options: [
+                    "Ectodermal Dysplasia",
+                    "Cleidocranial Dysplasia",
+                    "Peutz-Jeghers Syndrome",
+                    "Treacher Collins Syndrome"
+                ],
+                correct: 1,
+                rationale: "\"Cleido\" means clavicle (collarbone); \"cranial\" relates to the skull. These patients lack clavicles, allowing extreme shoulder mobility, and have an overabundance of supernumerary (extra) teeth that block normal teeth from erupting."
+            },
+            {
+                question: "59. In the ecology of dental plaque, Veillonella species are actually considered beneficial (anticariogenic) because they:",
+                options: [
+                    "Produce strong alkaline ammonia to neutralize the mouth.",
+                    "Phagocytize and destroy Streptococcus mutans.",
+                    "Cannot metabolize carbohydrates; instead, they metabolize the lactic acid produced by other bacteria into weaker, less damaging acids.",
+                    "Form a physical barrier over the enamel rods."
+                ],
+                correct: 2,
+                rationale: "Veillonella is a unique \"clean-up crew.\" S. mutans eats sugar and produces harsh lactic acid, which causes cavities. Veillonella eats that lactic acid and turns it into propionic acid, which is much weaker, actually helping protect the teeth."
+            },
+            {
+                question: "60. An odontogenic infection originating from a severely decayed mandibular first molar (#46) breaks through the lingual cortical bone. Because the apices of the first molar are located above the mylohyoid muscle attachment, the infection will initially spread into the:",
+                options: [
+                    "Submandibular space",
+                    "Sublingual space",
+                    "Submental space",
+                    "Pterygomandibular space"
+                ],
+                correct: 1,
+                rationale: "The mylohyoid muscle forms the floor of the mouth. If a mandibular molar root tip is above that muscle line (like premolars and 1st molars usually are), the infection drains UP into the floor of the mouth (Sublingual space). If the root tip is below the line (like 2nd and 3rd molars), it drains DOWN into the neck (Submandibular space)."
+            },
+            {
+                question: "61. A 14-year-old presents with teeth that have a distinct blue-brown opalescent hue. Radiographically, the crowns appear bulbous, the roots are short and thin, and the pulp chambers and root canals are completely obliterated. The most likely diagnosis is:",
+                options: [
+                    "Amelogenesis Imperfecta",
+                    "Dentinogenesis Imperfecta",
+                    "Dentin Dysplasia Type I",
+                    "Regional Odontodysplasia"
+                ],
+                correct: 1,
+                rationale: "Bulbous crowns, obliterated pulps, and opalescent hues are the absolute hallmarks of DI. The dentin forms poorly, causing the overlying enamel to chip off easily."
+            },
+            {
+                question: "62. Which of the following viruses is primarily transmitted through the fecal-oral route, frequently associated with contaminated food or water, and does not establish a chronic carrier state?",
+                options: [
+                    "Hepatitis A Virus (HAV)",
+                    "Hepatitis B Virus (HBV)",
+                    "Hepatitis C Virus (HCV)",
+                    "Human Immunodeficiency Virus (HIV)"
+                ],
+                correct: 0,
+                rationale: "Hep A (and Hep E) are transmitted via the fecal-oral route (e.g., contaminated water/food) and are acute, meaning they clear up and do not cause chronic carrier states. Hep B, C, and HIV are bloodborne."
+            },
+            {
+                question: "63. When blowing up a balloon or playing a wind instrument, which muscle of facial expression physically compresses the cheeks against the teeth to prevent them from puffing out?",
+                options: [
+                    "Zygomaticus major",
+                    "Risorius",
+                    "Buccinator",
+                    "Mentalis"
+                ],
+                correct: 2,
+                rationale: "The buccinator (the \"bugler's muscle\") forms the muscular wall of the cheek. It keeps food pushed onto the occlusal table during chewing and expels air forcefully."
+            },
+            {
+                question: "64. In blood typing physiology, a patient with Type O negative (O-) blood is considered the \"universal donor\" because their red blood cells:",
+                options: [
+                    "Contain both A and B antigens.",
+                    "Lack both A and B antigens, and lack the Rh factor.",
+                    "Contain naturally occurring Anti-A and Anti-B antibodies.",
+                    "Lack all antibodies in their blood plasma."
+                ],
+                correct: 1,
+                rationale: "They are universal donors because their blood has zero surface antigens. If you put O- blood into any other person, the recipient's immune system has nothing to attack, so there is no rejection."
+            },
+            {
+                question: "65. Which of the following permanent anterior teeth is statistically the most likely to exhibit a severe developmental anomaly, such as a dens in dente (dens invaginatus) or a palatogingival groove?",
+                options: [
+                    "Maxillary central incisor",
+                    "Maxillary lateral incisor",
+                    "Mandibular central incisor",
+                    "Maxillary canine"
+                ],
+                correct: 1,
+                rationale: "After the 3rd molars, the max lateral incisor is the most unpredictable tooth in the mouth. It is the most common tooth to have a dens in dente, a palatogingival groove, or present as a microdont (peg lateral)."
+            },
+            {
+                question: "66. A 55-year-old female complains of a chronically dry mouth (xerostomia) and feeling like there is sand in her eyes (keratoconjunctivitis sicca). Blood tests reveal the presence of autoantibodies (SS-A and SS-B). This autoimmune destruction of the salivary and lacrimal glands is known as:",
+                options: [
+                    "Sjogren's Syndrome",
+                    "Systemic Lupus Erythematosus",
+                    "Scleroderma",
+                    "Rheumatoid Arthritis"
+                ],
+                correct: 0,
+                rationale: "The triad of dry eyes, dry mouth, and an autoimmune connective tissue disease (like rheumatoid arthritis) defines Sjogren's. The immune system attacks the exocrine glands."
+            },
+            {
+                question: "67. In dental infection control, what is the strict microbiological definition of \"sterilization\"?",
+                options: [
+                    "The reduction of microbial populations to a safe public health level.",
+                    "The complete destruction or removal of all forms of microbial life, including highly resistant bacterial endospores.",
+                    "The destruction of all vegetative bacteria and viruses, but not endospores.",
+                    "The physical removal of organic debris from an instrument."
+                ],
+                correct: 1,
+                rationale: "Disinfection kills most things, but Sterilization is an absolute term. If even one bacterial spore survives, it is not sterile."
+            },
+            {
+                question: "68. Erythroblastosis fetalis (Hemolytic Disease of the Newborn) occurs when a mother's antibodies attack the red blood cells of her fetus. This is a classic example of which type of hypersensitivity reaction?",
+                options: [
+                    "Type I Hypersensitivity",
+                    "Type II Hypersensitivity",
+                    "Type III Hypersensitivity",
+                    "Type IV Hypersensitivity"
+                ],
+                correct: 1,
+                rationale: "Type II is \"Cytotoxic,\" meaning antibodies directly target and destroy specific cells. Here, the mother's IgG antibodies cross the placenta and destroy the baby's Rh-positive red blood cells."
+            },
+            {
+                question: "69. In pulmonary physiology, what is the critical function of the surfactant secreted by Type II alveolar cells?",
+                options: [
+                    "It traps inhaled dust and bacteria.",
+                    "It increases the surface tension of water in the lungs.",
+                    "It decreases surface tension, preventing the alveoli from collapsing during exhalation.",
+                    "It facilitates the active transport of oxygen into the blood."
+                ],
+                correct: 2,
+                rationale: "Without surfactant, the water molecules lining the lungs would attract each other so strongly that the tiny air sacs (alveoli) would stick together and collapse entirely every time you breathed out."
+            },
+            {
+                question: "70. The external carotid artery provides major blood supply to the face. Which of its branches specifically crosses the lower border of the mandible just anterior to the masseter muscle, where its pulse can be easily palpated?",
+                options: [
+                    "Lingual artery",
+                    "Maxillary artery",
+                    "Superficial temporal artery",
+                    "Facial artery"
+                ],
+                correct: 3,
+                rationale: "The facial artery notches over the lower border of the mandible right in front of the masseter muscle. You can physically feel your pulse there."
+            },
+            {
+                question: "71. When comparing primary (deciduous) teeth to permanent teeth, all of the following morphological differences are true EXCEPT:",
+                options: [
+                    "Primary teeth have a markedly constricted cervical ridge, making them look bulbous.",
+                    "The enamel layer in primary teeth is significantly thicker than in permanent teeth.",
+                    "The roots of primary molars flare outward widely to accommodate the developing permanent premolars.",
+                    "The pulp chambers of primary teeth are proportionally much larger and closer to the surface."
+                ],
+                correct: 1,
+                rationale: "This is the EXCEPT option. The enamel and dentin in primary teeth are actually much thinner than in permanent teeth, which is why decay reaches the pulp so rapidly in kids."
+            },
+            {
+                question: "72. A biopsy of a dark red, fleshy, hemorrhagic mass localized on the gingiva between two mandibular premolars reveals a proliferation of multinucleated giant cells within a highly vascular stroma. The lesion appeared shortly after an extraction in the area. What is the diagnosis?",
+                options: [
+                    "Pyogenic granuloma",
+                    "Peripheral giant cell granuloma",
+                    "Peripheral ossifying fibroma",
+                    "Central giant cell granuloma"
+                ],
+                correct: 1,
+                rationale: "The key word here is \"multinucleated giant cells.\" Pyogenic granulomas look clinically identical but are composed of granulation tissue, not giant cells. \"Peripheral\" means it's on the gum tissue; \"Central\" would mean it's inside the jawbone."
+            },
+            {
+                question: "73. You are retreating a failing root canal. The original root canal was done 5 years ago, but a new periapical radiolucency has developed. Which highly resistant, Gram-positive enterococcus species is most frequently isolated from these stubborn, secondary endodontic infections?",
+                options: [
+                    "Actinomyces israelii",
+                    "Staphylococcus aureus",
+                    "Enterococcus faecalis",
+                    "Treponema pallidum"
+                ],
+                correct: 2,
+                rationale: "E. faecalis is incredibly resilient and resistant to high pH (like calcium hydroxide). It is the classic board answer for the bacteria driving failing root canals."
+            },
+            {
+                question: "74. The autonomic nervous system consists of sympathetic and parasympathetic divisions. Which four cranial nerves carry parasympathetic fibers?",
+                options: [
+                    "CN I, II, III, IV",
+                    "CN V, VII, IX, XII",
+                    "CN III, VII, IX, X",
+                    "CN V, VIII, XI, XII"
+                ],
+                correct: 2,
+                rationale: "Memorize these four! Oculomotor (III - pupils), Facial (VII - saliva/tears), Glossopharyngeal (IX - parotid saliva), and Vagus (X - heart, lungs, GI tract) are the only cranial nerves carrying parasympathetic (rest and digest) fibers."
+            },
+            {
+                question: "75. Which permanent tooth is bilaterally symmetrical, making it incredibly difficult to distinguish the left from the right when extracted?",
+                options: [
+                    "Maxillary central incisor",
+                    "Mandibular central incisor",
+                    "Mandibular lateral incisor",
+                    "Maxillary lateral incisor"
+                ],
+                correct: 1,
+                rationale: "It is the smallest and most perfectly symmetrical tooth in the human body. The mesial and distal halves are virtually mirror images."
+            },
+            {
+                question: "76. In general pathology, an area of ischemic necrosis caused by the sudden occlusion of the arterial supply or venous drainage of a tissue is strictly defined as:",
+                options: [
+                    "An abscess",
+                    "A granuloma",
+                    "An infarct",
+                    "A thrombus"
+                ],
+                correct: 2,
+                rationale: "A thrombus is the blood clot itself. If that clot blocks blood flow, the tissue downstream starves and dies. That area of dead tissue is the infarct (e.g., myocardial infarction = heart attack)."
+            },
+            {
+                question: "77. A single, isolated developmental defect occurs on the facial surface of a permanent maxillary central incisor. History reveals the patient suffered severe trauma to the primary incisor in that exact spot when they were 3 years old. This localized enamel hypoplasia is called:",
+                options: [
+                    "Fluorosis",
+                    "Amelogenesis Imperfecta",
+                    "A Turner's Tooth",
+                    "Dens Evaginatus"
+                ],
+                correct: 2,
+                rationale: "If a primary tooth gets infected or shoved up into the bone (trauma), it damages the developing permanent tooth bud right underneath it, leaving a focal spot of bad enamel (Turner's hypoplasia)."
+            },
+            {
+                question: "78. The articular disc of the Temporomandibular Joint (TMJ) acts as a shock absorber between the condyle and the glenoid fossa. Histologically, what is the central, load-bearing area of this disc composed of?",
+                options: [
+                    "Highly vascularized hyaline cartilage",
+                    "Avascular, non-innervated dense fibrous connective tissue",
+                    "Elastic cartilage rich in nerve endings",
+                    "Cancellous bone"
+                ],
+                correct: 1,
+                rationale: "The center of the TMJ disc takes massive crushing forces. If it had blood vessels, they would burst. If it had nerves, chewing would be excruciating. It is tough, fibrous tissue."
+            },
+            {
+                question: "79. A patient presents with highly infectious, painless, grayish-white plaques on the oral mucosa (mucous patches) and a generalized maculopapular skin rash covering their palms and soles. These are the classic signs of which stage of Syphilis?",
+                options: [
+                    "Primary Syphilis",
+                    "Secondary Syphilis",
+                    "Tertiary Syphilis",
+                    "Latent Syphilis"
+                ],
+                correct: 1,
+                rationale: "Primary = Painless chancre. Secondary = Widespread systemic spread (maculopapular rash on palms/soles and mucous patches). Tertiary = Gumma (tissue destruction) and neurological damage."
+            },
+            {
+                question: "80. In endocrine physiology, the primary physiological action of insulin is to:",
+                options: [
+                    "Stimulate the liver to break down glycogen into glucose.",
+                    "Facilitate the transport of glucose from the blood directly into skeletal muscle and adipose cells.",
+                    "Increase the renal reabsorption of glucose.",
+                    "Stimulate alpha cells in the pancreas."
+                ],
+                correct: 1,
+                rationale: "Insulin is the \"key\" that unlocks cell doors, allowing sugar to leave the bloodstream and enter the cells for energy."
+            },
+            {
+                question: "81. Which tooth possesses the longest, strongest root in the human dentition, earning it the nickname \"the cornerstone of the arch\"?",
+                options: [
+                    "Maxillary first molar",
+                    "Mandibular canine",
+                    "Maxillary canine",
+                    "Maxillary central incisor"
+                ],
+                correct: 2,
+                rationale: "Its massive, long root anchors it deeply into the facial bone (canine eminence), making it the most stable tooth in the mouth."
+            },
+            {
+                question: "82. A 3-year-old child presents with a large, fluid-filled, fluctuant bluish swelling on the floor of the mouth, lateral to the midline. It resulted from trauma to the sublingual gland. This specific clinical lesion is called a:",
+                options: [
+                    "Ranula",
+                    "Mucocele",
+                    "Dermoid cyst",
+                    "Lymphangioma"
+                ],
+                correct: 0,
+                rationale: "A mucocele is on the lip; a Ranula (named after Rana, the Latin word for frog, because it looks like a frog's underbelly) is specifically a large mucocele located on the floor of the mouth from the sublingual gland."
+            },
+            {
+                question: "83. The Mantoux test (PPD skin test) is used to screen for Tuberculosis. A positive reaction (induration) peaking at 48-72 hours is an example of a cell-mediated immune response. Which immune cells are directly responsible for this reaction?",
+                options: [
+                    "B-Lymphocytes",
+                    "T-Lymphocytes",
+                    "Neutrophils",
+                    "Eosinophils"
+                ],
+                correct: 1,
+                rationale: "The TB skin test is a Type IV Delayed Hypersensitivity reaction. It takes 48 hours for the T-cells to travel to the injection site, recognize the protein, and cause the raised red bump."
+            },
+            {
+                question: "84. In the physiological blood coagulation cascade, several clotting factors require a specific mineral to function properly. In fact, this mineral is officially designated as Clotting Factor IV. What is it?",
+                options: [
+                    "Iron",
+                    "Magnesium",
+                    "Calcium",
+                    "Potassium"
+                ],
+                correct: 2,
+                rationale: "Calcium is strictly required for almost every step of the blood clotting cascade."
+            },
+            {
+                question: "85. The brainstem controls vital functions like breathing and heart rate. Through which massive opening in the occipital bone does the medulla oblongata pass to become the spinal cord?",
+                options: [
+                    "Foramen ovale",
+                    "Jugular foramen",
+                    "Foramen magnum",
+                    "Carotid canal"
+                ],
+                correct: 2,
+                rationale: "Latin for \"Great Hole.\" It is the massive opening at the base of the skull where the brainstem transitions into the spinal cord."
+            },
+            {
+                question: "86. Using the Universal Numbering System (1-32), what is the correct designation for the permanent mandibular left first molar?",
+                options: [
+                    "19",
+                    "30",
+                    "36",
+                    "46"
+                ],
+                correct: 0,
+                rationale: "Universal numbers start upper right (1), go across to upper left (16), drop down to lower left (17), and end at lower right (32). The lower left 1st molar is #19."
+            },
+            {
+                question: "87. While both are considered potentially premalignant mucosal lesions, which of the following carries the highest statistical probability (often >90%) of already being dysplastic or invasive squamous cell carcinoma at the time of biopsy?",
+                options: [
+                    "Leukoplakia (White patch)",
+                    "Erythroplakia (Red patch)",
+                    "Linea Alba",
+                    "Leukoedema"
+                ],
+                correct: 1,
+                rationale: "While leukoplakia is more common, erythroplakia is much more dangerous. Over 90% of red patches in the mouth that cannot be diagnosed clinically are already severe dysplasia or cancer."
+            },
+            {
+                question: "88. In the pathophysiology of edema, a patient with severe liver disease (cirrhosis) fails to synthesize adequate amounts of albumin. How does this lack of albumin directly cause systemic edema (fluid pooling in the tissues)?",
+                options: [
+                    "It increases capillary hydrostatic pressure.",
+                    "It causes a severe drop in blood plasma colloidal osmotic pressure.",
+                    "It blocks lymphatic drainage.",
+                    "It triggers a massive histamine release."
+                ],
+                correct: 1,
+                rationale: "Albumin acts like a sponge in the blood vessels, holding water inside. If the liver dies and stops making albumin, the water leaks out of the vessels and pools in the tissues (edema/ascites)."
+            },
+            {
+                question: "89. The vast majority of oxygen (roughly 98%) transported in the human bloodstream is carried:",
+                options: [
+                    "Dissolved directly in the blood plasma.",
+                    "Bound to the iron atoms within hemoglobin molecules inside red blood cells.",
+                    "Bound to albumin proteins.",
+                    "Converted into bicarbonate ions (HCO<sub>3</sub><sup>-</sup>)."
+                ],
+                correct: 1,
+                rationale: "Oxygen doesn't dissolve well in water/plasma. It requires the iron in hemoglobin to bind to it and carry it around the body."
+            },
+            {
+                question: "90. A 5-year-old child presents with painful vesicles and ulcers on the soft palate, tonsillar pillars, and tongue, along with a maculopapular rash on the palms of the hands and soles of the feet. The most likely viral culprit is:",
+                options: [
+                    "Varicella-Zoster Virus",
+                    "Herpes Simplex Virus Type 1",
+                    "Coxsackievirus A",
+                    "Epstein-Barr Virus"
+                ],
+                correct: 2,
+                rationale: "This is the absolute textbook viral cause of Hand, Foot, and Mouth disease (vesicles in the mouth and a rash on hands/feet), very common in daycares."
+            },
+            {
+                question: "91. When searching for canals during endodontic access on a permanent maxillary first molar, the clinician must always look for a fourth canal (the MB2). Where is the MB2 canal orifice typically located?",
+                options: [
+                    "Distal to the distobuccal canal.",
+                    "On a line connecting the mesiobuccal and palatal canals, usually slightly mesial to that line.",
+                    "Directly in the center of the pulp chamber floor.",
+                    "Fused within the palatal canal."
+                ],
+                correct: 1,
+                rationale: "The MB2 is hidden slightly palatal and mesial to the main MB canal. It is the number one reason maxillary first molar root canals fail (because the dentist didn't look hard enough to find the 4th canal)."
+            },
+            {
+                question: "92. A severe, life-threatening mucocutaneous reaction characterized by massive blistering and sloughing of the skin and mucous membranes, usually triggered by a medication (like sulfonamides or anticonvulsants), is known as:",
+                options: [
+                    "Stevens-Johnson Syndrome",
+                    "Lupus Erythematosus",
+                    "Lichen Planus",
+                    "Squamous Papilloma"
+                ],
+                correct: 0,
+                rationale: "SJS is a severe, life-threatening form of Erythema Multiforme, almost always triggered by an extreme allergic reaction to medications, causing the skin and mucosa to slough off."
+            },
+            {
+                question: "93. The lymphatic system drains excess tissue fluid. The lymph from all the teeth in the maxillary and mandibular arches eventually drains into the submandibular lymph nodes, with the exception of the:",
+                options: [
+                    "Maxillary third molars",
+                    "Mandibular incisors",
+                    "Maxillary premolars",
+                    "Mandibular first molars"
+                ],
+                correct: 1,
+                rationale: "The mandibular incisors (and the tip of the tongue and lower lip) drain directly down into the Submental lymph nodes first, not the submandibular nodes."
+            },
+            {
+                question: "94. In gastrointestinal physiology, which hormone is secreted by the G-cells of the stomach in response to the presence of food, heavily stimulating the parietal cells to secrete hydrochloric acid (HCl)?",
+                options: [
+                    "Secretin",
+                    "Cholecystokinin (CCK)",
+                    "Gastrin",
+                    "Glucagon"
+                ],
+                correct: 2,
+                rationale: "When food hits the stomach, G-cells release Gastrin, which tells the parietal cells to pump out stomach acid to start digestion."
+            },
+            {
+                question: "95. A dental healthcare worker gets a needlestick injury. Their lab results show they are positive for Anti-HCV. What does this mean?",
+                options: [
+                    "They have been successfully vaccinated against Hepatitis C.",
+                    "They have antibodies to Hepatitis C, indicating past exposure or current chronic infection.",
+                    "They have absolute immunity to Hepatitis C.",
+                    "They are currently infected with Hepatitis A."
+                ],
+                correct: 1,
+                rationale: "Unlike Hep B, there is no vaccine for Hep C. Therefore, if you have antibodies (Anti-HCV), it means you were infected. A further viral load test is needed to see if it is still active."
+            },
+            {
+                question: "96. A patient presents with a well-demarcated, flat, red, depapillated (bald) area precisely in the midline of the dorsal surface of the tongue, just anterior to the circumvallate papillae. This lesion is classically associated with chronic infection by which organism?",
+                options: [
+                    "Candida albicans",
+                    "Treponema pallidum",
+                    "Mycobacterium tuberculosis",
+                    "Actinomyces israelii"
+                ],
+                correct: 0,
+                rationale: "This specific lesion is Median Rhomboid Glossitis. It was once thought to be developmental, but is now proven to be a chronic, localized fungal infection by Candida."
+            },
+            {
+                question: "97. During the administration of an Inferior Alveolar Nerve Block, the anesthetic solution is deposited into the pterygomandibular space. Which two major nerves travel through this exact space?",
+                options: [
+                    "Inferior alveolar nerve and Lingual nerve",
+                    "Inferior alveolar nerve and Buccal nerve",
+                    "Lingual nerve and Mylohyoid nerve",
+                    "Masseteric nerve and Auriculotemporal nerve"
+                ],
+                correct: 0,
+                rationale: "When you do an IANB, you are aiming for the IAN right before it enters the mandible. The Lingual nerve travels just anterior to it in the same space, which is why the patient's tongue gets numb too."
+            },
+            {
+                question: "98. In dental occlusion, the anteroposterior curvature of the occlusal surfaces, beginning at the tip of the lower canine and following the buccal cusps of the posterior teeth, is known as the:",
+                options: [
+                    "Curve of Wilson",
+                    "Curve of Spee",
+                    "Sphere of Monson",
+                    "Compensating Curve"
+                ],
+                correct: 1,
+                rationale: "The Curve of Spee goes front-to-back (anteroposterior). The Curve of Wilson goes side-to-side (mediolateral)."
+            },
+            {
+                question: "99. A patient goes into severe anaphylactic shock in the dental chair after receiving penicillin. Their blood pressure plummets dangerously low. In general pathology, this massive drop in blood pressure (shock) is primarily due to:",
+                options: [
+                    "Profound, systemic vasodilation and increased capillary permeability.",
+                    "A massive hemorrhage and loss of blood volume.",
+                    "A sudden failure of the heart muscle to pump.",
+                    "A physical blockage of the pulmonary artery."
+                ],
+                correct: 0,
+                rationale: "In anaphylaxis, massive histamine release causes all the blood vessels in the body to dilate wide open at once. The \"pipes\" get too big for the volume of blood, so the pressure bottoms out."
+            },
+            {
+                question: "100. Statement 1: The enamel matrix is primarily composed of inorganic hydroxyapatite crystals.\nStatement 2: Ameloblasts secrete the enamel matrix, but they undergo apoptosis and are completely lost once the tooth erupts into the oral cavity.",
+                options: [
+                    "Both statements are TRUE.",
+                    "Both statements are FALSE.",
+                    "Statement 1 is TRUE; Statement 2 is FALSE.",
+                    "Statement 1 is FALSE; Statement 2 is TRUE."
+                ],
+                correct: 0,
+                rationale: "Enamel is 96% inorganic hydroxyapatite. Ameloblasts build the enamel, but once the tooth erupts, they are gone forever. This is why enamel cannot heal or regenerate itself like dentin or bone can."
             }
         ];
+
+        // SHUFFLE FUNCTION
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Clone and shuffle the data so it's different every time
+        const quizData = [...rawQuizData];
+        shuffleArray(quizData);
 
         let currentQuestion = 0;
         let score = 0;
@@ -554,18 +1348,20 @@
         function loadQuestion() {
             answered = false;
             nextBtn.style.display = 'none';
-            rationaleBox.style.display = 'none'; // Hide rationale initially
+            rationaleBox.style.display = 'none'; 
             
             const currentQuizData = quizData[currentQuestion];
-            // Render the question text (using innerHTML to allow HTML tags like <br> if needed)
-            questionEl.innerHTML = currentQuizData.question.replace(/\n/g, '<br>');
+            
+            // Clean up hardcoded numbering so it looks nice after shuffling
+            let cleanQuestionText = currentQuizData.question.replace(/^\d+\.\s*/, '');
+            
+            questionEl.innerHTML = cleanQuestionText.replace(/\n/g, '<br>');
             progressEl.innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
             
             optionsEl.innerHTML = '';
 
             currentQuizData.options.forEach((option, index) => {
                 const button = document.createElement('button');
-                // Render option allowing superscripts/subscripts
                 button.innerHTML = option;
                 button.classList.add('option-btn');
                 button.addEventListener('click', () => selectOption(button, index));
@@ -593,7 +1389,6 @@
                 btn.disabled = true;
             }
 
-            // Show the rationale box after answering
             rationaleText.innerHTML = currentQuizData.rationale;
             rationaleBox.style.display = 'block';
 
@@ -616,6 +1411,16 @@
             
             document.getElementById('score').innerText = score;
             document.getElementById('total').innerText = quizData.length;
+            
+            const msgBox = document.getElementById('results-message');
+            let percentage = (score / quizData.length) * 100;
+            if (percentage >= 90) {
+                msgBox.innerHTML = "<strong>Amazing job!</strong> You are going to crush this board exam.";
+            } else if (percentage >= 75) {
+                msgBox.innerHTML = "<strong>Great work!</strong> You have a really solid grasp on these concepts. Keep reviewing the rationales!";
+            } else {
+                msgBox.innerHTML = "<strong>Keep pushing!</strong> That's exactly why we do mock exams. Review those explanations and you'll be ready for Monday.";
+            }
         }
 
         loadQuestion();
