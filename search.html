@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Questions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <div class="quiz-container">
+        <div class="home-screen">
+            <h1>Search Database 🔍</h1>
+            <p>Type a keyword to find specific board questions and rationales:</p>
+            
+            <input type="text" id="questionSearch" class="search-bar" placeholder="e.g., 'Amalgam', 'Nerve', 'Caries'..." onkeyup="filterQuestions()">
+            
+            <div id="search-results">
+                <!-- Results will pop up here -->
+            </div>
+
+            <a href="index.html" class="tool-btn" style="margin-top: 20px;">← Back to Main Menu</a>
+        </div>
+        <div class="app-footer">made by xiao/angelo</div>
+    </div>
+
+    <script>
+        // PASTE ALL YOUR QUESTIONS IN HERE LATER! (Here are 3 samples to test it)
+        const globalQuestionBank = [
+            {
+                question: "1. Which cranial nerve exits the skull strictly through the Foramen Ovale?",
+                options: ["Ophthalmic (V1)", "Maxillary (V2)", "Mandibular (V3)", "Facial (VII)"],
+                correct: 2,
+                rationale: "V3 passes through the foramen Ovale. (Standing Room Only: V1=Superior orbital fissure, V2=Rotundum, V3=Ovale)."
+            },
+            {
+                question: "2. The 'C-factor' in composite resin restorations represents the ratio of bonded to unbonded surfaces. Which cavity has the highest C-factor?",
+                options: ["Class I", "Class II", "Class III", "Class IV"],
+                correct: 0,
+                rationale: "Class I has 5 bonded surfaces and 1 unbonded surface, creating a massive C-factor of 5, which maximizes shrinkage stress."
+            },
+            {
+                question: "3. Which of the following is the most toxic element found in traditional dental amalgam?",
+                options: ["Silver", "Tin", "Copper", "Mercury"],
+                correct: 3,
+                rationale: "Mercury is a heavy metal neurotoxin, requiring strict disposal protocols using amalgam separators in dental clinics."
+            }
+        ];
+
+        function filterQuestions() {
+            const query = document.getElementById('questionSearch').value.toLowerCase();
+            const resultsDiv = document.getElementById('search-results');
+            
+            // Clear results if the search bar is empty
+            if (query.trim() === '') {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            // Search through the question, the options, and the rationale
+            const filtered = globalQuestionBank.filter(item => {
+                const searchString = (item.question + " " + item.options.join(" ") + " " + item.rationale).toLowerCase();
+                return searchString.includes(query);
+            });
+
+            resultsDiv.innerHTML = '';
+            
+            if (filtered.length === 0) {
+                resultsDiv.innerHTML = '<p style="color: var(--text-light);">No matching questions found.</p>';
+                return;
+            }
+
+            // Limit results to 20 so the browser doesn't freeze if she types "the"
+            const displayLimit = Math.min(filtered.length, 20);
+
+            for (let i = 0; i < displayLimit; i++) {
+                const q = filtered[i];
+                const card = document.createElement('div');
+                card.className = 'search-result-card';
+                
+                // Get the text of the correct answer
+                const correctAnswerText = q.options[q.correct];
+
+                card.innerHTML = `
+                    <div class="search-result-question">${q.question}</div>
+                    <div class="search-result-answer">✓ Answer: ${correctAnswerText}</div>
+                    <div class="rationale-box" style="display:block; margin-top: 0;">
+                        <strong>Explanation:</strong> ${q.rationale}
+                    </div>
+                `;
+                resultsDiv.appendChild(card);
+            }
+            
+            if (filtered.length > 20) {
+                const note = document.createElement('p');
+                note.style.color = 'var(--text-light)';
+                note.style.fontSize = '0.9rem';
+                note.innerText = `Showing 20 of ${filtered.length} results. Keep typing to narrow it down!`;
+                resultsDiv.appendChild(note);
+            }
+        }
+    </script>
+</body>
+</html>
