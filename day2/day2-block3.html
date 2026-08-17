@@ -67,7 +67,556 @@
     <script>
         const quizData = [
             
-            // Your questions for Block 3 will go right here!
+            {
+                "question": "1. Local anesthetics are chemically classified as either amides or esters. Which of the following is the primary site of biotransformation (metabolism) for AMIDE local anesthetics?",
+                "options": [
+                    "Blood plasma",
+                    "Kidneys",
+                    "Liver",
+                    "Lungs"
+                ],
+                "correct": 2,
+                "rationale": "Amides (which always have an 'i' before the '-caine', like Lidocaine or Bupivacaine) are metabolized in the liver by cytochrome P450 enzymes. Esters (like Procaine) are metabolized in the blood plasma by pseudocholinesterase."
+            },
+            {
+                "question": "2. The profound numbing effect of local anesthetics is achieved by preventing the propagation of the nerve action potential. What is the specific mechanism of action at the cellular level?",
+                "options": [
+                    "Blocking voltage-gated potassium channels from the extracellular fluid.",
+                    "Blocking voltage-gated sodium channels from the intracellular side.",
+                    "Stimulating GABA receptors in the central nervous system.",
+                    "Destroying the myelin sheath of the nerve."
+                ],
+                "correct": 1,
+                "rationale": "Local anesthetics are base molecules. The un-ionized base crosses the lipid membrane into the nerve cell, converts to an ionized acid, and physically plugs the voltage-gated sodium channel from the INSIDE, stopping sodium from rushing in and firing the nerve."
+            },
+            {
+                "question": "3. Epinephrine is frequently added to local anesthetic cartridges as a vasoconstrictor. Which of the following is NOT a primary clinical purpose of adding epinephrine?",
+                "options": [
+                    "To prolong the duration of the anesthesia.",
+                    "To increase the rate of systemic absorption into the bloodstream.",
+                    "To reduce bleeding (provide hemostasis) at the surgical site.",
+                    "To decrease the risk of systemic toxicity."
+                ],
+                "correct": 1,
+                "rationale": "Epinephrine is a vasoconstrictor. It tightens the blood vessels, which specifically DECREASES the rate of systemic absorption. Because the anesthetic is absorbed slower, it stays around the nerve longer (prolonging duration) and doesn't spike in the blood (reducing toxicity)."
+            },
+            {
+                "question": "4. What is the maximum recommended dose (MRD) of Epinephrine for a healthy adult patient, and what is the MRD for a severe cardiovascular patient (ASA III or IV) per appointment?",
+                "options": [
+                    "0.2 mg for healthy; 0.04 mg for cardiac",
+                    "0.04 mg for healthy; 0.2 mg for cardiac",
+                    "1.0 mg for healthy; 0.5 mg for cardiac",
+                    "3.0 mg for healthy; 0.2 mg for cardiac"
+                ],
+                "correct": 0,
+                "rationale": "A healthy adult can safely receive 0.2 mg of epinephrine (approx. 11 cartridges of 1:100,000 epi). A cardiac patient can only receive a maximum of 0.04 mg (exactly 2 cartridges of 1:100,000 epi)."
+            },
+            {
+                "question": "5. Which local anesthetic is notoriously associated with the risk of causing Methemoglobinemia, a condition where the iron in hemoglobin is oxidized and cannot carry oxygen, turning the patient's blood chocolate-brown?",
+                "options": [
+                    "Lidocaine",
+                    "Bupivacaine",
+                    "Prilocaine",
+                    "Mepivacaine"
+                ],
+                "correct": 2,
+                "rationale": "Prilocaine (and occasionally topical Benzocaine) can cause Methemoglobinemia. Prilocaine is metabolized into o-toluidine, which oxidizes hemoglobin. It is strictly contraindicated in patients with sickle cell anemia or hypoxia."
+            },
+            {
+                "question": "6. A patient presents with a massively swollen, highly infected periapical abscess on tooth #30. You attempt an Inferior Alveolar Nerve Block (IANB), but the tooth will not get numb. What is the primary pharmacological reason for this failure?",
+                "options": [
+                    "The infection increases the pH, destroying the anesthetic molecules.",
+                    "The acidic environment (low pH) of the infection forces the anesthetic to remain in its ionized (charged) form, preventing it from crossing the nerve membrane.",
+                    "The bacteria physically consume the lidocaine.",
+                    "The infection severs the nerve completely."
+                ],
+                "correct": 1,
+                "rationale": "Anesthetic must be in its free-base, un-ionized (uncharged) form to cross the lipid nerve membrane. Infection drops the tissue pH from 7.4 down to around 5.5. In this acid, the anesthetic becomes heavily ionized (charged) and bounces right off the nerve."
+            },
+            {
+                "question": "7. Articaine (Septocaine) is incredibly popular in modern dentistry due to its superior bone penetration. What makes the chemical structure and metabolism of Articaine totally unique among amide local anesthetics?",
+                "options": [
+                    "It has no ester or amide linkages.",
+                    "It contains a thiophene ring and an ester group, allowing it to be metabolized primarily in the blood plasma rather than the liver.",
+                    "It is the only anesthetic formulated without a vasoconstrictor.",
+                    "It is naturally a powerful vasoconstrictor like cocaine."
+                ],
+                "correct": 1,
+                "rationale": "While technically an amide, Articaine has an ester linkage and a thiophene ring. Because of the ester link, 90-95% of it is rapidly metabolized in the blood plasma by esterases, making it incredibly safe for patients with liver disease."
+            },
+            {
+                "question": "8. Which of the following local anesthetics is classified as a long-acting anesthetic, frequently providing 8 to 12 hours of soft tissue anesthesia for severe post-operative pain control?",
+                "options": [
+                    "Lidocaine",
+                    "Mepivacaine",
+                    "Bupivacaine (Marcaine)",
+                    "Articaine"
+                ],
+                "correct": 2,
+                "rationale": "Bupivacaine is highly lipophilic and tightly binds to the sodium channel proteins, giving it a massive duration of action. It is frequently given at the end of wisdom teeth extractions so the patient won't feel pain until the next morning."
+            },
+            {
+                "question": "9. In the event of an accidental intravascular injection of local anesthetic, the patient will experience Systemic Toxicity. What is classically the absolute FIRST clinical sign of Local Anesthetic Systemic Toxicity (LAST) before it progresses to seizures and coma?",
+                "options": [
+                    "Profound respiratory depression",
+                    "Cardiac arrest",
+                    "CNS excitation (restlessness, talkativeness, twitching, and circumoral numbness)",
+                    "Total body paralysis"
+                ],
+                "correct": 2,
+                "rationale": "Local anesthetics first cross the blood-brain barrier and block the INHIBITORY pathways of the brain. Without inhibition, the brain goes into overdrive (excitation, slurred speech, metallic taste, twitching). Later, it blocks the excitatory pathways, causing massive CNS depression and coma."
+            },
+            {
+                "question": "10. In calculating anesthetic doses, you are using a standard 1.8 mL dental cartridge of 2% Lidocaine with 1:100,000 epinephrine. Exactly how many milligrams of Lidocaine are in this single cartridge?",
+                "options": [
+                    "18 mg",
+                    "20 mg",
+                    "36 mg",
+                    "54 mg"
+                ],
+                "correct": 2,
+                "rationale": "A 2% solution means 20 mg of drug per 1 mL of fluid. Since a standard US dental carpule holds 1.8 mL of fluid, the math is: 20 mg/mL x 1.8 mL = 36 mg of Lidocaine per cartridge."
+            },
+            {
+                "question": "11. The autonomic nervous system is divided into sympathetic and parasympathetic branches. Which neurotransmitter is released exclusively at the postganglionic nerve endings of the PARASYMPATHETIC (Rest and Digest) nervous system to target organs?",
+                "options": [
+                    "Norepinephrine",
+                    "Epinephrine",
+                    "Acetylcholine (ACh)",
+                    "Dopamine"
+                ],
+                "correct": 2,
+                "rationale": "Acetylcholine is the universal neurotransmitter for the parasympathetic system (binding to muscarinic receptors). Norepinephrine is the neurotransmitter for the sympathetic (Fight or Flight) postganglionic system."
+            },
+            {
+                "question": "12. A patient is taking Propranolol, a non-selective Beta-blocker, for hypertension. Why is administering a massive dose of Epinephrine strictly contraindicated and incredibly dangerous for this patient?",
+                "options": [
+                    "It will cause sudden, severe hypotension (blood pressure drop).",
+                    "It will cause a massive hypertensive crisis followed by reflex bradycardia.",
+                    "It will cause instant respiratory arrest.",
+                    "It will permanently paralyze the facial nerve."
+                ],
+                "correct": 1,
+                "rationale": "Propranolol blocks Beta-1 and Beta-2 receptors. If you inject Epi, it can't bind to the blocked Beta-2 (vasodilation) receptors in the muscles. It can only bind to the Alpha-1 (vasoconstriction) receptors, causing massive, unopposed clamping of the blood vessels and skyrocketing blood pressure."
+            },
+            {
+                "question": "13. In oral surgery, it is sometimes necessary to dry the patient's mouth completely to isolate a field. Which specific drug is a classic anticholinergic (muscarinic antagonist) that blocks acetylcholine, thereby shutting down salivary gland production?",
+                "options": [
+                    "Pilocarpine",
+                    "Atropine",
+                    "Neostigmine",
+                    "Epinephrine"
+                ],
+                "correct": 1,
+                "rationale": "Atropine (and Scopolamine) are muscarinic receptor antagonists. They block the parasympathetic system from working, which causes severe dry mouth (antisialagogue effect), pupil dilation, and increased heart rate."
+            },
+            {
+                "question": "14. A patient suffering from Sjögren's Syndrome complains of agonizing dry mouth and difficulty swallowing. You prescribe Pilocarpine to stimulate saliva flow. What is the mechanism of action of Pilocarpine?",
+                "options": [
+                    "Direct-acting cholinergic (parasympathomimetic) agonist.",
+                    "Indirect-acting acetylcholinesterase inhibitor.",
+                    "Alpha-1 adrenergic agonist.",
+                    "Beta-2 adrenergic agonist."
+                ],
+                "correct": 0,
+                "rationale": "Pilocarpine acts exactly like Acetylcholine. It binds directly to the muscarinic receptors on the salivary glands and turns them on, forcing them to pump out watery saliva."
+            },
+            {
+                "question": "15. An asthmatic patient begins wheezing in the dental chair. You immediately hand them their rescue inhaler, which contains Albuterol. Albuterol stops the asthma attack by targeting and activating which specific autonomic receptor?",
+                "options": [
+                    "Alpha-1 receptors",
+                    "Beta-1 receptors",
+                    "Beta-2 receptors",
+                    "Muscarinic receptors"
+                ],
+                "correct": 2,
+                "rationale": "Memory trick: You have 1 heart (Beta-1) and 2 lungs (Beta-2). Albuterol is a selective Beta-2 agonist. It activates the receptors in the lungs, forcing the smooth muscle of the bronchioles to relax and open the airway."
+            },
+            {
+                "question": "16. Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) like Ibuprofen are the absolute gold standard for dental pain. What is the precise pharmacological mechanism of action of NSAIDs?",
+                "options": [
+                    "They bind to Mu receptors in the brain.",
+                    "They reversibly inhibit the Cyclooxygenase (COX-1 and COX-2) enzymes, preventing the synthesis of prostaglandins.",
+                    "They block the reuptake of serotonin in the synaptic cleft.",
+                    "They destroy the arachidonic acid molecule completely."
+                ],
+                "correct": 1,
+                "rationale": "When tissue is damaged, cells release arachidonic acid. COX enzymes turn that acid into prostaglandins (which cause pain and swelling). NSAIDs block the COX enzymes, shutting down prostaglandin production at the source."
+            },
+            {
+                "question": "17. Aspirin is a unique NSAID because it permanently affects blood clotting. How exactly does Aspirin prevent platelet aggregation?",
+                "options": [
+                    "It destroys Vitamin K in the liver.",
+                    "It physically dissolves the fibrin clot.",
+                    "It irreversibly binds to COX-1, permanently preventing the synthesis of Thromboxane A2 for the entire 7-10 day lifespan of the platelet.",
+                    "It blocks the ADP receptors on the platelet surface."
+                ],
+                "correct": 2,
+                "rationale": "Unlike Ibuprofen (which is reversible), Aspirin is IRREVERSIBLE. It permanently breaks the COX enzyme inside the platelet. Because platelets have no nucleus, they cannot make new enzymes. The platelet is physically incapable of sticking together until it naturally dies 7-10 days later."
+            },
+            {
+                "question": "18. Acetaminophen (Tylenol/Paracetamol) is an excellent analgesic and antipyretic (fever reducer), making it great for patients who cannot take NSAIDs. However, it completely lacks which major clinical property?",
+                "options": [
+                    "Anti-inflammatory properties",
+                    "Pain reduction properties",
+                    "Hepatotoxicity",
+                    "Fever reduction properties"
+                ],
+                "correct": 0,
+                "rationale": "Acetaminophen works entirely in the Central Nervous System (the brain) to block pain and fever. It does absolutely nothing in the peripheral tissues, meaning it will NOT reduce swelling or inflammation after a surgical extraction."
+            },
+            {
+                "question": "19. The maximum daily dose of Acetaminophen for a healthy adult has recently been lowered by the FDA to prevent accidental, lethal damage to which specific organ?",
+                "options": [
+                    "The Kidneys (Renal failure)",
+                    "The Stomach (Gastric ulcers)",
+                    "The Liver (Hepatic necrosis)",
+                    "The Heart (Myocardial infarction)"
+                ],
+                "correct": 2,
+                "rationale": "Acetaminophen is processed by the liver. In massive doses (over 4,000 mg/day, though many authorities now recommend max 3,000 mg/day), the liver's glutathione stores run out, and a highly toxic metabolite (NAPQI) builds up, destroying the liver completely. NSAIDs damage the kidneys and stomach; Acetaminophen damages the liver."
+            },
+            {
+                "question": "20. A patient in the recovery room after IV sedation is given a prescription for an opioid (e.g., Hydrocodone). The assistant notices the patient's breathing has dropped to 6 breaths per minute, their pupils are pinpoint (miosis), and they are unresponsive. What is the specific competitive antagonist (antidote) that MUST be given immediately to reverse the opioid overdose?",
+                "options": [
+                    "Flumazenil",
+                    "Naloxone (Narcan)",
+                    "Epinephrine",
+                    "Atropine"
+                ],
+                "correct": 1,
+                "rationale": "Naloxone (Narcan) is a pure, competitive Mu-receptor antagonist. It physically rips the opioid off the brain's receptors, instantly waking the patient up and restoring their drive to breathe."
+            },
+            {
+                "question": "21. Opioids produce their profound analgesic effects strictly by acting as agonists on specific receptors located within the Central Nervous System. Which receptor is primarily responsible for the analgesia, euphoria, and respiratory depression seen with opioids?",
+                "options": [
+                    "Kappa receptor",
+                    "Delta receptor",
+                    "Mu (μ) receptor",
+                    "Alpha-2 receptor"
+                ],
+                "correct": 2,
+                "rationale": "The Mu (μ) opioid receptor is the heavy hitter. Activating it produces incredible pain relief, but also causes the dangerous side effects: respiratory depression, physical addiction, and severe constipation."
+            },
+            {
+                "question": "22. Aspirin should NEVER be given to young children or teenagers recovering from a viral infection (like the flu or chickenpox). This specific combination can trigger a rare, rapidly fatal condition characterized by brain swelling and liver failure known as:",
+                "options": [
+                    "Kawasaki Disease",
+                    "Stevens-Johnson Syndrome",
+                    "Reye's Syndrome",
+                    "Guillain-Barré Syndrome"
+                ],
+                "correct": 2,
+                "rationale": "Reye's Syndrome is highly lethal. Because of this, Acetaminophen or Ibuprofen are the ONLY antipyretics that should ever be given to children to reduce a fever."
+            },
+            {
+                "question": "23. Penicillin is a bactericidal antibiotic that is considered the first-line treatment for most odontogenic infections. What is the specific mechanism by which Penicillin kills bacteria?",
+                "options": [
+                    "It binds to the 50S ribosomal subunit, halting protein synthesis.",
+                    "It inhibits the transpeptidase enzyme (Penicillin-Binding Proteins), completely preventing the cross-linking of the peptidoglycan cell wall.",
+                    "It destroys the bacterial DNA gyrase.",
+                    "It pokes holes in the plasma membrane."
+                ],
+                "correct": 1,
+                "rationale": "Penicillin (a Beta-Lactam) breaks the cell wall factory. Without cross-linked peptidoglycan, the bacteria's wall becomes weak. As water rushes into the hypertonic bacteria, the weak wall violently ruptures (lysis), killing the bacteria."
+            },
+            {
+                "question": "24. Macrolide antibiotics (like Erythromycin) and Tetracyclines are 'Bacteriostatic'. Penicillin is 'Bactericidal'. Why is it a terrible clinical error to prescribe a Bacteriostatic drug and a Bactericidal drug at the exact same time?",
+                "options": [
+                    "They will react and form a toxic crystal in the blood.",
+                    "They cancel each other out; Penicillin requires actively dividing, growing bacteria to break their cell walls, but Bacteriostatic drugs put the bacteria to sleep, rendering the Penicillin totally useless.",
+                    "The combination guarantees an anaphylactic reaction.",
+                    "It forces the bacteria to mutate instantly."
+                ],
+                "correct": 1,
+                "rationale": "Penicillin only works on cells that are actively building a wall. Tetracycline halts protein synthesis, freezing the cell. If the cell is frozen, it isn't building a wall, meaning the Penicillin has absolutely nothing to attack."
+            },
+            {
+                "question": "25. A patient requires antibiotic prophylaxis for a heart valve prior to an extraction. They are severely allergic to Penicillin. Which of the following is the standard, most effective alternative antibiotic and dosage prescribed by the AHA?",
+                "options": [
+                    "Amoxicillin 2g, 1 hour prior",
+                    "Clindamycin 600mg, 1 hour prior",
+                    "Azithromycin 500mg, 1 hour prior",
+                    "Both B and C are highly acceptable alternatives"
+                ],
+                "correct": 3,
+                "rationale": "If allergic to penicillin, the AHA standard is either Clindamycin 600mg, Azithromycin/Clarithromycin 500mg, or Cephalexin 2g (only if the allergy is non-anaphylactic). All are taken exactly 1 hour before the procedure."
+            },
+            {
+                "question": "26. Clindamycin is incredibly effective at penetrating bone to cure deep dental abscesses. However, its use has plummeted in recent years due to its notorious ability to wipe out the normal gut flora and cause a severe, sometimes fatal gastrointestinal infection known as:",
+                "options": [
+                    "Pseudomembranous Colitis (caused by Clostridioides difficile)",
+                    "Crohn's Disease",
+                    "Peptic Ulcer Disease",
+                    "Ulcerative Colitis"
+                ],
+                "correct": 0,
+                "rationale": "Clindamycin wipes out the good gut bacteria, allowing the ultra-resistant C. diff bacteria to overgrow and release a toxin that severely burns the lining of the colon, causing bloody diarrhea."
+            },
+            {
+                "question": "27. Which class of broad-spectrum antibiotics is completely CONTRAINDICATED in pregnant women and young children (under 8 years old) because it irreversibly binds to calcium, causing severe intrinsic yellow/gray staining of the developing teeth and stunting bone growth?",
+                "options": [
+                    "Cephalosporins",
+                    "Fluoroquinolones",
+                    "Tetracyclines",
+                    "Macrolides"
+                ],
+                "correct": 2,
+                "rationale": "Tetracyclines (including Doxycycline and Minocycline) aggressively chelate (bind) to calcium. If a tooth or bone is actively forming when the drug is taken, the drug gets permanently locked inside the hydroxyapatite crystal, turning it gray from the inside out."
+            },
+            {
+                "question": "28. Metronidazole (Flagyl) is highly effective specifically against obligate anaerobic bacteria, making it perfect for severe periodontal infections (like ANUG). What is the absolute most important warning you must give a patient taking Metronidazole?",
+                "options": [
+                    "Do not drink milk or take antacids.",
+                    "Do not consume absolutely any alcohol (even mouthwash), as it will cause a violent, miserable vomiting reaction.",
+                    "Do not lay down for 30 minutes after taking it.",
+                    "It will turn your urine blue."
+                ],
+                "correct": 1,
+                "rationale": "Metronidazole creates a 'Disulfiram-like' reaction. It stops the liver from breaking down alcohol. If the patient has even a sip of wine, highly toxic acetaldehyde builds up in their blood instantly, causing violent vomiting, flushing, and heart palpitations."
+            },
+            {
+                "question": "29. Azole antifungal medications (like Fluconazole and Clotrimazole) are frequently prescribed for severe oral candidiasis. How do these drugs specifically kill fungi without harming human cells?",
+                "options": [
+                    "They destroy the fungal chitin cell wall.",
+                    "They inhibit the synthesis of Ergosterol, a vital component of the fungal cell membrane.",
+                    "They bind to the fungal 50S ribosome.",
+                    "They poke holes directly in the human host cell to starve the fungus."
+                ],
+                "correct": 1,
+                "rationale": "Human cell membranes are built with cholesterol. Fungal membranes require ergosterol. Azoles block the enzyme that makes ergosterol, so the fungus cannot build a membrane and dies."
+            },
+            {
+                "question": "30. Acyclovir is the primary antiviral medication prescribed for severe Herpes Simplex (HSV) infections. What is its specific mechanism of action?",
+                "options": [
+                    "It destroys the viral envelope.",
+                    "It acts as a fake DNA building block, completely inhibiting viral DNA polymerase and stopping viral replication.",
+                    "It physically blocks the virus from entering the host cell.",
+                    "It triggers the host cell to commit apoptosis."
+                ],
+                "correct": 1,
+                "rationale": "Acyclovir is a 'nucleoside analogue'. It looks exactly like the DNA letter 'G'. When the virus tries to copy its DNA, it accidentally grabs the Acyclovir, which breaks the DNA chain completely and stops the virus from replicating."
+            },
+            {
+                "question": "31. In conscious sedation, Nitrous Oxide ($N_2O$) is the safest and most common inhalation agent. The 'Blood-Gas Partition Coefficient' measures how easily an anesthetic dissolves in the blood. Nitrous Oxide has an incredibly LOW blood-gas partition coefficient (0.47). What does this mean clinically?",
+                "options": [
+                    "It is highly potent and will put the patient in a deep coma.",
+                    "It barely dissolves in the blood at all, meaning it reaches the brain instantly for a very rapid onset, and leaves the body instantly for a very rapid recovery.",
+                    "It dissolves completely in the blood, taking hours to take effect.",
+                    "It binds permanently to hemoglobin."
+                ],
+                "correct": 1,
+                "rationale": "If a gas dissolves in the blood (high solubility), it acts like a sponge, soaking it up forever before letting it go to the brain. Because N2O has incredibly LOW solubility, the blood refuses to absorb it, so it bounces straight to the brain, working in minutes."
+            },
+            {
+                "question": "32. A critical step when turning OFF the Nitrous Oxide is to place the patient on 100% pure Oxygen for 3 to 5 minutes. If you fail to do this and simply let them breathe room air, they will experience headache, nausea, and lethargy due to a phenomenon known as:",
+                "options": [
+                    "The Second Gas Effect",
+                    "Malignant Hyperthermia",
+                    "Diffusion Hypoxia",
+                    "Concentration Effect"
+                ],
+                "correct": 2,
+                "rationale": "Nitrous oxide leaves the blood incredibly fast. If you just take the mask off, massive amounts of N2O will rush back out of the blood into the lungs, physically pushing all the oxygen out and suffocating the patient (Diffusion Hypoxia). 100% Oxygen flushes the lungs clean."
+            },
+            {
+                "question": "33. Nitrous oxide is extremely safe, but it is strictly CONTRAINDICATED in patients with which of the following conditions?",
+                "options": [
+                    "Asthma",
+                    "Hypertension",
+                    "Severe COPD (Chronic Obstructive Pulmonary Disease) or a bowel obstruction",
+                    "Diabetes"
+                ],
+                "correct": 2,
+                "rationale": "Patients with severe COPD rely on low oxygen levels to trigger their breathing (hypoxic drive). Giving them massive amounts of O2/N2O will cause them to stop breathing. N2O also wildly expands trapped air, which will cause a bowel obstruction or middle-ear blockage to explode."
+            },
+            {
+                "question": "34. The Minimum Alveolar Concentration (MAC) measures the potency of an inhaled general anesthetic. The MAC of Nitrous Oxide is 104%. Because this number is greater than 100%, it scientifically proves that:",
+                "options": [
+                    "Nitrous oxide is the most potent anesthetic in the world.",
+                    "Nitrous oxide is incredibly weak, and it is physically impossible to achieve true Stage III surgical anesthesia using only Nitrous Oxide at normal atmospheric pressure.",
+                    "It requires exactly 104 minutes to work.",
+                    "It is highly toxic to the liver."
+                ],
+                "correct": 1,
+                "rationale": "MAC is the amount of gas needed to anesthetize 50% of people. A low MAC (like Halothane at 0.75%) means it is incredibly potent. Because N2O's MAC is 104%, you would have to give them 104% gas (and zero oxygen) to put them to sleep, which would kill them. It is strictly a weak sedative, not a general anesthetic."
+            },
+            {
+                "question": "35. Benzodiazepines (like Diazepam and Midazolam) are the most frequently prescribed oral sedatives in dentistry to reduce patient anxiety. What is their mechanism of action?",
+                "options": [
+                    "They block serotonin reuptake.",
+                    "They bind to the GABA-A receptor, increasing the FREQUENCY of chloride channel openings, heavily depressing the central nervous system.",
+                    "They act as direct dopamine agonists.",
+                    "They destroy the amygdala."
+                ],
+                "correct": 1,
+                "rationale": "GABA is the 'brakes' of the brain. Benzodiazepines press the brakes. They bind to the GABA receptor and make it open its chloride channels more often, flooding the nerve with negative ions and shutting down anxiety."
+            },
+            {
+                "question": "36. If a patient is accidentally given an overdose of IV Midazolam (a Benzodiazepine) and stops breathing, what is the specific competitive antagonist that must be pushed immediately to reverse the drug?",
+                "options": [
+                    "Naloxone (Narcan)",
+                    "Flumazenil (Romazicon)",
+                    "Neostigmine",
+                    "Epinephrine"
+                ],
+                "correct": 1,
+                "rationale": "Flumazenil is the specific antidote for Benzodiazepines. It kicks the Benzo off the GABA receptor. (Naloxone is strictly for Opioids)."
+            },
+            {
+                "question": "37. In modern outpatient oral surgery, which intravenous drug is overwhelmingly preferred for inducing deep sedation/general anesthesia because of its incredibly rapid onset, rapid recovery (feeling clear-headed), and highly effective anti-emetic (anti-nausea) properties?",
+                "options": [
+                    "Ketamine",
+                    "Thiopental",
+                    "Propofol",
+                    "Fentanyl"
+                ],
+                "correct": 2,
+                "rationale": "Propofol is the 'milk of amnesia'. It looks like milk, puts the patient to sleep in 10 seconds, and they wake up 5 minutes later feeling perfectly refreshed and completely lacking nausea, making it the ultimate outpatient drug."
+            },
+            {
+                "question": "38. General Anesthesia is famously divided into four classic stages by Guedel. In which stage does true 'Surgical Anesthesia' occur, where the patient is unconscious, immobile, and has lost their eyelid reflexes?",
+                "options": [
+                    "Stage I",
+                    "Stage II",
+                    "Stage III",
+                    "Stage IV"
+                ],
+                "correct": 2,
+                "rationale": "Stage I = Analgesia/Sedation (Nitrous oxide operates here). Stage II = Delirium/Excitement (Dangerous stage, patient thrashes). Stage III = Surgical Anesthesia (The target zone for major surgery). Stage IV = Medullary Paralysis (Overdose, breathing and heart stop)."
+            },
+            {
+                "question": "39. Ketamine produces a bizarre state known as \"Dissociative Anesthesia,\" where the patient appears awake with their eyes open, but is completely disconnected from reality and feels no pain. It achieves this by antagonizing (blocking) which receptor?",
+                "options": [
+                    "GABA receptor",
+                    "Mu opioid receptor",
+                    "NMDA (Glutamate) receptor",
+                    "Nicotinic receptor"
+                ],
+                "correct": 2,
+                "rationale": "Glutamate is the major excitatory neurotransmitter. Ketamine blocks the NMDA glutamate receptor. Because it blocks the brain from processing sensory input, the patient is physically 'awake' but entirely disconnected from pain."
+            },
+            {
+                "question": "40. In pharmacokinetics, the \"First-Pass Effect\" is a crucial concept when administering oral medications (like Tylenol or Valium). What does the First-Pass effect describe?",
+                "options": [
+                    "The drug goes straight to the brain first.",
+                    "The drug is absorbed by the stomach and immediately routed through the portal vein to the Liver, where a massive percentage of the drug is destroyed/metabolized before it ever reaches the systemic bloodstream.",
+                    "The drug passes through the kidneys unchanged.",
+                    "The first time a patient takes a drug, they are highly sensitive to it."
+                ],
+                "correct": 1,
+                "rationale": "Any pill you swallow is absorbed by the intestines and goes straight to the Liver first. The liver destroys a massive amount of it. This is why an IV dose of a drug is incredibly tiny compared to an Oral dose of the exact same drug."
+            },
+            {
+                "question": "41. When prescribing a drug, the 'Therapeutic Index' (TI) is the ratio of the Lethal Dose (LD50) to the Effective Dose (ED50). Clinically, a drug with a very NARROW (small) therapeutic index means:",
+                "options": [
+                    "It is incredibly safe and virtually impossible to overdose on.",
+                    "The dose that cures the patient is terrifyingly close to the dose that kills the patient, requiring extreme caution and constant blood monitoring.",
+                    "The drug only works on a narrow range of bacteria.",
+                    "The drug is available over-the-counter."
+                ],
+                "correct": 1,
+                "rationale": "TI = LD50 / ED50. If the TI is 2, it means taking just 2 pills instead of 1 will kill you. Drugs like Warfarin, Digoxin, and Lithium have incredibly narrow therapeutic windows and are highly dangerous."
+            },
+            {
+                "question": "42. Corticosteroids (like Prednisone or Dexamethasone) are the absolute most powerful anti-inflammatory drugs in medicine. How do they shut down massive inflammation and swelling?",
+                "options": [
+                    "They block COX-1 entirely.",
+                    "They block Phospholipase A2, completely shutting down the release of arachidonic acid, thereby stopping the production of BOTH prostaglandins and leukotrienes.",
+                    "They kill white blood cells.",
+                    "They act as an antihistamine."
+                ],
+                "correct": 1,
+                "rationale": "NSAIDs only block COX (prostaglandins). Corticosteroids go way higher up the chain. They block Phospholipase A2, which cuts off the entire supply of arachidonic acid. Without that, the body can't make any inflammatory chemicals at all."
+            },
+            {
+                "question": "43. A patient with a severe history of angina pectoris suddenly clutches their chest in the dental chair. You administer their prescribed sublingual Nitroglycerin. How does Nitroglycerin rapidly stop an angina attack?",
+                "options": [
+                    "It violently increases the heart rate.",
+                    "It releases Nitric Oxide, causing massive venodilation, which pools blood in the veins and severely decreases the blood returning to the heart (decreased preload), forcing the heart to work less.",
+                    "It dissolves the blood clot in the coronary artery.",
+                    "It is a powerful painkiller like morphine."
+                ],
+                "correct": 1,
+                "rationale": "Angina is the heart screaming because it is working too hard and lacking oxygen. Nitroglycerin dilates the massive veins in the body. The blood pools in the legs, reducing the amount of blood the heart has to pump, instantly relieving the strain."
+            },
+            {
+                "question": "44. You are injecting a local anesthetic. Which of the following nerve fibers are structurally the smallest and completely unmyelinated, making them the absolute FIRST fibers to be blocked by the anesthetic (eliminating pain and temperature)?",
+                "options": [
+                    "A-alpha fibers",
+                    "A-beta fibers",
+                    "B fibers",
+                    "C fibers"
+                ],
+                "correct": 3,
+                "rationale": "C fibers carry dull, aching pain and temperature. Because they are tiny and lack a thick myelin shield, the anesthetic easily soaks into them first. The massive A-alpha motor fibers are the last to go to sleep."
+            },
+            {
+                "question": "45. Antihistamines are commonly used for mild allergic reactions. First-generation antihistamines (like Diphenhydramine/Benadryl) are notorious for causing severe drowsiness, while second-generation (like Cetirizine/Zyrtec) do not. Why?",
+                "options": [
+                    "First-generation drugs are stronger.",
+                    "First-generation drugs easily cross the Blood-Brain Barrier to depress the CNS, while second-generation drugs are too large/charged to cross into the brain.",
+                    "Second-generation drugs are actually stimulants.",
+                    "First-generation drugs contain alcohol."
+                ],
+                "correct": 1,
+                "rationale": "Benadryl is highly lipophilic and slips right into the brain, blocking histamine there (which makes you incredibly sleepy). Zyrtec cannot cross the barrier, so it only blocks histamine in your body (stopping allergies without causing sleep)."
+            },
+            {
+                "question": "46. Statins (like Atorvastatin/Lipitor) are among the most prescribed drugs in the world for patients with high cholesterol. What is the specific enzyme they competitively inhibit to stop the liver from producing cholesterol?",
+                "options": [
+                    "Cyclooxygenase (COX)",
+                    "HMG-CoA Reductase",
+                    "Angiotensin-Converting Enzyme (ACE)",
+                    "Monoamine Oxidase (MAO)"
+                ],
+                "correct": 1,
+                "rationale": "HMG-CoA reductase is the absolute master control enzyme in the liver that builds cholesterol. Statins block this enzyme, forcing the liver to pull bad cholesterol out of the blood instead."
+            },
+            {
+                "question": "47. A patient with severe, uncontrolled Asthma should absolutely NOT be prescribed which of the following common analgesics, due to the risk of a dangerous cross-reactive hypersensitivity attack?",
+                "options": [
+                    "Acetaminophen (Tylenol)",
+                    "Aspirin (or other NSAIDs)",
+                    "Codeine",
+                    "Oxycodone"
+                ],
+                "correct": 1,
+                "rationale": "Roughly 10-20% of asthmatics have 'Aspirin-Exacerbated Respiratory Disease' (AERD). Taking Aspirin or Ibuprofen shifts all the arachidonic acid away from prostaglandins and dumps it into making massive amounts of Leukotrienes, which trigger a brutal asthma attack."
+            },
+            {
+                "question": "48. Many modern drugs are classified as \"Prodrugs.\" What is the definition of a prodrug in pharmacology?",
+                "options": [
+                    "A drug that is highly addictive.",
+                    "A drug that has absolutely no effect until it is physically swallowed, absorbed, and then chemically activated by the Liver's enzymes.",
+                    "A drug that bypasses the liver completely.",
+                    "A drug that contains pure protein."
+                ],
+                "correct": 1,
+                "rationale": "Codeine is a classic prodrug. By itself, Codeine does absolutely nothing. Once it reaches the liver, the enzyme CYP2D6 metabolizes it into Morphine. Only then does it actually stop the pain."
+            },
+            {
+                "question": "49. During conscious sedation, a patient may experience Syncope (fainting) due to severe anxiety before the needle even touches them. Vasovagal syncope is specifically caused by:",
+                "options": [
+                    "A massive spike in Epinephrine causing a heart attack.",
+                    "A sudden, massive parasympathetic (Vagal) surge that plummets the heart rate and blood pressure, completely starving the brain of oxygen.",
+                    "An allergic reaction to the plastic syringe.",
+                    "A seizure in the temporal lobe."
+                ],
+                "correct": 1,
+                "rationale": "Anxiety triggers the 'Fight or Flight' response. But if the brain panics, it can short-circuit and violently trigger the Vagus nerve instead. The Vagus nerve slams the brakes on the heart, dropping blood pressure to zero, and the patient blacks out. Trendelenburg position (feet up) is the immediate treatment."
+            },
+            {
+                "question": "50. A patient reports they are taking Lisinopril for high blood pressure. Lisinopril is an ACE Inhibitor. Which incredibly common, highly annoying side effect is famously associated with ACE inhibitors that a dentist may observe in the chair?",
+                "options": [
+                    "Gingival hyperplasia",
+                    "A chronic, dry, hacking cough",
+                    "Black hairy tongue",
+                    "Rampant caries"
+                ],
+                "correct": 1,
+                "rationale": "ACE Inhibitors (drugs ending in '-pril') stop the breakdown of bradykinin in the lungs. The buildup of bradykinin physically tickles the lungs, giving the patient a permanent, dry, hacking cough that never goes away."
+            }
             
         ];
     </script>
