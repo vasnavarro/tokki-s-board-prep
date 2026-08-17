@@ -33,11 +33,53 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Navigation Hub Styles --- */
+/* --- Navigation Hub & Mode Selection Styles --- */
 .home-screen { text-align: center; }
 .home-screen h1 { color: var(--primary); margin-bottom: 10px; font-size: 2.2rem; }
 .home-screen p { color: var(--text-light); margin-bottom: 25px; font-size: 1.1rem; }
 
+/* The fix for your Mode Selection Screen */
+.day-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.day-btn {
+    background-color: var(--bg-color);
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+}
+
+.day-btn:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.day-btn strong {
+    font-size: 1.25rem;
+    color: var(--primary);
+    transition: color 0.2s ease;
+}
+
+.day-btn:hover strong,
+.day-btn:hover span {
+    color: white !important;
+}
+
+/* Used in Main Menu (index.html) */
 .tools-nav {
     display: flex;
     justify-content: center;
@@ -49,10 +91,11 @@ body {
     background-color: #e2e8f0;
     color: var(--text-dark);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 8px;
     font-weight: 600;
     transition: background-color 0.2s ease;
+    display: inline-block;
 }
 
 .tool-btn:hover { background-color: #cbd5e1; }
@@ -109,7 +152,7 @@ body {
 .question { font-size: 1.15rem; font-weight: 600; margin-bottom: 25px; line-height: 1.6; }
 .options { display: flex; flex-direction: column; gap: 12px; }
 
-.option-btn { background-color: var(--bg-color); border: 2px solid transparent; border-radius: 8px; padding: 15px 20px; font-size: 1rem; color: var(--text-dark); cursor: pointer; text-align: left; transition: all 0.2s ease; line-height: 1.4; }
+.option-btn { background-color: var(--bg-color); border: 2px solid transparent; border-radius: 8px; padding: 15px 20px; font-size: 1rem; color: var(--text-dark); cursor: pointer; text-align: left; transition: all 0.2s ease; line-height: 1.4; font-family: inherit; }
 .option-btn:hover:not(:disabled) { background-color: #e2e8f0; border-color: #cbd5e1; }
 .option-btn:disabled { cursor: default; }
 .option-btn.correct { background-color: #dcfce7; border-color: var(--correct); color: #166534; }
@@ -119,7 +162,7 @@ body {
 .rationale-box strong { display: block; margin-bottom: 8px; font-size: 1.05rem; }
 
 .controls { margin-top: 30px; display: flex; justify-content: space-between; }
-.nav-btn { background-color: #cbd5e1; color: var(--text-dark); border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; }
+.nav-btn { background-color: #cbd5e1; color: var(--text-dark); border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; font-family: inherit; }
 .nav-btn:hover:not(:disabled) { background-color: #94a3b8; }
 .nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 #next-btn { background-color: var(--primary); color: white; }
