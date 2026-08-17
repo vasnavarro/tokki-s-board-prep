@@ -72,24 +72,26 @@ function loadQuestion() {
         btn.innerHTML = opt;
         btn.classList.add('option-btn');
 
-        // Check if she already answered this question when navigating Previous/Next
         if (state.isAnswered) {
-            btn.disabled = true;
             if (mode === 'study') {
-                // Show right/wrong colors in Study Mode
+                btn.disabled = true; // Lock in Study Mode
                 if (index === qData.correct) btn.classList.add('correct');
                 if (index === state.selectedOption && index !== qData.correct) btn.classList.add('wrong');
             } else if (mode === 'mock') {
-                // Hide right/wrong in Mock Mode, just show a neutral highlight so she knows what she picked
+                // In Mock Mode, just highlight the current selection, but DO NOT disable the button
                 if (index === state.selectedOption) {
                     btn.style.backgroundColor = '#cbd5e1'; 
                     btn.style.borderColor = '#94a3b8';
                     btn.style.color = '#334155';
                 }
             }
-        } else {
+        }
+        
+        // Add click listener (unless it's already answered in Study mode)
+        if (!state.isAnswered || mode === 'mock') {
             btn.addEventListener('click', () => selectOption(index));
         }
+        
         optionsEl.appendChild(btn);
     });
 
@@ -115,7 +117,9 @@ function loadQuestion() {
 
 function selectOption(selectedIndex) {
     const state = userState[currentQuestionIndex];
-    if (state.isAnswered) return;
+    
+    // If she is in Study Mode and already answered, do nothing
+    if (mode === 'study' && state.isAnswered) return;
 
     state.isAnswered = true;
     state.selectedOption = selectedIndex;
@@ -133,15 +137,22 @@ function selectOption(selectedIndex) {
         }
         document.getElementById('rationale-text').innerHTML = qData.rationale;
         document.getElementById('rationale-box').style.display = 'block';
+        
+        // Lock all buttons after a choice is made in Study Mode
+        for (let btn of allButtons) btn.disabled = true;
+        
     } else if (mode === 'mock') {
-        // Neutral lock-in for Mock mode
+        // In Mock Mode, first clear the shading from all buttons
+        for (let btn of allButtons) {
+            btn.style.backgroundColor = '';
+            btn.style.borderColor = '';
+            btn.style.color = '';
+        }
+        // Then shade only the new selection
         allButtons[selectedIndex].style.backgroundColor = '#cbd5e1';
         allButtons[selectedIndex].style.borderColor = '#94a3b8';
         allButtons[selectedIndex].style.color = '#334155';
     }
-
-    // Lock all buttons after a choice is made
-    for (let btn of allButtons) btn.disabled = true;
 }
 
 function prevQuestion() {
