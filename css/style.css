@@ -173,3 +173,14 @@ body {
 .results-screen h2 { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
 .results-screen p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 25px; }
 .results-details { text-align: left; margin-bottom: 30px; padding: 20px; background-color: var(--bg-color); border-radius: 8px; border: 1px solid #e2e8f0; font-size: 1rem; color: var(--text-dark); }
+
+/* --- Footer Style --- */
+.app-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
