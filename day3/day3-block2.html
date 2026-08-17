@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokki's Board Prep - Day 3 Block 2</title>
+    <!-- Connects to your global CSS file -->
+    <link rel="stylesheet" href="../css/style.css"> 
+</head>
+<body>
 
+    <div class="quiz-container">
+        
+        <!-- INITIAL MODE SELECTION SCREEN -->
+        <div class="home-screen" id="mode-selection">
+            <h1>Day 3: Block 2</h1>
+            <p>Dental Jurisprudence, Ethics, and Practice Management</p>
+            <div class="day-buttons">
+                <button class="day-btn" onclick="startQuiz('study')">
+                    <strong>Study Mode</strong><br>
+                    <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-light);">Untimed • Explanations show immediately after answering</span>
+                </button>
+                <button class="day-btn" onclick="startQuiz('mock')">
+                    <strong>Mock Board Mode</strong><br>
+                    <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-light);">Strict 2-Hour Timer • Explanations hidden until the end</span>
+                </button>
+                <a href="../index.html" class="tool-btn" style="margin-top: 15px;">← Back to Main Menu</a>
+            </div>
+        </div>
+
+        <!-- THE QUIZ UI (Hidden until mode is selected) -->
+        <div id="quiz-ui" style="display:none;">
+            <div class="quiz-header">
+                <a href="../index.html" class="back-btn">← Exit</a>
+                <div class="progress" id="progress">Loading...</div>
+                <div class="timer" id="timer-display" style="display: none;">⏱ Time Left: 2:00:00</div>
+            </div>
+
+            <div class="question" id="question">Loading question...</div>
+            <div class="options" id="options"></div>
+            
+            <div class="rationale-box" id="rationale-box">
+                <strong>Explanation:</strong>
+                <span id="rationale-text"></span>
+            </div>
+
+            <div class="controls">
+                <button class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
+                <button class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+
+        <!-- THE RESULTS SCREEN -->
+        <div class="results-screen" id="results-screen" style="display:none;">
+            <h2>Block Complete!</h2>
+            <p>You scored <strong id="score">0</strong> out of <span id="total">0</span>!</p>
+            <div id="results-message" class="results-details"></div>
+            <a href="../index.html" class="day-btn" style="background-color: var(--primary); color: white; border: none; text-decoration: none;">Return to Main Menu</a>
+        </div>
+        
+        <!-- App Footer -->
+        <div class="app-footer">made by xiao/angelo</div>
+
+    </div>
+
+    <!-- 1. PASTE YOUR 100 QUESTIONS HERE -->
+    <script>
+        const quizData = [
+            
+            // Your questions for Block 3 will go right here!
+            
+        ];
+    </script>
+
+    <!-- 2. This links your engine to power the questions above -->
+    <script src="../js/quiz-engine.js"></script> 
+
+</body>
+</html>
