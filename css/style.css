@@ -184,3 +184,63 @@ body {
     color: var(--text-light);
     letter-spacing: 0.5px;
 }
+/* --- Search & Glossary Styles --- */
+.search-bar {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.search-bar:focus {
+    border-color: var(--primary);
+}
+
+.glossary-card {
+    background: var(--bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary);
+    text-align: left;
+}
+
+.glossary-term {
+    font-size: 1.2rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.search-result-card {
+    background: var(--bg-color);
+    border: 1px solid #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.search-result-question {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.search-result-answer {
+    color: #166534;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background: #dcfce7;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--correct);
+}
