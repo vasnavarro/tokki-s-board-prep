@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Glossary</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <div class="quiz-container">
+        <div class="home-screen">
+            <h1>Dental Glossary 📖</h1>
+            <p>Search high-yield definitions and syndromes:</p>
+            
+            <input type="text" id="glossarySearch" class="search-bar" placeholder="Type a term (e.g., 'Ameloblastoma')..." onkeyup="filterGlossary()">
+            
+            <div id="glossary-list">
+                <!-- Terms will be generated here by JavaScript -->
+            </div>
+
+            <a href="index.html" class="tool-btn" style="margin-top: 20px;">← Back to Main Menu</a>
+        </div>
+        <div class="app-footer">made by xiao/angelo</div>
+    </div>
+
+    <script>
+        // You can add as many terms as you want to this dictionary!
+        const glossaryData = [
+            { term: "Abfraction", definition: "A non-carious cervical lesion caused by occlusal stress and tooth flexure, resulting in a V-shaped notch at the CEJ." },
+            { term: "Ameloblastoma", definition: "A highly aggressive, benign odontogenic tumor classically presenting as a 'soap bubble' multilocular radiolucency in the posterior mandible." },
+            { term: "Curve of Spee", definition: "The anteroposterior anatomic curvature of the occlusal alignment of teeth, beginning at the tip of the lower canine and following the buccal cusps." },
+            { term: "Dens in Dente (Dens Invaginatus)", definition: "A developmental anomaly where the enamel invaginates into the crown before mineralization. Most commonly affects the maxillary lateral incisor." },
+            { term: "Erythroplakia", definition: "A clinical term for a red patch on the oral mucosa that cannot be diagnosed as any other specific disease. Extremely high risk of being malignant or severely dysplastic." },
+            { term: "Fluorapatite", definition: "The crystal structure formed when fluoride replaces the hydroxyl ion in hydroxyapatite. It is significantly more resistant to acid dissolution (critical pH 4.5)." },
+            { term: "Leukoplakia", definition: "A white patch or plaque on the oral mucosa that cannot be rubbed off and cannot be characterized clinically as any other disease. Considered a premalignant lesion." },
+            { term: "Pemphigus Vulgaris", definition: "A severe autoimmune disease where autoantibodies destroy desmosomes (acantholysis), causing intraepithelial blisters and a positive Nikolsky sign." },
+            { term: "Sjogren's Syndrome", definition: "A systemic autoimmune disease characterized by the destruction of exocrine glands, resulting in profound xerostomia (dry mouth) and xerophthalmia (dry eyes)." },
+            { term: "Trigeminal Neuralgia", definition: "A neuropathic condition characterized by excruciating, lightning-like facial pain triggered by light touch to specific areas of the face." }
+        ];
+
+        // Sort terms alphabetically A-Z automatically
+        glossaryData.sort((a, b) => a.term.localeCompare(b.term));
+
+        function renderGlossary(data) {
+            const list = document.getElementById('glossary-list');
+            list.innerHTML = '';
+            
+            if (data.length === 0) {
+                list.innerHTML = '<p style="color: var(--text-light);">No matching terms found.</p>';
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glossary-card';
+                card.innerHTML = `<span class="glossary-term">${item.term}</span><span>${item.definition}</span>`;
+                list.appendChild(card);
+            });
+        }
+
+        function filterGlossary() {
+            const query = document.getElementById('glossarySearch').value.toLowerCase();
+            const filtered = glossaryData.filter(item => 
+                item.term.toLowerCase().includes(query) || 
+                item.definition.toLowerCase().includes(query)
+            );
+            renderGlossary(filtered);
+        }
+
+        // Render everything when the page loads
+        renderGlossary(glossaryData);
+    </script>
+</body>
+</html>
