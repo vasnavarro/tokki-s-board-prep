@@ -67,7 +67,557 @@
     <script>
         const quizData = [
             
-            // Your questions for Block 3 will go right here!
+            const quizData = [
+            {
+                "question": "1. In the production of dental x-rays, the vast majority of the kinetic energy from the electrons striking the tungsten target is lost. Approximately what percentage of this energy is actually converted into useful x-ray photons?",
+                "options": [
+                    "1%",
+                    "25%",
+                    "50%",
+                    "99%"
+                ],
+                "correct": 0,
+                "rationale": "X-ray production is incredibly inefficient. When the electrons smash into the tungsten target on the anode, 99% of the energy is lost as pure heat. Only 1% is converted into actual x-ray photons."
+            },
+            {
+                "question": "2. You are preparing to extract tooth #30 (a mandibular first molar) that has severely decayed, bifurcated roots. Which specific extraction forceps is uniquely designed with paired, pointed beaks (the 'cowhorn') to slide perfectly into the root bifurcation of lower molars?",
+                "options": [
+                    "Forceps #150",
+                    "Forceps #151",
+                    "Forceps #23",
+                    "Forceps #88R"
+                ],
+                "correct": 2,
+                "rationale": "Forceps #23 is the classic mandibular 'cowhorn.' Its sharp, curved beaks act as a double-wedge, physically squeezing into the furcation and forcing the tooth upward out of the socket. (#150/151 are universal; #88R/L are upper cowhorns)."
+            },
+            {
+                "question": "3. The SLOB rule (Clark's Rule) is used in radiography to localize an object in three dimensions. If you take a second radiograph and move the x-ray tubehead MESIALLY, and the object in the x-ray also appears to move MESIALLY, the object is located:",
+                "options": [
+                    "On the Buccal",
+                    "On the Lingual",
+                    "At the Apex",
+                    "In the pulp chamber"
+                ],
+                "correct": 1,
+                "rationale": "SLOB stands for Same Lingual, Opposite Buccal. If the object moves in the SAME direction that you moved the tubehead, it is situated on the Lingual. If it moves in the opposite direction, it is on the Buccal."
+            },
+            {
+                "question": "4. A patient presents with a severe, localized, throbbing pain in the extraction socket of tooth #19 three days after the extraction. The socket is completely empty of a blood clot, exposing raw bone, and emits a foul odor. The diagnosis is Alveolar Osteitis (Dry Socket). What is the appropriate treatment?",
+                "options": [
+                    "Prescribe systemic antibiotics immediately.",
+                    "Curette (scrape) the socket aggressively to induce new bleeding.",
+                    "Gently irrigate the socket with saline and place a sedative iodoform/eugenol dressing.",
+                    "Suture the socket closed."
+                ],
+                "correct": 2,
+                "rationale": "A dry socket is not an infection; it is a painful disruption of healing due to the loss of the blood clot. You must NEVER scrape a dry socket (it causes agonizing pain and destroys remaining healing cells). Simply irrigate away debris and place a soothing eugenol dressing."
+            },
+            {
+                "question": "5. Which anatomical landmark appears as a distinct, V-shaped or U-shaped radiopacity superimposed over the roots of the maxillary molars on a periapical radiograph?",
+                "options": [
+                    "Maxillary tuberosity",
+                    "Zygomatic process of the maxilla",
+                    "Coronoid process of the mandible",
+                    "Hamular notch"
+                ],
+                "correct": 1,
+                "rationale": "The zygomatic process of the maxilla (the cheekbone) forms a massive, dense 'U' or 'V' shaped radiopacity that frequently obscures the roots of the maxillary first and second molars on a standard periapical film."
+            },
+            {
+                "question": "6. In radiation safety, ALARA stands for 'As Low As Reasonably Achievable.' What is the single most effective method for reducing the amount of radiation exposure to a patient during a dental x-ray?",
+                "options": [
+                    "Using a lead apron.",
+                    "Using a thyroid collar.",
+                    "Increasing the kVp.",
+                    "Using a rectangular collimator instead of a round one."
+                ],
+                "correct": 3,
+                "rationale": "While lead aprons are great, changing from a standard round cone to a rectangular collimator reduces the patient's exposed tissue surface area (and thus their radiation dose) by an absolutely massive 60%."
+            },
+            {
+                "question": "7. According to the Pell and Gregory classification for impacted mandibular third molars, a Class II impaction specifically indicates that:",
+                "options": [
+                    "The highest portion of the tooth is below the cervical line of the second molar.",
+                    "The tooth is positioned completely within the ramus of the mandible.",
+                    "Approximately half of the crown is covered by the anterior border of the mandibular ramus.",
+                    "The tooth is in a horizontal position."
+                ],
+                "correct": 2,
+                "rationale": "Pell and Gregory Class 1, 2, 3 measures the horizontal space available. Class I = full space available. Class II = half the crown is buried in the ramus. Class III = the entire crown is buried inside the ramus."
+            },
+            {
+                "question": "8. When designing a mucoperiosteal flap for oral surgery, what is the absolute most important geometric rule to ensure the flap does not undergo ischemic necrosis (tissue death) and slough off?",
+                "options": [
+                    "The base of the flap must be narrower than the apex.",
+                    "The base of the flap must be wider than the apex (the free margin).",
+                    "The vertical releasing incisions must perfectly bisect the interdental papillae.",
+                    "The flap must only include the mucosa, leaving the periosteum attached to the bone."
+                ],
+                "correct": 1,
+                "rationale": "Flaps must have an adequate blood supply to survive. Because blood vessels run from the base upward, the base of the flap must always be wider than the top edge (apex) to ensure a massive, uninterrupted blood supply to the tip."
+            },
+            {
+                "question": "9. A patient's panoramic radiograph reveals a large, perfectly round, completely radiolucent entity located inferior to the mandibular canal, just anterior to the angle of the mandible. The patient is asymptomatic. What is the most likely diagnosis?",
+                "options": [
+                    "Stafne Bone Defect (Static Bone Cyst)",
+                    "Dentigerous Cyst",
+                    "Ameloblastoma",
+                    "Traumatic Bone Cyst"
+                ],
+                "correct": 0,
+                "rationale": "A Stafne Bone Defect is a classic radiographic anomaly. It is not a true cyst, but rather a depression on the lingual side of the jawbone created by the submandibular salivary gland resting against it. It is always found BELOW the mandibular canal."
+            },
+            {
+                "question": "10. Which physical component of the x-ray tubehead is made of aluminum and functions specifically to absorb the low-energy, long-wavelength x-ray photons that only harm the patient without contributing to the image?",
+                "options": [
+                    "The collimator",
+                    "The filter",
+                    "The tungsten filament",
+                    "The focusing cup"
+                ],
+                "correct": 1,
+                "rationale": "The aluminum filter acts as a sieve. Low-energy 'soft' x-rays lack the power to penetrate the cheek to reach the film; they just get absorbed by the patient's skin and cause radiation damage. The aluminum filter stops these weak rays before they leave the tube."
+            },
+            {
+                "question": "11. The American Heart Association (AHA) recommends antibiotic prophylaxis for specific high-risk cardiac patients prior to dental procedures involving bleeding. Which of the following conditions REQUIRES prophylaxis?",
+                "options": [
+                    "Mitral valve prolapse",
+                    "A prosthetic (artificial) heart valve",
+                    "A cardiac pacemaker",
+                    "A history of a coronary artery bypass graft (CABG)"
+                ],
+                "correct": 1,
+                "rationale": "The AHA heavily restricted prophylaxis guidelines. It is now strictly required only for patients with: Artificial heart valves, a history of Infective Endocarditis, completely unrepaired cyanotic congenital heart defects, or cardiac transplants that develop valvulopathy."
+            },
+            {
+                "question": "12. In the event of a severe allergic reaction (Anaphylaxis) in the dental chair, what is the single most important, life-saving drug that must be administered immediately?",
+                "options": [
+                    "Diphenhydramine (Benadryl)",
+                    "Albuterol",
+                    "Epinephrine (Adrenaline) 1:1,000",
+                    "Nitroglycerin"
+                ],
+                "correct": 2,
+                "rationale": "Epinephrine is the absolute first-line drug for anaphylaxis. It violently forces the airway open (bronchodilation) and forcefully constricts the blood vessels (vasoconstriction) to instantly reverse the lethal drop in blood pressure."
+            },
+            {
+                "question": "13. During a routine extraction of tooth #14, the palatal root snaps off. While attempting to elevate the root tip, it suddenly disappears upward. You suspect you pushed it into the maxillary sinus. Which radiographic view is considered the absolute BEST for visualizing fluid or objects in the maxillary sinus?",
+                "options": [
+                    "Towne's view",
+                    "Submentovertex (SMV) view",
+                    "Water's view",
+                    "Lateral Cephalometric view"
+                ],
+                "correct": 2,
+                "rationale": "The Water's view (occipitomental view) requires the patient to tilt their chin up. This perfectly throws the dense bones of the skull base out of the way, providing an incredibly clear view of the massive maxillary sinuses."
+            },
+            {
+                "question": "14. A patient taking Warfarin (Coumadin) needs an extraction. You must request their INR (International Normalized Ratio) blood test results before proceeding. For a routine, non-surgical extraction, what is the maximum acceptable INR level to safely proceed without adjusting their medication?",
+                "options": [
+                    "1.0",
+                    "2.5 to 3.0",
+                    "5.0",
+                    "10.0"
+                ],
+                "correct": 1,
+                "rationale": "A normal healthy person has an INR of 1.0. A patient on blood thinners will be higher. Most oral surgeons agree that routine extractions can be safely performed on patients with an INR up to 3.0 (or sometimes 3.5) using local hemostatic measures (geloam, sutures)."
+            },
+            {
+                "question": "15. What is the fundamental biomechanical principle of a dental elevator (e.g., a straight elevator) when used to luxate a tooth prior to using forceps?",
+                "options": [
+                    "It acts strictly as a pulling mechanism.",
+                    "It acts as a lever and a wedge.",
+                    "It acts as a wheel and axle.",
+                    "It cuts the periodontal ligament using a sharp blade."
+                ],
+                "correct": 1,
+                "rationale": "An elevator works by forcing a wedge down into the PDL space between the tooth and the bone, and then acting as a lever against the bone to physically pry the tooth upward out of the socket."
+            },
+            {
+                "question": "16. In dental radiography, what controls the QUANTITY (the actual physical number) of x-ray photons produced in the tubehead?",
+                "options": [
+                    "Kilovoltage peak (kVp)",
+                    "Milliamperage (mA) and Exposure Time",
+                    "The aluminum filter",
+                    "The size of the focal spot"
+                ],
+                "correct": 1,
+                "rationale": "Milliamperage (mA) controls the heat of the filament, which determines HOW MANY electrons boil off. Therefore, mA (along with time) controls the pure quantity (density/darkness) of the x-ray beam. kVp controls the speed/penetrating power (Quality)."
+            },
+            {
+                "question": "17. A patient presents with a severe, spreading infection originating from a mandibular molar. The swelling is bilateral, involves the submandibular, sublingual, and submental spaces, and physically elevates the patient's tongue against the roof of their mouth, threatening their airway. This life-threatening condition is:",
+                "options": [
+                    "Cavernous Sinus Thrombosis",
+                    "Ludwig's Angina",
+                    "Actinomycosis",
+                    "Pericoronitis"
+                ],
+                "correct": 1,
+                "rationale": "Ludwig's Angina is a rapidly spreading, bilateral cellulitis of the floor of the mouth. Because the spaces under the jaw fill with massive amounts of pus and swelling, the tongue is forced upward and backward, quickly suffocating the patient."
+            },
+            {
+                "question": "18. During the processing of traditional dental x-ray film, what is the specific chemical function of the Developer solution?",
+                "options": [
+                    "It washes away all the unexposed silver halide crystals.",
+                    "It hardens the film emulsion to prevent scratching.",
+                    "It reduces the exposed silver halide crystals into solid, black metallic silver.",
+                    "It stops the chemical reaction of the fixer."
+                ],
+                "correct": 2,
+                "rationale": "The Developer turns the invisible latent image into a visible one. It chemically reduces the crystals that were struck by x-rays into black silver (making the film dark). The Fixer then washes away the un-struck crystals (making those areas clear)."
+            },
+            {
+                "question": "19. A 20-year-old patient receives an Inferior Alveolar Nerve Block (IANB). Two days later, they return complaining they cannot open their mouth more than 15 millimeters (severe trismus). What is the most likely anatomical cause?",
+                "options": [
+                    "Needle trauma to the medial pterygoid muscle.",
+                    "Injection of anesthetic directly into the parotid gland.",
+                    "Severing the lingual nerve.",
+                    "Fracture of the coronoid process."
+                ],
+                "correct": 0,
+                "rationale": "The needle during an IANB passes straight through the medial pterygoid muscle. If the needle tears muscle fibers or causes a small hematoma inside the muscle, the muscle will violently spasm, locking the jaw shut (trismus)."
+            },
+            {
+                "question": "20. When prescribing antibiotics for a severe odontogenic infection, Penicillin VK is often the first choice. However, if the patient has a documented anaphylactic allergy to Penicillin, what is the standard alternative antibiotic prescribed in dentistry?",
+                "options": [
+                    "Amoxicillin",
+                    "Cephalexin (Keflex)",
+                    "Clindamycin or Azithromycin",
+                    "Tetracycline"
+                ],
+                "correct": 2,
+                "rationale": "If a patient is allergic to Penicillin, they are also allergic to Amoxicillin. Cephalosporins (Keflex) have a 10% cross-reactivity rate. Therefore, Clindamycin (300mg) or a Macrolide like Azithromycin are the safest and most effective alternatives."
+            },
+            {
+                "question": "21. A patient presents with a suspicious, irregular, white, non-wipeable lesion on the lateral border of the tongue. You decide a biopsy is required. If you perform an 'Incisional Biopsy', what exactly are you doing?",
+                "options": [
+                    "Removing the entire lesion completely along with a margin of healthy tissue.",
+                    "Removing only a small, representative slice of the lesion and a piece of adjacent normal tissue.",
+                    "Using a needle to suck fluid out of the lesion.",
+                    "Scraping the top surface of the lesion with a brush."
+                ],
+                "correct": 1,
+                "rationale": "An Incisional biopsy takes just a 'slice' or 'wedge' of the tumor to send to the lab for diagnosis (used for massive or highly suspicious lesions). An Excisional biopsy cuts out the entirely of the lesion at once (used for small, benign-looking lumps)."
+            },
+            {
+                "question": "22. The Inverse Square Law is a critical principle in radiation physics. If you double the distance between the x-ray tubehead and the patient (e.g., moving from an 8-inch PID to a 16-inch PID), how is the intensity of the x-ray beam affected?",
+                "options": [
+                    "The intensity is reduced to 1/2 of its original power.",
+                    "The intensity is reduced to 1/4 of its original power.",
+                    "The intensity is doubled.",
+                    "The intensity is squared."
+                ],
+                "correct": 1,
+                "rationale": "The Inverse Square Law dictates that intensity is inversely proportional to the square of the distance. If you double the distance (2), the intensity drops by 2 squared ($2^2 = 4$). So the beam becomes 1/4 as strong."
+            },
+            {
+                "question": "23. When evaluating a periapical radiograph, you notice that the teeth appear abnormally long and stretched out. What technical geometric error caused this 'elongation'?",
+                "options": [
+                    "Excessive vertical angulation (the tubehead was angled too far down).",
+                    "Inadequate vertical angulation (the tubehead was too flat/horizontal).",
+                    "Incorrect horizontal angulation.",
+                    "The film was bent."
+                ],
+                "correct": 1,
+                "rationale": "Elongation occurs when the x-ray beam is too flat (not enough vertical angle), casting a long, stretched shadow of the tooth onto the film. Foreshortening (short, stubby teeth) occurs when the angle is too steep."
+            },
+            {
+                "question": "24. A patient requires the surgical extraction of an impacted maxillary third molar. Which specific space is at high anatomical risk for the tooth or a root tip being accidentally displaced into it during upward elevator force?",
+                "options": [
+                    "The submandibular space",
+                    "The pterygomandibular space",
+                    "The infratemporal fossa or the maxillary sinus",
+                    "The cavernous sinus"
+                ],
+                "correct": 2,
+                "rationale": "Maxillary third molars sit right on the edge of the maxillary sinus and the infratemporal fossa. If you push blindly upward with an elevator, the tooth can instantly vanish, slipping entirely out of the socket and into these deep cranial spaces."
+            },
+            {
+                "question": "25. Normal blood pressure is defined as less than 120/80 mmHg. A patient sits in your chair with a blood pressure reading of 145/92. According to the AHA/ACC guidelines, what category of hypertension is this?",
+                "options": [
+                    "Elevated",
+                    "Stage 1 Hypertension",
+                    "Stage 2 Hypertension",
+                    "Hypertensive Crisis"
+                ],
+                "correct": 2,
+                "rationale": "Stage 2 Hypertension is defined as a systolic pressure of 140 or higher, OR a diastolic pressure of 90 or higher. Because this patient is at 145/92, they fall into the Stage 2 category."
+            },
+            {
+                "question": "26. Which type of biopsy is strictly indicated for evaluating a suspected mucosal blister or blistering disease (like Pemphigus or Pemphigoid) so that the fragile blister roof is not destroyed during the procedure?",
+                "options": [
+                    "Fine Needle Aspiration (FNA)",
+                    "Punch biopsy",
+                    "Incisional biopsy placed entirely within the blister",
+                    "Peri-lesional incisional biopsy (taking the edge of the blister and normal tissue)"
+                ],
+                "correct": 3,
+                "rationale": "If you biopsy the center of a blister, the fragile roof falls apart and the pathologist sees nothing. You must take a peri-lesional biopsy (the very edge of the blister plus healthy attached skin) so the pathologist can actually see the tissue splitting apart."
+            },
+            {
+                "question": "27. In the biomechanics of tooth extraction, what is the primary purpose of 'luxating' the tooth back and forth with forceps before attempting to pull it out?",
+                "options": [
+                    "To snap the root off.",
+                    "To test the patient's pain tolerance.",
+                    "To physically expand the bony socket walls and sever the periodontal ligament fibers.",
+                    "To squeeze the blood out of the socket."
+                ],
+                "correct": 2,
+                "rationale": "Teeth are not pulled out; they are pushed out. Rocking the tooth back and forth acts as a wedge, physically bending and expanding the elastic alveolar bone while tearing the thousands of PDL fibers holding the tooth in."
+            },
+            {
+                "question": "28. When evaluating a panoramic radiograph, you notice a massive, ghost-like radiopaque shadow draped straight across the anterior teeth, obscuring the apices of the maxillary incisors. What technical error caused this?",
+                "options": [
+                    "The patient's chin was tilted too far down.",
+                    "The patient was slumped over, creating a shadow of their cervical spine (neck).",
+                    "The patient failed to place their tongue flat against the roof of their mouth.",
+                    "The patient was wearing a thyroid collar."
+                ],
+                "correct": 2,
+                "rationale": "If the patient does not suck their tongue flat against the hard palate during a pano, a massive pocket of air is left in the mouth. Air is radiolucent, so it creates a dark/black band across the roots of the upper front teeth, totally obscuring them."
+            },
+            {
+                "question": "29. A diabetic patient's HbA1c test measures their average blood glucose over the past 3 months. For a patient to be considered 'well-controlled' and safe for elective oral surgery, their HbA1c should ideally be below:",
+                "options": [
+                    "5.0%",
+                    "7.0%",
+                    "10.0%",
+                    "12.0%"
+                ],
+                "correct": 1,
+                "rationale": "A normal HbA1c is below 5.7%. A diabetic patient is considered well-controlled if they can keep it below 7.0%. If the HbA1c is 8.0% or higher, they have severely compromised wound healing and massive infection risks."
+            },
+            {
+                "question": "30. The 'Waters View' radiograph is famously used to evaluate the maxillary sinuses. To obtain this view, the x-ray beam passes from the back of the head to the front, and the patient's face is positioned so that:",
+                "options": [
+                    "The forehead and nose touch the film.",
+                    "Only the chin touches the film, and the head is tilted back at a 37-degree angle.",
+                    "The side of the face touches the film.",
+                    "The mouth is opened as wide as possible."
+                ],
+                "correct": 1,
+                "rationale": "In the Waters View (Occipitomental), the patient tilts their head back and rests just their chin on the film cassette. This throws the dense petrous temporal bones downward, completely clearing the view of the maxillary sinuses."
+            },
+            {
+                "question": "31. Following a traumatic injury to the face, a patient complains that their teeth no longer fit together correctly. You suspect a mandibular fracture. Statistically, what is the single most common location for a fracture of the mandible?",
+                "options": [
+                    "The symphysis (midline)",
+                    "The angle of the mandible",
+                    "The body of the mandible",
+                    "The condyle"
+                ],
+                "correct": 3,
+                "rationale": "The condylar neck is the thinnest, weakest part of the mandible. It acts as a deliberate safety mechanism; when someone takes a massive blow to the chin, the condyles snap first, preventing the jawbone from being driven straight up into the brain."
+            },
+            {
+                "question": "32. During a difficult surgical extraction, you must lay a full-thickness mucoperiosteal flap. After the tooth is removed, you must suture the flap back into place. Which suturing technique is considered the best for closing a long incision because it distributes tension evenly and seals the wound watertight?",
+                "options": [
+                    "Simple interrupted sutures",
+                    "Continuous locking suture",
+                    "Figure-eight suture",
+                    "Vertical mattress suture"
+                ],
+                "correct": 0,
+                "rationale": "Simple interrupted sutures are the absolute gold standard in oral surgery. Because each stitch is tied and cut individually, if one knot comes untied or rips out, the rest of the flap remains securely closed. (If a continuous suture breaks, the entire flap falls open)."
+            },
+            {
+                "question": "33. Radiographic film emulsion consists of a gelatin matrix suspending millions of microscopic, light-sensitive crystals. What specific chemical compound makes up these crystals?",
+                "options": [
+                    "Calcium tungstate",
+                    "Silver halide (Silver bromide and Silver iodide)",
+                    "Sodium thiosulfate",
+                    "Potassium alum"
+                ],
+                "correct": 1,
+                "rationale": "Silver halide crystals are the reactive heart of dental film. When x-ray photons strike them, the crystals become electrically unstable, creating the invisible 'latent image' that the developer later turns into black metallic silver."
+            },
+            {
+                "question": "34. Bisphosphonate-Related Osteonecrosis of the Jaw (BRONJ) is a devastating complication where the jawbone dies and is exposed following an extraction. Which specific cellular process do bisphosphonate drugs (like Fosamax or IV Zometa) permanently inhibit?",
+                "options": [
+                    "Osteoblast bone formation",
+                    "Osteoclast bone resorption",
+                    "Angiogenesis (blood vessel formation)",
+                    "Collagen synthesis"
+                ],
+                "correct": 1,
+                "rationale": "Bisphosphonates are given to osteoporosis and cancer patients to stop their bones from dissolving. The drug permanently poisons the osteoclasts (the bone-eating cells). Because the bone can no longer break down old, dead bone to remodel and heal, extraction sockets simply rot and die."
+            },
+            {
+                "question": "35. A 65-year-old male arrives at your clinic appearing completely confused. The right side of his face is entirely paralyzed (he cannot wrinkle his forehead, close his right eye, or smile on the right side). He has no other systemic symptoms, and his arms and legs work perfectly. What is the diagnosis?",
+                "options": [
+                    "Stroke (Cerebrovascular Accident)",
+                    "Bell's Palsy",
+                    "Trigeminal Neuralgia",
+                    "Multiple Sclerosis"
+                ],
+                "correct": 1,
+                "rationale": "Bell's Palsy is a unilateral paralysis of the Facial Nerve (CN VII). The crucial diagnostic key between Bell's Palsy and a Stroke: A stroke patient can still wrinkle their forehead on the paralyzed side because the upper face has dual brain innervation. A Bell's Palsy patient cannot wrinkle their forehead at all."
+            },
+            {
+                "question": "36. The 'Developer' solution in an x-ray darkroom is highly sensitive to temperature. If the developer solution is far TOO HOT, how will the final radiograph appear?",
+                "options": [
+                    "Too light (underdeveloped)",
+                    "Completely clear (transparent)",
+                    "Too dark (overdeveloped)",
+                    "Yellow-brown stained"
+                ],
+                "correct": 2,
+                "rationale": "Heat supercharges chemical reactions. If the developer is too hot, the chemicals become hyperactive and reduce all the silver crystals instantly, resulting in a film that is pitch black or far too dark to read."
+            },
+            {
+                "question": "37. During the extraction of an upper first molar, a distinct 'hollow' popping sound is heard, and the patient complains that air is rushing into their mouth when they breathe through their nose. You have created an Oroantral Communication (OAC). If the hole is 4 millimeters wide, what is the proper treatment?",
+                "options": [
+                    "Do nothing, it will heal normally.",
+                    "Pack the socket entirely with Gelfoam and suture a figure-eight over the socket, placing the patient on sinus precautions.",
+                    "Immediately perform a buccal advancement flap to drag tissue over the hole and seal it completely.",
+                    "Prescribe nasal spray and wait 3 months."
+                ],
+                "correct": 1,
+                "rationale": "For an OAC under 2mm, do nothing. For 2mm to 6mm, pack it gently with a clot-stabilizer (gelfoam) and suture it tightly with sinus precautions (no blowing nose, no straws). If it is massive (greater than 6mm or 7mm), it requires immediate flap surgery to seal it."
+            },
+            {
+                "question": "38. When evaluating a panoramic radiograph for quality, what is the anatomical sign that the patient's head was positioned too far FORWARD into the machine (biting too far forward on the bite block)?",
+                "options": [
+                    "The anterior teeth appear incredibly fat and wide.",
+                    "The anterior teeth appear incredibly skinny and blurred (anorexic).",
+                    "The hard palate casts a shadow over the roots.",
+                    "The spine is superimposed directly down the middle of the film."
+                ],
+                "correct": 1,
+                "rationale": "The panoramic machine has a 'focal trough' (a focal zone). If the patient bites too far forward, their front teeth move out of the focal trough and closer to the film, making them look completely squished, skinny, and blurred."
+            },
+            {
+                "question": "39. Which biopsy technique involves using a sharp, circular, apple-core-like instrument to quickly remove a perfectly cylindrical, deep core of tissue from the oral mucosa?",
+                "options": [
+                    "Excisional scalpel biopsy",
+                    "Brush cytology",
+                    "Punch biopsy",
+                    "Fine Needle Aspiration"
+                ],
+                "correct": 2,
+                "rationale": "A punch biopsy uses a small, hollow, circular blade that is twisted into the tissue to pull out a perfect 'plug' of mucosa. It is incredibly fast, heals beautifully, and provides a deep tissue sample for the pathologist."
+            },
+            {
+                "question": "40. In radiation physics, what is the definition of the term 'Half-Value Layer' (HVL)?",
+                "options": [
+                    "The time it takes for half the radiation to dissipate.",
+                    "The thickness of aluminum required to reduce the intensity of the x-ray beam by exactly 50%.",
+                    "The distance at which the x-ray loses half its power.",
+                    "The size of the lead apron."
+                ],
+                "correct": 1,
+                "rationale": "The Half-Value Layer is the ultimate test of an x-ray machine's 'Quality' (penetrating power). It tells you exactly how many millimeters of aluminum filter you must place in front of the beam to cut its intensity perfectly in half."
+            },
+            {
+                "question": "41. You are managing a patient with a severe fascial space infection. The infection has spread to the Pterygomandibular space. What is the absolute most common, defining clinical sign that an infection has entered the pterygomandibular space?",
+                "options": [
+                    "Severe swelling under the eye.",
+                    "Massive swelling of the chin.",
+                    "Severe Trismus (inability to open the mouth).",
+                    "Deviation of the uvula."
+                ],
+                "correct": 2,
+                "rationale": "The pterygomandibular space houses the medial pterygoid muscle. When this space fills with pus, the muscle becomes incredibly inflamed and spasms violently, causing profound trismus (the patient can barely separate their teeth)."
+            },
+            {
+                "question": "42. Which diagnostic test is uniquely capable of evaluating whether a patient's pain is odontogenic (from the tooth) or non-odontogenic (like a sinus infection or nerve pain)?",
+                "options": [
+                    "Electric Pulp Test (EPT)",
+                    "Cold Test (Endo-Ice)",
+                    "Selective local anesthesia (Anesthetic trial)",
+                    "Percussion test"
+                ],
+                "correct": 2,
+                "rationale": "If a patient points to their lower jaw in agony, but you numb the lower jaw and the pain DOES NOT STOP, the pain is NOT coming from the teeth. It is radiating from a different nerve, a muscle spasm, or even a heart attack."
+            },
+            {
+                "question": "43. During surgical extractions, it is frequently necessary to remove alveolar bone to deliver the tooth. To prevent burning and killing the surrounding bone (osteonecrosis), what is the absolute rule when using a surgical handpiece?",
+                "options": [
+                    "Use a diamond bur instead of a carbide bur.",
+                    "Drill continuously without stopping.",
+                    "Use a high-speed, air-driven handpiece that exhausts air directly into the socket.",
+                    "Use copious, constant, sterile saline irrigation and a light brushing stroke."
+                ],
+                "correct": 3,
+                "rationale": "Bone dies if it gets hot. Copious sterile saline irrigation must be flooded onto the bur at all times to keep the bone ice cold. (Also, you must NEVER use air-exhausting high speeds in surgery, as they will blow air into the tissues and cause a massive air emphysema/swelling)."
+            },
+            {
+                "question": "44. In dental radiography, what specific disease presents classically as a \"cotton-wool\" appearance of the jawbones and generalized hypercementosis of the tooth roots?",
+                "options": [
+                    "Paget's Disease of Bone",
+                    "Multiple Myeloma",
+                    "Osteosarcoma",
+                    "Fibrous Dysplasia"
+                ],
+                "correct": 0,
+                "rationale": "Paget's Disease causes massive, disorganized, rapid bone remodeling. The resulting bone is patchy and irregular, casting a radiopaque 'cotton-wool' or 'cotton-ball' shadow on the x-ray."
+            },
+            {
+                "question": "45. Le Fort fractures are devastating facial traumas resulting from massive blunt force (like car accidents). A Le Fort II fracture specifically describes a fracture line that separates:",
+                "options": [
+                    "The maxilla straight across horizontally above the teeth (floating palate).",
+                    "The maxilla and the nasal bones from the rest of the face, creating a pyramid shape (pyramidal fracture).",
+                    "The entire facial skeleton from the cranial base (craniofacial disjunction).",
+                    "The mandible at the symphysis."
+                ],
+                "correct": 1,
+                "rationale": "Le Fort I separates just the palate (horizontal). Le Fort II breaks upward through the nose, causing the nose and maxilla to pull away like a pyramid. Le Fort III completely separates the entire face from the skull."
+            },
+            {
+                "question": "46. Cone Beam Computed Tomography (CBCT) has revolutionized oral surgery and implantology. What is the fundamental difference between a CBCT scan and a traditional medical CT scan?",
+                "options": [
+                    "CBCT provides 2D images, while medical CT provides 3D images.",
+                    "CBCT uses a cone-shaped x-ray beam and a flat-panel detector to capture the entire volume in a single rotation, resulting in vastly lower radiation.",
+                    "CBCT uses magnetic fields instead of x-rays.",
+                    "CBCT cannot view soft tissue at all."
+                ],
+                "correct": 1,
+                "rationale": "Medical CTs shoot a tiny fan-shaped beam and spin around the patient hundreds of times, slicing them into slices (massive radiation). CBCT shoots one massive cone-shaped beam and spins only ONCE, capturing the whole head with a fraction of the radiation."
+            },
+            {
+                "question": "47. A patient presents with intense pain and a swelling that 'comes and goes' right under their jaw right before they eat a meal. You suspect a salivary stone. Which radiograph is the absolute best choice to visualize a radiopaque stone trapped in the floor of the mouth (Wharton's duct)?",
+                "options": [
+                    "Mandibular occlusal radiograph",
+                    "Panoramic radiograph",
+                    "Bitewing radiograph",
+                    "Lateral cephalometric radiograph"
+                ],
+                "correct": 0,
+                "rationale": "A standard mandibular occlusal film (where the patient bites on the film like a cracker and the x-ray shoots straight up through the chin) perfectly isolates the floor of the mouth, displaying the brilliant white salivary stone clearly against the dark soft tissue."
+            },
+            {
+                "question": "48. During the surgical removal of a massively impacted mandibular third molar, you decide to section (cut) the tooth to make it easier to remove. What is the safest, standard anatomical direction to section a lower molar?",
+                "options": [
+                    "Horizontally through the crown.",
+                    "Mesiodistally (front to back) separating the buccal and lingual halves.",
+                    "Buccolingually (side to side) through the bifurcation, separating the mesial root from the distal root.",
+                    "Diagonally across the cusp tips."
+                ],
+                "correct": 2,
+                "rationale": "By cutting a groove buccolingually straight down into the bifurcation, you can insert an elevator and crack the tooth directly in half. This turns one giant, multi-rooted tooth into two tiny, single-rooted teeth that elevate out easily."
+            },
+            {
+                "question": "49. When reviewing a patient's complete blood count (CBC) prior to surgery, you note that their platelet count is 45,000 /µL. The normal range is 150,000 to 400,000 /µL. What severe surgical complication is this patient at extreme risk for?",
+                "options": [
+                    "Massive, uncontrollable post-operative bleeding.",
+                    "Overwhelming systemic bacterial infection.",
+                    "Anaphylactic shock.",
+                    "A massive spike in blood pressure."
+                ],
+                "correct": 0,
+                "rationale": "Platelets are the cells responsible for the initial blood clot. A condition of low platelets (Thrombocytopenia, less than 50,000) means the patient has no ability to plug the bleeding socket, and they will hemorrhage uncontrollably. Surgery is contraindicated."
+            },
+            {
+                "question": "50. In the paralleling technique of intraoral radiography, the film is placed perfectly parallel to the long axis of the tooth. However, this physically requires placing the film farther away from the tooth (deeper into the mouth). To compensate for this increased object-film distance and prevent image magnification, what MUST you do?",
+                "options": [
+                    "Use a highly flexible film.",
+                    "Decrease the exposure time.",
+                    "Increase the target-film distance (use a long 16-inch PID/cone).",
+                    "Use a higher kVp."
+                ],
+                "correct": 2,
+                "rationale": "Because the film is far away from the tooth, the shadow gets blurry and huge (magnification). By moving the x-ray tubehead farther away (using a long cone), the x-rays become straighter and more parallel, casting a perfectly crisp, life-sized shadow back onto the film."
+            }
             
         ];
     </script>
