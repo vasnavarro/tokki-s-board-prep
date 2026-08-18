@@ -66,9 +66,556 @@
     <!-- 1. PASTE YOUR 100 QUESTIONS HERE -->
     <script>
         const quizData = [
-            
-            // Your questions for Block 3 will go right here!
-            
+            {
+                "question": "1. The practice of dentistry in the Philippines is officially governed and regulated by the Philippine Dental Act of 2007. What is the Republic Act number of this law?",
+                "options": [
+                    "R.A. 4419",
+                    "R.A. 9484",
+                    "R.A. 10912",
+                    "R.A. 9165"
+                ],
+                "correct": 1,
+                "rationale": "R.A. 9484 is the 'Philippine Dental Act of 2007'. It repealed the old dental law (R.A. 4419) and currently regulates the practice of Dentists, Dental Hygienists, and Dental Technologists in the country."
+            },
+            {
+                "question": "2. According to R.A. 9484, the Board of Dentistry is composed of a Chairman and four members. Who has the sole authority to appoint the Chairman and the members of the Board of Dentistry?",
+                "options": [
+                    "The President of the Philippine Dental Association (PDA)",
+                    "The Chairperson of the Professional Regulation Commission (PRC)",
+                    "The President of the Republic of the Philippines",
+                    "The Secretary of the Department of Health (DOH)"
+                ],
+                "correct": 2,
+                "rationale": "The President of the Philippines directly appoints the Chairman and the four members of the Board of Dentistry from a list of recommendees presented by the PRC."
+            },
+            {
+                "question": "3. A patient sues a dentist after an extraction goes wrong. During the trial, a legal doctrine is applied meaning 'the thing speaks for itself', completely shifting the burden of proof from the patient to the dentist because the injury could not have happened without negligence. This doctrine is:",
+                "options": [
+                    "Respondeat superior",
+                    "Res ipsa loquitur",
+                    "Stare decisis",
+                    "Caveat emptor"
+                ],
+                "correct": 1,
+                "rationale": "Res ipsa loquitur ('the thing speaks for itself') applies to obvious negligence (e.g., leaving a surgical bur inside a patient's jaw, or extracting the wrong tooth). The negligence is so obvious that the patient doesn't need an expert witness to prove it; the dentist must prove they somehow *weren't* negligent."
+            },
+            {
+                "question": "4. A dental assistant accidentally burns a patient's lip with a hot instrument. The patient sues the clinic owner (the dentist) for the assistant's mistake. The legal doctrine that holds the employer (dentist) liable for the acts of their employee is:",
+                "options": [
+                    "Res ipsa loquitur",
+                    "Respondeat superior",
+                    "Res judicata",
+                    "Dura lex sed lex"
+                ],
+                "correct": 1,
+                "rationale": "Respondeat superior translates to 'Let the master answer.' It means the dentist is ultimately legally and financially responsible for the negligent actions of their staff while they are performing their official job duties."
+            },
+            {
+                "question": "5. In the ethical principles of dentistry, the concept of 'Autonomy' dictates that the dentist must:",
+                "options": [
+                    "Do absolutely no harm to the patient.",
+                    "Provide the highest standard of care to everyone equally.",
+                    "Respect the patient's right to self-determination and allow them to make their own informed decisions regarding their treatment.",
+                    "Tell the truth to the patient at all times."
+                ],
+                "correct": 2,
+                "rationale": "Autonomy is the patient's absolute right to choose. Even if the dentist knows a root canal is the best option, if the fully informed patient chooses an extraction, the dentist must respect their autonomy (or dismiss them from the practice if it violates the standard of care)."
+            },
+            {
+                "question": "6. A patient sits in the dental chair, opens their mouth, and allows the dentist to examine their teeth with a mirror and explorer without signing a piece of paper. In legal terms, the patient has just provided:",
+                "options": [
+                    "Expressed consent",
+                    "Implied consent",
+                    "Informed consent",
+                    "Proxy consent"
+                ],
+                "correct": 1,
+                "rationale": "Implied consent is given by the patient's actions (e.g., voluntarily sitting in the chair and opening their mouth). Expressed consent is explicitly stated (verbally or in writing). Informed consent is a specific legal process detailing risks, benefits, and alternatives before an invasive procedure."
+            },
+            {
+                "question": "7. According to the Philippine Dental Act of 2007 (R.A. 9484), how many years is the standard term of office for a member of the Board of Dentistry?",
+                "options": [
+                    "1 year",
+                    "3 years",
+                    "5 years",
+                    "6 years"
+                ],
+                "correct": 1,
+                "rationale": "The Chairman and the members of the Board of Dentistry serve for a term of three (3) years. They may be reappointed for another term but cannot serve continuously for more than six (6) years."
+            },
+            {
+                "question": "8. Which of the following defines 'Malpractice' in the dental profession?",
+                "options": [
+                    "The accidental breaking of a tooth during a difficult extraction.",
+                    "A bad clinical outcome that could not be predicted.",
+                    "Any professional misconduct, unreasonable lack of skill, or failure to follow the accepted standard of care resulting in injury to the patient.",
+                    "Charging a patient more than the standard clinic fee."
+                ],
+                "correct": 2,
+                "rationale": "Malpractice is professional negligence. It occurs when a dentist fails to provide the standard of care that a 'reasonably prudent dentist' would provide in the same situation, causing actual harm or injury to the patient."
+            },
+            {
+                "question": "9. A court issues a legal order demanding that a dentist physically bring a specific patient's dental records, x-rays, and study casts to the courtroom for a trial. This specific legal document is called a:",
+                "options": [
+                    "Subpoena ad testificandum",
+                    "Subpoena duces tecum",
+                    "Writ of Mandamus",
+                    "Summons"
+                ],
+                "correct": 1,
+                "rationale": "A Subpoena 'duces tecum' literally means 'bring with you under penalty.' It forces a person to bring physical evidence, documents, or records to court. A Subpoena 'ad testificandum' simply orders a person to appear in court to testify."
+            },
+            {
+                "question": "10. In Philippine jurisprudence, who legally owns the physical dental records (the paper charts, actual radiographs, and physical study casts)?",
+                "options": [
+                    "The patient",
+                    "The dentist or the clinic",
+                    "The Philippine Dental Association",
+                    "The Department of Health"
+                ],
+                "correct": 1,
+                "rationale": "The physical records legally belong to the Dentist/Clinic. However, the INFORMATION inside the records belongs to the patient. Therefore, patients have a legal right to request and receive copies of their records, but the dentist keeps the originals."
+            },
+            {
+                "question": "11. Under the ethical principle of 'Veracity', a dentist is ethically obligated to:",
+                "options": [
+                    "Keep patient information strictly confidential.",
+                    "Be truthful and completely honest in their dealings with patients, colleagues, and the public.",
+                    "Provide free services to the indigent.",
+                    "Report child abuse to the authorities."
+                ],
+                "correct": 1,
+                "rationale": "Veracity means truthfulness. It means not lying to the patient about their diagnosis, not overbilling the insurance company, and not running deceptive or false advertising campaigns."
+            },
+            {
+                "question": "12. In writing a prescription, the section that contains the actual name of the drug, the dosage (e.g., Amoxicillin 500mg), and the quantity to be dispensed is called the:",
+                "options": [
+                    "Superscription",
+                    "Inscription",
+                    "Subscription",
+                    "Signatura"
+                ],
+                "correct": 1,
+                "rationale": "The Inscription is the core of the prescription (the drug name and strength). The Superscription is the 'Rx' symbol. The Subscription is the directions to the pharmacist (e.g., 'Dispense 21 capsules'). The Signatura (Sig) is the directions to the patient (e.g., 'Take 1 cap every 8 hours')."
+            },
+            {
+                "question": "13. A dentist in the Philippines wishes to prescribe a dangerous drug/narcotic (e.g., an opioid painkiller) for severe post-operative pain. To legally write this prescription, the dentist must possess an active:",
+                "options": [
+                    "S1 License from the DOH",
+                    "S2 License from the Philippine Drug Enforcement Agency (PDEA)",
+                    "S3 License from the PRC",
+                    "PTR (Professional Tax Receipt)"
+                ],
+                "correct": 1,
+                "rationale": "An S2 license (issued by PDEA) is strictly required for any medical or dental professional to prescribe dangerous drugs. Writing a prescription for narcotics without an S2 license is a criminal offense."
+            },
+            {
+                "question": "14. A patient fails to follow the dentist's strict post-operative instructions after a surgical extraction (e.g., they smoked and rigorously rinsed their mouth), leading to a massive infection and hospitalization. If the patient sues the dentist, the dentist can use which legal defense?",
+                "options": [
+                    "Res ipsa loquitur",
+                    "Contributory negligence",
+                    "Statute of frauds",
+                    "Ignorantia juris"
+                ],
+                "correct": 1,
+                "rationale": "Contributory negligence is a defense stating that the patient's own actions or negligence actively contributed to their injury. If the patient ignores clear instructions and causes their own harm, it drastically reduces or completely eliminates the dentist's liability."
+            },
+            {
+                "question": "15. How frequently must a licensed dentist in the Philippines renew their Professional Identification Card (PRC License)?",
+                "options": [
+                    "Every year on January 1st.",
+                    "Every two years on the date they passed the board exam.",
+                    "Every three years during the practitioner's birth month.",
+                    "Every five years."
+                ],
+                "correct": 2,
+                "rationale": "PRC licenses for dentists must be renewed every 3 years. The deadline for renewal is always set to the practitioner's birth month to stagger renewals throughout the year."
+            },
+            {
+                "question": "16. In practice management, the costs of running a dental clinic are divided into fixed and variable costs. Which of the following is considered a 'Fixed Cost'?",
+                "options": [
+                    "Dental composites and amalgam supplies",
+                    "Monthly commercial rent for the clinic space",
+                    "Dental laboratory fees for crowns and dentures",
+                    "Cotton rolls and sterilization pouches"
+                ],
+                "correct": 1,
+                "rationale": "Fixed costs stay exactly the same every single month regardless of how many patients you see (Rent, malpractice insurance, loan payments). Variable costs fluctuate based on how busy you are (Dental materials, lab fees, utility bills)."
+            },
+            {
+                "question": "17. According to the Philippine Dental Code of Ethics, it is highly unethical for a dentist to criticize the dental work of another practitioner in front of a patient. If a patient comes in with a terrible, failing crown placed by another dentist, what is your ethical duty?",
+                "options": [
+                    "Inform the patient that their previous dentist was incompetent and offer to testify in court.",
+                    "Call the previous dentist while the patient is in the chair to scold them.",
+                    "Fix the problem or institute correct treatment without making disparaging remarks about the previous dentist's work.",
+                    "Refuse to treat the patient."
+                ],
+                "correct": 2,
+                "rationale": "The Code of Ethics strictly prohibits unjustified criticism of colleagues. You must simply diagnose the current condition objectively, present the treatment options, and fix the problem without throwing the previous dentist under the bus (as you do not know the clinical circumstances under which the original crown was placed)."
+            },
+            {
+                "question": "18. What is the fundamental difference between 'Revocation' and 'Suspension' of a dental license by the PRC Board of Dentistry?",
+                "options": [
+                    "Revocation is a temporary penalty; Suspension is permanent.",
+                    "Suspension is a temporary penalty (for a set period of time); Revocation is the permanent cancellation of the license.",
+                    "Revocation only applies to unethical advertising; Suspension applies to malpractice.",
+                    "There is no difference; they mean the exact same thing."
+                ],
+                "correct": 1,
+                "rationale": "Suspension means you cannot practice for a specific penalty timeframe (e.g., 6 months) but your license is automatically active again afterward. Revocation means your license is completely destroyed. (However, under RA 9484, a dentist can petition for reinstatement 2 years after revocation)."
+            },
+            {
+                "question": "19. The concept of 'Four-Handed Dentistry' revolutionized clinical practice management and ergonomics. What is the primary objective of four-handed dentistry?",
+                "options": [
+                    "To allow the dentist to work standing up.",
+                    "To double the clinical fees charged to the patient.",
+                    "To increase efficiency, minimize stress and fatigue on the dental team, and keep the dentist's eyes focused continuously on the operative field.",
+                    "To eliminate the need for high-volume suction."
+                ],
+                "correct": 2,
+                "rationale": "Four-handed dentistry involves a highly trained assistant seamlessly passing instruments into the dentist's hand. This prevents the dentist from constantly twisting, turning, and looking away from the tooth, dramatically reducing physical fatigue and procedure time."
+            },
+            {
+                "question": "20. In dental ergonomics, the operatory is divided into 'Zones of Activity' around the patient's head (imagined as a clock face). For a right-handed dentist, the 'Transfer Zone' where instruments and materials are safely passed is located at:",
+                "options": [
+                    "12 o'clock to 2 o'clock",
+                    "2 o'clock to 4 o'clock",
+                    "4 o'clock to 7 o'clock",
+                    "7 o'clock to 12 o'clock"
+                ],
+                "correct": 2,
+                "rationale": "For a right-handed dentist: The Operator Zone is 7 to 12 o'clock. The Static Zone (equipment) is 12 to 2 o'clock. The Assistant Zone is 2 to 4 o'clock. The Transfer Zone (directly over the patient's chest) is 4 to 7 o'clock. You must NEVER transfer sharp instruments over the patient's face."
+            },
+            {
+                "question": "21. To maintain an active license, professionals must comply with the Continuing Professional Development (CPD) Act of 2016 (R.A. 10912). What is the primary purpose of requiring CPD units for license renewal?",
+                "options": [
+                    "To generate revenue for the PRC.",
+                    "To ensure that professionals constantly update their knowledge, skills, and ethical values to maintain global competitiveness and high standards of service.",
+                    "To force older dentists to retire early.",
+                    "To fund the Philippine Dental Association."
+                ],
+                "correct": 1,
+                "rationale": "CPD is mandated by law to guarantee that professionals do not stagnate. Dentistry evolves rapidly; CPD ensures practitioners are up to date on the latest materials, surgical techniques, and safety protocols to protect the public."
+            },
+            {
+                "question": "22. In legal terms, the relationship between a dentist and a patient is fundamentally considered a:",
+                "options": [
+                    "Fiduciary and contractual relationship",
+                    "Master-servant relationship",
+                    "Bilateral dictatorship",
+                    "Guarantor relationship"
+                ],
+                "correct": 0,
+                "rationale": "It is a Fiduciary relationship (based entirely on absolute trust and confidence) and a Contractual relationship (an agreement where the dentist provides a service in exchange for a fee). It is NEVER a guarantor relationship, as a dentist cannot legally guarantee a perfect outcome or cure."
+            },
+            {
+                "question": "23. A 16-year-old minor comes into your clinic alone asking for an extraction. According to the law, who is legally capable of providing valid 'Informed Consent' for this procedure?",
+                "options": [
+                    "The 16-year-old minor.",
+                    "The dental assistant who witnesses the procedure.",
+                    "The parent or legal guardian of the minor.",
+                    "Any adult relative."
+                ],
+                "correct": 2,
+                "rationale": "Minors (under 18 years of age in the Philippines) are legally incompetent to enter into contracts or provide informed consent. Consent MUST be obtained from their parent or official legal guardian before any invasive procedure is performed (except in absolute life-or-death emergencies)."
+            },
+            {
+                "question": "24. Under R.A. 9484, an individual found practicing dentistry in the Philippines without a valid Certificate of Registration and Professional ID from the PRC is guilty of:",
+                "options": [
+                    "A misdemeanor punishable by a fine only.",
+                    "Illegal practice of dentistry, which is a criminal offense punishable by a fine of P200k-P500k and/or imprisonment of 2 to 5 years.",
+                    "A minor civil infraction.",
+                    "Treason."
+                ],
+                "correct": 1,
+                "rationale": "Illegal practice of dentistry (practicing without a license, or a suspended license) is a serious crime under the Penal Provisions of RA 9484, carrying massive fines and mandatory jail time to protect the public from quacks."
+            },
+            {
+                "question": "25. Which of the following is considered completely UNETHICAL and illegal regarding professional fees in dentistry?",
+                "options": [
+                    "Offering a discount to a fellow dentist or medical professional.",
+                    "Providing free dental treatment to an indigent patient.",
+                    "Fee splitting (giving a commission or kickback to someone solely for referring a patient to your clinic).",
+                    "Charging a higher fee for a highly complex, time-consuming surgery."
+                ],
+                "correct": 2,
+                "rationale": "Fee splitting (paying for referrals or taking a cut of a specialist's fee just for sending them a patient) is highly unethical and illegal. Referrals must be made strictly on the basis of what is best for the patient's health, not for financial kickbacks."
+            },
+            {
+                "question": "26. In assessing clinical productivity, the term 'Overhead' refers to:",
+                "options": [
+                    "The amount of profit the dentist takes home.",
+                    "The total gross revenue collected in a month.",
+                    "The total combined fixed and variable costs required to physically operate the dental practice.",
+                    "The light fixture above the dental chair."
+                ],
+                "correct": 2,
+                "rationale": "Overhead is the cost of doing business. It includes rent, salaries, supplies, utilities, and lab fees. A typical healthy dental practice aims for an overhead of around 55% to 65% of their gross production."
+            },
+            {
+                "question": "27. In the classification of motion during four-handed dentistry, moving only your fingers to spin a dental mirror is classified as:",
+                "options": [
+                    "Class I motion",
+                    "Class II motion",
+                    "Class III motion",
+                    "Class IV motion"
+                ],
+                "correct": 0,
+                "rationale": "Class I = Fingers only. Class II = Fingers and wrist. Class III = Fingers, wrist, and elbow. Class IV = Entire arm from the shoulder. Class V = Entire arm and twisting the torso. Ergonomics dictates using Class I, II, and III motions as much as possible to avoid injury."
+            },
+            {
+                "question": "28. A patient is dissatisfied with their complete denture and demands a full refund, claiming the denture is 'defective'. You know the denture was fabricated perfectly according to the standard of care, but the patient simply refuses to adapt to it. Does the law require you to guarantee patient satisfaction?",
+                "options": [
+                    "Yes, a dentist is legally required to guarantee a perfect outcome.",
+                    "Yes, the principle of caveat emptor applies.",
+                    "No, a dentist is neither a guarantor nor a warrantor of successful results, provided they followed the accepted standard of care.",
+                    "No, but you must refund 50% by law."
+                ],
+                "correct": 2,
+                "rationale": "Medicine and dentistry are inexact sciences. The law explicitly states that a doctor is NOT a guarantor of a cure. As long as the dentist exercised the required skill, care, and diligence (Standard of Care), they are not legally liable just because the patient is unhappy or the disease wasn't cured."
+            },
+            {
+                "question": "29. In legal proceedings, a dentist called to testify in court strictly to interpret x-rays, explain complex surgical procedures, and give an opinion on the standard of care based on their specialized knowledge is acting as an:",
+                "options": [
+                    "Ordinary witness",
+                    "Expert witness",
+                    "Hostile witness",
+                    "Defendant"
+                ],
+                "correct": 1,
+                "rationale": "An ordinary (fact) witness can only testify to what they directly saw or heard (e.g., 'I saw the dentist drop the drill'). An Expert Witness is allowed to give professional OPINIONS and explain complex scientific facts to help the judge/jury understand the case."
+            },
+            {
+                "question": "30. The Data Privacy Act of 2012 (R.A. 10173) heavily impacts dental practice management. Under this law, what is the dentist's legal obligation regarding patient records?",
+                "options": [
+                    "They must publish the names of patients who owe money.",
+                    "They must implement strict security measures to protect the confidentiality, integrity, and availability of patients' personal and sensitive health information.",
+                    "They must share all records with the PDA.",
+                    "They can sell patient contact info to toothbrush companies."
+                ],
+                "correct": 1,
+                "rationale": "R.A. 10173 mandates that all entities handling sensitive personal information (like health records) must fiercely protect that data from unauthorized access, leaks, or sharing without the patient's explicit written consent."
+            },
+            {
+                "question": "31. A dental hygienist in the Philippines is licensed under RA 9484. What is the legal scope of practice for a registered dental hygienist?",
+                "options": [
+                    "They can perform simple extractions.",
+                    "They can diagnose cavities and prepare treatment plans.",
+                    "They can perform oral prophylaxis, place sealants, and take radiographs strictly under the supervision of a licensed dentist.",
+                    "They can practice completely independently and open their own clinic."
+                ],
+                "correct": 2,
+                "rationale": "A dental hygienist is an auxiliary professional. They cannot diagnose, cut hard/soft tissue, or prescribe drugs. They perform preventive services (scaling, root planing, fluoride, sealants) exclusively under the supervision of a licensed dentist."
+            },
+            {
+                "question": "32. A 'Voidable' contract in dentistry is a contract that is:",
+                "options": [
+                    "Completely illegal from the beginning and has no legal effect.",
+                    "Valid and binding until it is annulled by a court, usually because consent was obtained through fraud, intimidation, or one party was a minor.",
+                    "A contract written on a prescription pad.",
+                    "A contract that has already been completed."
+                ],
+                "correct": 1,
+                "rationale": "A VOID contract is illegal (e.g., a contract to smuggle drugs). A VOIDABLE contract is legal on paper, but flawed (e.g., forcing a patient to sign a consent form while holding a gun to their head, or having a 15-year-old sign it). It remains valid until the victim goes to court to have it canceled."
+            },
+            {
+                "question": "33. According to the Philippine Dental Code of Ethics, a dentist's advertising should be modest and dignified. Which of the following is considered UNETHICAL advertising?",
+                "options": [
+                    "Putting the clinic name and hours on a modest signboard.",
+                    "Using large neon signs, claiming to have 'secret painless techniques', or guaranteeing 'the cheapest and best dentistry in the city'.",
+                    "Listing their valid postgraduate specialist degrees.",
+                    "Creating a professional clinic website."
+                ],
+                "correct": 1,
+                "rationale": "The Code of Ethics strictly prohibits 'commercialized' advertising. Claims of superiority ('I am the best'), guarantees of painless treatment, or giant flashing neon signs degrade the dignity of the profession and mislead the public."
+            },
+            {
+                "question": "34. The ethical principle of 'Non-maleficence' translates to:",
+                "options": [
+                    "Do good.",
+                    "Be fair.",
+                    "Do no harm.",
+                    "Tell the truth."
+                ],
+                "correct": 2,
+                "rationale": "Non-maleficence is the core oath of medicine ('Primum non nocere' - First, do no harm). It means a dentist must protect the patient from harm, keep their skills updated, and refer the patient to a specialist if the procedure is beyond their capability."
+            },
+            {
+                "question": "35. If a dentist decides to end the dentist-patient relationship (dismiss the patient) because the patient is highly abusive and refuses to pay, the dentist MUST follow proper protocol. If the dentist just stops treating the patient midway through a root canal without notice, the dentist is guilty of:",
+                "options": [
+                    "Assault",
+                    "Battery",
+                    "Abandonment",
+                    "Contributory negligence"
+                ],
+                "correct": 2,
+                "rationale": "Abandonment is terminating the doctor-patient relationship without giving the patient reasonable notice and an opportunity to find a replacement dentist. A dentist must send a formal letter and provide emergency care for a specific period (usually 30 days) during the transition."
+            },
+            {
+                "question": "36. In a civil malpractice suit, the patient (plaintiff) must prove four elements to win the case: Duty, Dereliction (Breach of duty), Direct Causation, and:",
+                "options": [
+                    "Damages (actual injury or harm)",
+                    "Death",
+                    "Defamation",
+                    "Deductibles"
+                ],
+                "correct": 0,
+                "rationale": "The 4 D's of Malpractice: 1) Duty (you accepted them as a patient), 2) Dereliction (you breached the standard of care), 3) Direct Causation (your breach specifically caused the accident), 4) Damages (the patient actually suffered physical or financial harm). If there is no harm, there is no malpractice."
+            },
+            {
+                "question": "37. To open a dental clinic in the Philippines, a dentist must secure several permits. Which government agency issues the essential 'Mayor's Permit' or 'Business Permit'?",
+                "options": [
+                    "The Department of Health (DOH)",
+                    "The Professional Regulation Commission (PRC)",
+                    "The Local Government Unit (LGU) / City Hall",
+                    "The Bureau of Internal Revenue (BIR)"
+                ],
+                "correct": 2,
+                "rationale": "The Local Government Unit (LGU / City Hall) controls zoning and business operations within their jurisdiction. You must secure a Mayor's/Business permit from the specific city where your clinic is physically located."
+            },
+            {
+                "question": "38. Every practicing dentist must pay taxes on their income and issue Official Receipts (OR) to their patients. Which government agency requires dentists to register their practice and prints their Official Receipts?",
+                "options": [
+                    "Securities and Exchange Commission (SEC)",
+                    "Bureau of Internal Revenue (BIR)",
+                    "Department of Trade and Industry (DTI)",
+                    "Philippine Dental Association (PDA)"
+                ],
+                "correct": 1,
+                "rationale": "The Bureau of Internal Revenue (BIR) manages all taxation in the Philippines. Dentists must register with the BIR, obtain a Certificate of Registration (COR), and have their Authority to Print (ATP) receipts cleared through the BIR."
+            },
+            {
+                "question": "39. The 'Statute of Limitations' refers to:",
+                "options": [
+                    "The maximum amount a dentist can charge for a procedure.",
+                    "The maximum number of patients a dentist can see in a day.",
+                    "The specific time limit (number of years) established by law within which a patient must file a lawsuit after an injury occurs.",
+                    "The limit on the number of CE units required."
+                ],
+                "correct": 2,
+                "rationale": "The Statute of Limitations sets a strict deadline for lawsuits. If a patient realizes a dentist left a bur in their jaw 15 years ago, they might be barred from suing if the statute of limitations for malpractice in that jurisdiction has already expired."
+            },
+            {
+                "question": "40. In Practice Management, a 'Capitation' payment system (often used in HMOs) is defined as:",
+                "options": [
+                    "The patient pays exactly for the services rendered at each visit.",
+                    "The dentist is paid a fixed, flat amount per month for each patient assigned to their clinic, regardless of whether the patient actually comes in for treatment or not.",
+                    "The dentist works purely for free.",
+                    "The insurance pays a percentage of the total bill."
+                ],
+                "correct": 1,
+                "rationale": "Capitation (Per Capita) pays the provider a flat monthly fee per head. If the patient never visits, the dentist makes a profit. If the patient needs 10 root canals, the dentist loses money, shifting the financial risk entirely onto the dentist."
+            },
+            {
+                "question": "41. You perform a procedure without obtaining informed consent. Even if you perform the procedure flawlessly and save the tooth, performing an invasive procedure on a patient's body without their permission legally constitutes:",
+                "options": [
+                    "Battery",
+                    "Defamation",
+                    "Fraud",
+                    "Breach of contract"
+                ],
+                "correct": 0,
+                "rationale": "In law, Assault is the THREAT of harm. Battery is the actual unauthorized PHYSICAL TOUCHING of another person. If you touch/cut a patient without their consent, regardless of the clinical outcome, you have committed medical battery."
+            },
+            {
+                "question": "42. The Board of Dentistry has the power to investigate complaints against dentists. They can issue a 'Subpoena' to gather evidence. If a dentist ignores a Subpoena from the Board, the Board can:",
+                "options": [
+                    "Have the dentist arrested for Contempt.",
+                    "Do nothing, as the Board has no real power.",
+                    "Ask the PDA to investigate instead.",
+                    "Confiscate the dentist's clinic equipment."
+                ],
+                "correct": 0,
+                "rationale": "The PRC Board of Dentistry acts as a quasi-judicial body. They have the legal power to issue subpoenas. Ignoring them is considered 'Contempt' and they can seek court orders to enforce penalties, including suspension of the license."
+            },
+            {
+                "question": "43. A dentist is accused of grossly overcharging a patient. The Philippine Dental Code of Ethics states that dental fees should be:",
+                "options": [
+                    "As high as the market will tolerate.",
+                    "Standardized so every dentist charges the exact same amount.",
+                    "Fair, reasonable, and commensurate with the skill of the dentist, the complexity of the case, and the materials used.",
+                    "Determined solely by the patient's income."
+                ],
+                "correct": 2,
+                "rationale": "Price fixing (everyone charging the same) is illegal. Fees must be established fairly based on the time, complexity, operating costs, and the dentist's expertise, but they must not be extortionate."
+            },
+            {
+                "question": "44. What is the ethical principle of 'Beneficence'?",
+                "options": [
+                    "Do no harm.",
+                    "The duty to act in the best interests of the patient and to positively promote their health and well-being.",
+                    "The duty to treat all patients fairly and equally.",
+                    "The duty to keep secrets."
+                ],
+                "correct": 1,
+                "rationale": "Beneficence is the 'Do Good' principle. It goes beyond just 'not harming' the patient; it requires the dentist to actively take steps to heal the patient, relieve their pain, and improve their quality of life."
+            },
+            {
+                "question": "45. You are the only dentist in a small rural town. An individual walks into your clinic suffering from life-threatening massive bleeding after a car accident. Ethically and legally, what is your duty?",
+                "options": [
+                    "Refuse to see them because they don't have an appointment.",
+                    "Refuse to see them because trauma is not a dental issue.",
+                    "You have a duty to render emergency first aid to the best of your ability to save their life, even if it is outside your normal scope, until medical help arrives.",
+                    "Ask for their insurance card first."
+                ],
+                "correct": 2,
+                "rationale": "In absolute life-or-death emergencies, any healthcare professional has an ethical and statutory duty to render emergency assistance to preserve life, regardless of specialty or the patient's ability to pay."
+            },
+            {
+                "question": "46. Which of the following conditions is considered a justifiable and legal reason for a dentist to refuse to treat a new patient?",
+                "options": [
+                    "The patient's race or religion.",
+                    "The patient is HIV positive.",
+                    "The procedure requested is far beyond the dentist's clinical skill and training.",
+                    "The patient has a physical disability."
+                ],
+                "correct": 2,
+                "rationale": "You cannot discriminate based on race, religion, sex, or infectious disease status (like HIV). However, you MUST refuse to treat a patient if the case is too complex for your skill level (e.g., a massive impacted molar you are not trained to extract). You must refer them to a specialist."
+            },
+            {
+                "question": "47. Under the principle of 'Justice', dentists have a duty to treat people fairly. This principle is heavily involved in situations such as:",
+                "options": [
+                    "Deciding who gets treated first when multiple people arrive in the emergency room (Triage).",
+                    "Keeping patient files locked away.",
+                    "Telling the patient the truth about a broken file.",
+                    "Reporting taxes to the BIR."
+                ],
+                "correct": 0,
+                "rationale": "Justice deals with fairness and the equitable distribution of healthcare resources. Triage (treating the most severely injured person first, regardless of who arrived first or who is richest) is the ultimate execution of the principle of Justice."
+            },
+            {
+                "question": "48. If a dentist is found guilty of a crime involving 'Moral Turpitude' (e.g., fraud, embezzlement, or sexual assault), what action will the Board of Dentistry take?",
+                "options": [
+                    "Issue a warning letter.",
+                    "Require 50 extra CPD units.",
+                    "Revoke their certificate of registration and professional license.",
+                    "Force them to retake the board exams."
+                ],
+                "correct": 2,
+                "rationale": "Conviction of a crime involving moral turpitude (an act that is inherently base, vile, or depraved, showing a lack of moral character) is grounds for the immediate revocation of a professional license in the Philippines."
+            },
+            {
+                "question": "49. In marketing a dental practice, 'Internal Marketing' refers to:",
+                "options": [
+                    "Buying billboards on the highway.",
+                    "Running Facebook and Google Ads.",
+                    "Strategies directed at existing patients to encourage retention and referrals (e.g., sending birthday cards, making post-op phone calls, providing excellent customer service).",
+                    "Handing out flyers at the mall."
+                ],
+                "correct": 2,
+                "rationale": "External marketing aims to bring completely new people into the clinic. Internal marketing aims to turn current patients into raving fans who will stay forever and refer their friends and family. Internal marketing is far cheaper and more effective."
+            },
+            {
+                "question": "50. A patient requests a copy of their dental records to take to a new dentist. You tell them it will cost P5,000 for the photocopying fee. Is this ethical?",
+                "options": [
+                    "Yes, records are expensive to maintain.",
+                    "Yes, you own the records so you can charge whatever you want.",
+                    "No, dentists are ethically bound to furnish records or summaries either for free or for a nominal, reasonable administrative fee (the actual cost of copying).",
+                    "No, you should never release records to anyone."
+                ],
+                "correct": 2,
+                "rationale": "Holding patient records hostage by charging exorbitant 'release fees' is highly unethical. You can charge a nominal fee to cover the actual cost of paper and ink, but you cannot use records as a profit center or a tool to stop them from leaving."
+            }
         ];
     </script>
 
