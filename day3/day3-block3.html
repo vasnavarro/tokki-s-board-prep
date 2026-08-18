@@ -66,9 +66,556 @@
     <!-- 1. PASTE YOUR 100 QUESTIONS HERE -->
     <script>
         const quizData = [
-            
-            // Your questions for Block 3 will go right here!
-            
+            {
+                "question": "1. A patient complains of sharp, severe pain in tooth #14 when drinking ice water. The pain lingers for over 30 seconds after the cold water is removed. Radiographs show a deep carious lesion but no periapical radiolucency. What is the definitive pulpal diagnosis?",
+                "options": [
+                    "Reversible pulpitis",
+                    "Symptomatic irreversible pulpitis",
+                    "Necrotic pulp",
+                    "Asymptomatic irreversible pulpitis"
+                ],
+                "correct": 1,
+                "rationale": "Lingering thermal pain (lasting more than 10-15 seconds after the stimulus is removed) is the absolute hallmark clinical sign of Symptomatic Irreversible Pulpitis. Reversible pulpitis causes a sharp pain that vanishes instantly when the cold is removed."
+            },
+            {
+                "question": "2. In periodontal anatomy, the Attached Gingiva is tightly bound to the underlying periosteum and bone. It is clinically separated from the loose, dark-red, movable Alveolar Mucosa by which anatomical landmark?",
+                "options": [
+                    "The free gingival groove",
+                    "The mucogingival junction (MGJ)",
+                    "The cementoenamel junction (CEJ)",
+                    "The gingival zenith"
+                ],
+                "correct": 1,
+                "rationale": "The mucogingival junction (MGJ) is the scalloped line that separates the tough, keratinized, pink attached gingiva from the fragile, non-keratinized, red alveolar mucosa. Note: The palate does not have an MGJ because the entire hard palate is bound, keratinized tissue."
+            },
+            {
+                "question": "3. You are preparing an access cavity on a maxillary first molar. You find the Mesiobuccal (MB1), Distobuccal (DB), and Palatal (P) canals. A fourth canal (MB2) is present in the vast majority of these teeth. Where is the MB2 canal orifice clinically located?",
+                "options": [
+                    "Directly distal to the DB canal.",
+                    "On a line connecting the MB1 and Palatal canals, usually slightly mesial to that line.",
+                    "Directly in the geometric center of the pulpal floor.",
+                    "Fused inside the Palatal canal."
+                ],
+                "correct": 1,
+                "rationale": "The MB2 canal is notoriously difficult to find. It is located palatal to the main MB1 canal, sitting roughly on (or slightly mesial to) the line drawn between the MB1 and the Palatal canal orifice."
+            },
+            {
+                "question": "4. Clinical Attachment Loss (CAL) is the true metric of periodontal destruction. A patient has a probing depth of 4 mm. The gingival margin has receded 3 mm apical to the CEJ. What is the total Clinical Attachment Loss for this site?",
+                "options": [
+                    "1 mm",
+                    "3 mm",
+                    "4 mm",
+                    "7 mm"
+                ],
+                "correct": 3,
+                "rationale": "CAL is measured from the CEJ to the base of the pocket. If the gums have receded 3mm, you have already lost 3mm of attachment. The probe then goes down another 4mm under the gums. Total loss = Recession (3mm) + Probing Depth (4mm) = 7mm CAL."
+            },
+            {
+                "question": "5. Sodium Hypochlorite (NaOCl) is the absolute gold-standard endodontic irrigant. What is its primary biological function inside the root canal system?",
+                "options": [
+                    "To dissolve inorganic dentin and remove the smear layer.",
+                    "To physically lubricate the rotary files.",
+                    "To dissolve vital and necrotic organic tissue (pulp) and kill bacteria.",
+                    "To chemically bond gutta-percha to the canal walls."
+                ],
+                "correct": 2,
+                "rationale": "NaOCl (bleach) is a powerful antimicrobial and the ONLY irrigant capable of physically dissolving organic tissue (the dead nerve). However, it cannot dissolve inorganic tooth structure (it does not remove the smear layer)."
+            },
+            {
+                "question": "6. Which specialized endodontic irrigant must be used in conjunction with Sodium Hypochlorite strictly because it acts as a chelating agent to dissolve INORGANIC calcifications and strip away the smear layer?",
+                "options": [
+                    "Chlorhexidine (CHX)",
+                    "EDTA (Ethylenediaminetetraacetic acid)",
+                    "Hydrogen Peroxide",
+                    "Formocresol"
+                ],
+                "correct": 1,
+                "rationale": "EDTA is a chelator. It aggressively binds to calcium, stripping away the inorganic smear layer left by the files and opening the dentinal tubules so the bleach and sealer can penetrate deeply. (Note: NaOCl and EDTA must not be mixed directly, as they neutralize each other)."
+            },
+            {
+                "question": "7. Socransky's 'Red Complex' bacteria are universally recognized as the primary pathogens driving severe, deep periodontal pocketing and bone loss. Which three bacteria make up the Red Complex?",
+                "options": [
+                    "A. actinomycetemcomitans, P. intermedia, C. rectus",
+                    "S. mutans, L. acidophilus, A. viscosus",
+                    "P. gingivalis, T. denticola, T. forsythia",
+                    "F. nucleatum, C. albicans, S. aureus"
+                ],
+                "correct": 2,
+                "rationale": "Porphyromonas gingivalis, Treponema denticola, and Tannerella forsythia are the Red Complex. They are highly virulent obligate anaerobes that thrive deep in bleeding periodontal pockets and directly destroy the periodontium."
+            },
+            {
+                "question": "8. Endodontic hand files are manufactured with a universal ISO color-coding system. What is the correct size sequence for files colored White, Yellow, Red, Blue, Green, and Black?",
+                "options": [
+                    "10, 15, 20, 25, 30, 35",
+                    "15, 20, 25, 30, 35, 40",
+                    "20, 25, 30, 35, 40, 45",
+                    "25, 30, 35, 40, 45, 50"
+                ],
+                "correct": 1,
+                "rationale": "The standard sequence is 15 (White), 20 (Yellow), 25 (Red), 30 (Blue), 35 (Green), 40 (Black). A classic memory mnemonic is 'Will You Really Be Good Boy'."
+            },
+            {
+                "question": "9. A patient returns to your clinic 48 hours after you initiated root canal therapy on a completely asymptomatic, necrotic tooth. They are now in agonizing, throbbing pain and have a massive facial swelling. This acute exacerbation of a previously chronic, asymptomatic apical periodontitis is clinically termed a:",
+                "options": [
+                    "Phoenix abscess",
+                    "Periapical granuloma",
+                    "Radicular cyst",
+                    "Dry socket"
+                ],
+                "correct": 0,
+                "rationale": "A Phoenix abscess is a classic board term. It refers specifically to an acute flare-up of a chronic, sleeping infection. When the dentist puts files into an asymptomatic necrotic tooth, they inadvertently push bacteria and oxygen out the apex, waking up the infection and causing a massive, painful explosion."
+            },
+            {
+                "question": "10. In periodontal instrumentation, what is the fundamental design difference between a Universal Curette (e.g., Columbia 13/14) and an Area-Specific Curette (e.g., Gracey 11/12)?",
+                "options": [
+                    "Universal curettes have only one cutting edge; Gracey curettes have two.",
+                    "Universal curettes have a blade face set at 90 degrees to the terminal shank; Gracey curettes have a blade face offset at 70 degrees.",
+                    "Universal curettes are strictly for anterior teeth.",
+                    "Gracey curettes have sharp, pointed tips like a sickle scaler."
+                ],
+                "correct": 1,
+                "rationale": "A Universal curette has TWO cutting edges and the blade is at 90 degrees, meaning you have to manually tilt your hand to achieve the proper cutting angle. A Gracey curette only has ONE cutting edge and is already bent (offset at 70 degrees), making it perfectly angled for deep, subgingival root planing."
+            },
+            {
+                "question": "11. When designing a conventional access cavity preparation for a permanent maxillary central incisor, what is the ideal outline shape, and where should it be located?",
+                "options": [
+                    "Circular shape in the exact center of the lingual surface.",
+                    "Triangular shape on the lingual surface, with the base of the triangle facing the incisal edge.",
+                    "Oval shape on the facial surface.",
+                    "Trapezoidal shape on the lingual surface."
+                ],
+                "correct": 1,
+                "rationale": "The pulp chamber of a maxillary central incisor has two distinct mesial and distal pulp horns. Therefore, the access must be triangular (base at the incisal edge, apex pointing toward the cingulum) to ensure you unroof the pulp horns and don't leave dead, necrotic tissue behind to discolor the tooth."
+            },
+            {
+                "question": "12. In the progression of plaque-induced gingivitis, the interdental papillae are almost always the very first areas to become red, swollen, and bleed. Why is the interdental tissue so incredibly susceptible to initial breakdown?",
+                "options": [
+                    "It has no blood supply.",
+                    "It is formed entirely of bone.",
+                    "The interdental 'Col' area directly beneath the contact point is composed of non-keratinized epithelium.",
+                    "It lacks a periodontal ligament."
+                ],
+                "correct": 2,
+                "rationale": "The 'Col' is a saddle-like depression connecting the facial and lingual papillae right under the tooth contact. Because it is non-keratinized (unlike the tough attached gums outside), it acts as a fragile, unprotected valley where bacteria instantly invade and trigger bleeding."
+            },
+            {
+                "question": "13. You are tracing a sinus tract (fistula) on the buccal gingiva using a gutta-percha point. The radiograph shows the gutta-percha leading directly to a massive radiolucency on the lateral side of the root, NOT at the apex. The tooth is completely vital and responds normally to cold. What is the diagnosis?",
+                "options": [
+                    "Necrotic pulp",
+                    "Chronic apical abscess",
+                    "Periodontal abscess",
+                    "Irreversible pulpitis"
+                ],
+                "correct": 2,
+                "rationale": "A draining sinus tract means there is an abscess. If the tooth tests VITAL (alive), it cannot be an endodontic (apical) abscess. The infection is originating from deep inside a periodontal pocket on the side of the root (a Periodontal Abscess)."
+            },
+            {
+                "question": "14. Electronic Apex Locators (EALs) are highly accurate devices used to determine working length during a root canal. What anatomical landmark is the EAL specifically designed to detect by measuring electrical impedance?",
+                "options": [
+                    "The radiographic apex of the root.",
+                    "The cementodentinal junction (CDJ) or minor apical diameter.",
+                    "The major apical foramen.",
+                    "The floor of the pulp chamber."
+                ],
+                "correct": 1,
+                "rationale": "The CDJ (minor constriction) is the absolute perfect point to end a root canal filling. It is where the pulpal tissue ends and the periodontal tissue begins. The EAL detects the massive drop in electrical resistance when the file touches the highly vascular PDL at this exact junction."
+            },
+            {
+                "question": "15. A patient presents with agonizing pain when biting down on tooth #30. Tapping the tooth with a mirror handle (percussion test) elicits a severe pain response. What specific tissue is inflamed and sending this pain signal?",
+                "options": [
+                    "The pulpal nerve fibers.",
+                    "The odontoblastic processes.",
+                    "The Periodontal Ligament (PDL).",
+                    "The alveolar bone."
+                ],
+                "correct": 2,
+                "rationale": "The pulp has NO proprioceptive (pressure) nerve fibers; it only feels generic pain. The PDL acts as a trampoline surrounding the root and is packed with proprioceptors. If tapping a tooth hurts, the infection has exited the tooth and inflamed the PDL (Symptomatic Apical Periodontitis)."
+            },
+            {
+                "question": "16. In the surgical treatment of periodontal disease, a dentist performs an 'Ostectomy' on a patient. What exactly does an ostectomy procedure entail?",
+                "options": [
+                    "Reshaping thick, bulky bone ledges without removing any bone attached to the tooth.",
+                    "Removing actual supporting alveolar bone that is directly attached to the tooth to re-establish a positive architecture.",
+                    "Adding a bone graft into a defect.",
+                    "Removing only the gingival tissue."
+                ],
+                "correct": 1,
+                "rationale": "OstECTOMY involves the complete removal of supporting bone (bone that actually holds the tooth in). OsteoPLASTY involves merely reshaping/thinning the bulky, non-supporting bone (like sanding down a thick buccal shelf) without touching the bone attached to the tooth."
+            },
+            {
+                "question": "17. Gutta-percha is the universal core obturation material for root canals. Despite its name, standard endodontic gutta-percha points are primarily composed (60-75%) of which chemical compound to give them their stiffness?",
+                "options": [
+                    "Pure gutta-percha rubber",
+                    "Zinc oxide",
+                    "Barium sulfate",
+                    "Eugenol"
+                ],
+                "correct": 1,
+                "rationale": "A 'gutta-percha' cone is actually only about 20% gutta-percha matrix. The vast majority (up to 75%) is Zinc Oxide (to make it stiff and antibacterial), along with Barium Sulfate to make it radiopaque (white) on x-rays."
+            },
+            {
+                "question": "18. Periodontal disease destroys the bone between the roots of multi-rooted teeth, creating furcation involvements. Using a Nabers probe, you can pass the instrument completely through the furcation from the buccal to the lingual side, but the entrance is completely covered and hidden by gingival tissue. This is classified as a:",
+                "options": [
+                    "Grade I Furcation",
+                    "Grade II Furcation",
+                    "Grade III Furcation",
+                    "Grade IV Furcation"
+                ],
+                "correct": 2,
+                "rationale": "Glickman Classification: Grade I (feels a catch). Grade II (probe goes in, but hits a dead end/bone). Grade III (probe goes completely 'through and through', but the gums cover the hole). Grade IV (through and through, AND the gums have receded so you can physically see straight through the hole)."
+            },
+            {
+                "question": "19. During root canal instrumentation, the file accidentally deviates from the natural curve of the canal and drills a straight path into the outer wall of the dentin, creating a dead-end 'shelf'. This severe procedural error is known as:",
+                "options": [
+                    "A perforation",
+                    "A zip",
+                    "A ledge",
+                    "A strip"
+                ],
+                "correct": 2,
+                "rationale": "A ledge is an artificial irregularity created on the surface of the root canal wall that impedes the placement of instruments to the apex. It happens when you force a stiff, unbent file down a curved canal. The file refuses to bend and just drills a flat shelf into the outer wall."
+            },
+            {
+                "question": "20. The primary goal of Guided Tissue Regeneration (GTR) in periodontics is to regrow lost bone, cementum, and PDL. Why is placing a physical 'Barrier Membrane' over the bone defect absolutely crucial for GTR to work?",
+                "options": [
+                    "It releases antibiotics to kill bacteria.",
+                    "It physically blocks the fast-growing gingival epithelial cells from dropping down into the defect, allowing the slow-growing bone and PDL cells time to fill the space.",
+                    "It acts as a structural scaffold that turns into bone.",
+                    "It stops the patient from bleeding."
+                ],
+                "correct": 1,
+                "rationale": "Epithelial cells are sprinters; bone cells are marathon runners. If you just put bone in a hole, the gums will grow down into it in 3 days and ruin it. A barrier membrane is a physical fence that locks the gums out, giving the bone cells 3 months of undisturbed peace to grow."
+            },
+            {
+                "question": "21. A patient complains of a dark, pinkish-red spot on the crown of their maxillary central incisor. The tooth has a history of trauma but is asymptomatic. Radiographs reveal a massive, perfectly round radiolucency expanding from the center of the pulp chamber outward. This is classic for:",
+                "options": [
+                    "External cervical resorption",
+                    "Internal root resorption (Pink tooth of Mummery)",
+                    "Caries",
+                    "Calcific metamorphosis"
+                ],
+                "correct": 1,
+                "rationale": "Trauma can cause the pulp to randomly mutate into odontoclasts, which start aggressively eating the tooth from the inside out. The pulp chamber balloons outward until the dentin is so thin you can see the pink pulp shining through the enamel. It must be treated instantly with a root canal to stop the cells."
+            },
+            {
+                "question": "22. Standard endodontic files have a universal taper. A 0.02 taper means that for every 1 millimeter you move up the file from the tip (D0) toward the handle, the diameter of the file increases by:",
+                "options": [
+                    "0.02 mm",
+                    "0.2 mm",
+                    "2.0 mm",
+                    "0.002 mm"
+                ],
+                "correct": 0,
+                "rationale": "A 0.02 taper means the file gets thicker by 0.02 millimeters for every 1 mm of length. So, a size 20 file (0.20 mm at the tip) will be 0.22 mm thick exactly 1 mm up the shaft."
+            },
+            {
+                "question": "23. In periodontology, what is the primary, most significant difference between the biological structure surrounding a natural tooth and the biological structure surrounding a Titanium dental implant?",
+                "options": [
+                    "Implants do not have alveolar bone.",
+                    "Implants have a thicker layer of cementum.",
+                    "Implants completely lack a Periodontal Ligament (PDL), and the connective tissue fibers run parallel to the implant surface rather than inserting into it.",
+                    "Implants do not have a junctional epithelium."
+                ],
+                "correct": 2,
+                "rationale": "A natural tooth is suspended in a shock-absorbing hammock (the PDL). An implant is fused directly to solid bone (osseointegration). Because it lacks a PDL and perpendicular inserting fibers, an implant has zero shock absorption and relies on a fragile 'O-ring' of parallel fibers to keep bacteria out."
+            },
+            {
+                "question": "24. C-shaped root canals are a complex, treacherous anatomical variation where the mesial and distal canals fuse into a massive 'C' ribbon. In which specific tooth are C-shaped canals statistically most common, particularly in Asian populations?",
+                "options": [
+                    "Maxillary first molar",
+                    "Mandibular first molar",
+                    "Mandibular second molar",
+                    "Maxillary first premolar"
+                ],
+                "correct": 2,
+                "rationale": "The Mandibular Second Molar is notorious for C-shaped canals. The roots fuse together on the buccal side, leaving a massive, continuous, C-shaped groove on the lingual. They are incredibly difficult to clean and obturate properly."
+            },
+            {
+                "question": "25. A patient undergoes a Free Gingival Graft (FGG) procedure, where a piece of tissue is cut from their palate and sutured to their lower anterior gums. What is the absolute primary clinical objective of performing an FGG?",
+                "options": [
+                    "To cover exposed, sensitive roots (Root coverage).",
+                    "To increase the width and thickness of the tough, keratinized Attached Gingiva.",
+                    "To regenerate alveolar bone.",
+                    "To cure gingivitis."
+                ],
+                "correct": 1,
+                "rationale": "An FGG takes a thick slab of palatal skin to create a tough band of keratinized tissue to stop recession from getting worse. It is terrible for root coverage because the color doesn't match and the blood supply is poor. A Connective Tissue Graft (CTG) is the gold standard for esthetic root coverage."
+            },
+            {
+                "question": "26. You apply heat to a tooth using warm gutta-percha. The patient feels intense, sharp pain. You quickly remove the heat, but the severe throbbing pain continues to linger and escalate for several minutes. What does this indicate?",
+                "options": [
+                    "The tooth is perfectly healthy.",
+                    "The tooth has reversible pulpitis.",
+                    "The tooth has irreversible pulpitis or a partially necrotic pulp producing gas.",
+                    "The tooth has a cracked root."
+                ],
+                "correct": 2,
+                "rationale": "When a pulp becomes necrotic, bacteria produce gas inside the rigid tooth. Applying heat causes that gas to violently expand, crushing the remaining live nerve fibers and causing agonizing, lingering pain. Cold will actually shrink the gas and relieve this specific pain."
+            },
+            {
+                "question": "27. In the classification of endodontic-periodontal lesions, what is a 'Primary Endodontic lesion with Secondary Periodontic involvement'?",
+                "options": [
+                    "Plaque travels down a deep gum pocket and infects the apex of the tooth.",
+                    "A dead pulp creates a massive apical abscess that drains UP the side of the root, destroying the PDL and creating a deep, narrow periodontal pocket.",
+                    "A fractured root causes the gums to recede.",
+                    "A tooth with two separate, unrelated diseases."
+                ],
+                "correct": 1,
+                "rationale": "The disease started IN the tooth (Endo). The pus couldn't push through the bone, so it drained up the path of least resistance (the PDL space), popping out at the gumline and mimicking a periodontal pocket. If you just do a root canal, the 'pocket' will heal perfectly."
+            },
+            {
+                "question": "28. When interpreting a radiograph to assess periodontal health, what is the normal, healthy relationship of the crest of the alveolar bone to the Cementoenamel Junction (CEJ)?",
+                "options": [
+                    "It sits exactly flush with the CEJ.",
+                    "It sits 1 to 2 mm apical (below) the CEJ.",
+                    "It sits 1 to 2 mm coronal (above) the CEJ.",
+                    "It covers the enamel."
+                ],
+                "correct": 1,
+                "rationale": "The bone must stay 1 to 2 mm away from the CEJ to leave room for the Biologic Width (the junctional epithelium and connective tissue attachment). If bone is seen exactly at the CEJ, it is abnormal."
+            },
+            {
+                "question": "29. During obturation of a root canal, the dentist utilizes the 'Lateral Compaction' technique. Which specific hand instrument is forced down into the canal to physically push the master gutta-percha cone to the side, creating space for accessory cones?",
+                "options": [
+                    "An endodontic plugger",
+                    "A Lentulo spiral",
+                    "An endodontic spreader",
+                    "A barbed broach"
+                ],
+                "correct": 2,
+                "rationale": "A SPREADER has a sharp, pointed tip used to laterally wedge and 'spread' the gutta-percha to the side. A PLUGGER has a flat, blunt tip used to vertically push and 'plug' warm gutta-percha down toward the apex."
+            },
+            {
+                "question": "30. The 'Crown-Down' technique is widely taught in modern endodontics, especially when using NiTi rotary files. What is the primary mechanical advantage of preparing the coronal and middle thirds of the canal BEFORE preparing the apical third?",
+                "options": [
+                    "It removes restrictive coronal dentin early, giving files straight-line access to the apex and preventing the pushing of contaminated debris out the bottom of the tooth.",
+                    "It makes the tooth immune to fracture.",
+                    "It prevents the need for irrigation.",
+                    "It allows you to use only one file."
+                ],
+                "correct": 0,
+                "rationale": "If you jam a file straight to the apex instantly (the old Step-Back technique), you push all the bacteria from the top of the tooth out into the bone. Crown-Down cleans the top first, removes the tight 'choke points', and allows massive amounts of bleach to flow down safely."
+            },
+            {
+                "question": "31. A pregnant patient in her second trimester presents with a massive, localized, red, mushroom-like swelling on her interdental papilla that bleeds instantly when touched. Her plaque control is poor. What is this hormone-exacerbated lesion?",
+                "options": [
+                    "Peripheral Ossifying Fibroma",
+                    "Pyogenic Granuloma (Pregnancy Tumor)",
+                    "Gingival Fibromatosis",
+                    "Irritation Fibroma"
+                ],
+                "correct": 1,
+                "rationale": "A Pyogenic Granuloma is an exaggerated capillary/inflammatory response to plaque, fueled by massive spikes in estrogen and progesterone. Despite the name, it is not 'pyogenic' (does not produce pus) and is not a true 'granuloma' (it's mostly blood vessels)."
+            },
+            {
+                "question": "32. In a failed root canal retreatment case, the canal is often heavily contaminated by a highly resistant, Gram-positive facultative anaerobic bacteria that can survive starvation and harsh chemicals (like Calcium Hydroxide). What is this notorious endodontic pathogen?",
+                "options": [
+                    "Streptococcus mutans",
+                    "Porphyromonas gingivalis",
+                    "Enterococcus faecalis",
+                    "Actinomyces israelii"
+                ],
+                "correct": 2,
+                "rationale": "E. faecalis is the absolute bane of endodontists. While normal root canals have a mix of anaerobes, a FAILED root canal is almost always a monoculture of E. faecalis. It forms a massive biofilm and can survive in the dentinal tubules even after the canal is sealed."
+            },
+            {
+                "question": "33. Plaque biofilm undergoes a specific maturation process. In the first 1-2 days, the plaque is primarily composed of aerobic Gram-positive cocci. If left undisturbed for 1-2 weeks, the plaque flora shifts dramatically to become dominated by:",
+                "options": [
+                    "More Gram-positive cocci.",
+                    "Fungal yeast spores.",
+                    "Gram-negative anaerobic rods and motile spirochetes.",
+                    "Strictly aerobic bacilli."
+                ],
+                "correct": 2,
+                "rationale": "As plaque gets thicker, oxygen cannot reach the bottom layers. The environment becomes highly acidic and anaerobic, selecting for highly destructive, Gram-negative, motile anaerobes (like P. gingivalis and Spirochetes) which trigger actual periodontal destruction."
+            },
+            {
+                "question": "34. While performing a root canal on a maxillary canine, the dentist is using Gates Glidden drills. What part of the root canal system are Gates Glidden drills exclusively designed to prepare?",
+                "options": [
+                    "The absolute apical constriction.",
+                    "The coronal third and the orifice of the canal.",
+                    "The accessory lateral canals.",
+                    "The pulp horns."
+                ],
+                "correct": 1,
+                "rationale": "Gates Glidden drills look like little footballs on a long latch-grip shank. They are used purely to open, flare, and move the orifice of the canal in the top 1/3 of the root to achieve straight-line access. Pushing them deep into a canal will instantly cause a lateral perforation."
+            },
+            {
+                "question": "35. Gingival Crevicular Fluid (GCF) is a critical component of the periodontium's defense system. What exactly is GCF, and where does it come from?",
+                "options": [
+                    "It is pure saliva that gets trapped under the gums.",
+                    "It is an inflammatory exudate/transudate derived directly from the blood vessels in the underlying connective tissue, seeping out through the sulcular epithelium.",
+                    "It is produced by the minor salivary glands.",
+                    "It is pus produced by bacteria."
+                ],
+                "correct": 1,
+                "rationale": "GCF is basically filtered blood plasma. It leaks out of the blood vessels, travels through the gums, and flushes into the pocket. It contains antibodies, white blood cells, and enzymes. When the gums are inflamed, the blood vessels dilate, and GCF flow increases massively."
+            },
+            {
+                "question": "36. After an avulsed tooth is replanted, the patient must be monitored. If the tooth was dry for over an hour, the PDL cells die. The body stops recognizing the root as a tooth and starts treating it like a foreign piece of bone, actively dissolving the root and replacing it solidly with alveolar bone. This is called:",
+                "options": [
+                    "Internal resorption",
+                    "Replacement resorption (Ankylosis)",
+                    "Inflammatory root resorption",
+                    "Cemental dysplasia"
+                ],
+                "correct": 1,
+                "rationale": "Replacement resorption occurs when the necrotic PDL is gone. The osteoclasts eat the dentin, and osteoblasts lay down jawbone directly against the root. The tooth fuses perfectly to the bone (ankylosis), loses its mobility entirely, and slowly vanishes over the next 5-10 years."
+            },
+            {
+                "question": "37. You are treating a patient with Necrotizing Ulcerative Gingivitis (NUG), famously known as 'Trench Mouth'. What is the classic, pathognomonic clinical presentation of NUG?",
+                "options": [
+                    "Painless, pale, enlarged gums with no bleeding.",
+                    "Blunted, 'punched-out' cratered interdental papillae covered by a gray pseudomembrane, accompanied by severe pain and extreme fetor oris (bad breath).",
+                    "Gingiva that strips away from the tooth perfectly intact.",
+                    "Massive bone loss with totally healthy looking pink gums."
+                ],
+                "correct": 1,
+                "rationale": "NUG is an acute, agonizing infection caused by stress, smoking, and spirochetes. The tips of the papillae literally die and rot away ('punched-out'), leaving a stinking, gray, necrotic slough. Treatment involves debridement, chlorhexidine, and often Metronidazole."
+            },
+            {
+                "question": "38. You are attempting to negotiate a calcified root canal using a size 10 file. To aid in slipping the file down the tight canal, you use a thick, paste-like lubricant (like RC-Prep). What is the primary active chemical in these endodontic lubricants?",
+                "options": [
+                    "Eugenol",
+                    "EDTA",
+                    "Sodium hypochlorite",
+                    "Calcium hydroxide"
+                ],
+                "correct": 1,
+                "rationale": "RC-Prep and similar lubricants are gels packed with EDTA. The EDTA chemically softens and dissolves the calcified dentin in the tight canal, while the gel base physically lubricates the tiny file so it doesn't snap."
+            },
+            {
+                "question": "39. During a periodontal exam, you notice that tooth #8 has 2 millimeters of visible recession, but the pocket depth is only 1 millimeter. The tooth moves more than 1 millimeter horizontally when pushed, but cannot be depressed vertically. What is its Miller Mobility score?",
+                "options": [
+                    "Class 1",
+                    "Class 2",
+                    "Class 3",
+                    "Class 4"
+                ],
+                "correct": 1,
+                "rationale": "Miller Mobility: Class 1 = slightly more than normal (< 1mm horizontally). Class 2 = greater than 1mm horizontally, but NOT vertically depressible. Class 3 = severe horizontal mobility AND it can be physically pushed down into the socket (vertically depressible)."
+            },
+            {
+                "question": "40. You perform an electric pulp test (EPT) on tooth #9. The patient feels a severe 'zing' at a reading of 12. You test the adjacent tooth #8, and the patient feels nothing at a reading of 80 (the maximum). What does a reading of 80 indicate?",
+                "options": [
+                    "Tooth #8 is hyperemic.",
+                    "Tooth #8 has a necrotic (dead) pulp.",
+                    "Tooth #8 has reversible pulpitis.",
+                    "The EPT machine is broken."
+                ],
+                "correct": 1,
+                "rationale": "An EPT passes an electric current through the tooth to stimulate the A-delta nerve fibers. If you reach the absolute maximum voltage (80) and the patient feels zero sensation, the nerve fibers are physically dead. (Note: EPT only tells you if the nerve is alive or dead; it cannot diagnose reversible vs irreversible pulpitis)."
+            },
+            {
+                "question": "41. A patient requires a crown lengthening procedure on tooth #5 because the cavity extends deep under the gums. The dentist performs an apically positioned flap and removes 2 mm of crestal bone. Why is the removal of bone required during crown lengthening?",
+                "options": [
+                    "To make the tooth look longer.",
+                    "To re-establish the mandatory 2-3 mm of Biologic Width between the future crown margin and the bone crest.",
+                    "To remove infected cementum.",
+                    "To intentionally expose the furcation."
+                ],
+                "correct": 1,
+                "rationale": "If you just cut the gums away to expose the cavity, the gums will grow right back because they must maintain their Biologic Width above the bone. To permanently lower the gums, you MUST physically grind away the bone, forcing the entire attachment apparatus to slide downward."
+            },
+            {
+                "question": "42. The access cavity for a mandibular first molar is typically rhomboid or trapezoidal. Which cusp generally contains the largest, easiest-to-find canal orifice, making it the best starting point for orientation?",
+                "options": [
+                    "Mesiolingual cusp",
+                    "Distal cusp",
+                    "Mesiobuccal cusp",
+                    "Distobuccal cusp"
+                ],
+                "correct": 1,
+                "rationale": "The Distal canal is usually a single, massive, kidney-bean-shaped canal located exactly in the center of the distal half of the tooth. It is the easiest to find. The mesial root usually contains two tiny, tight canals (MB and ML) tucked tightly into the mesial corners."
+            },
+            {
+                "question": "43. In periodontal disease, massive alveolar bone destruction is driven by the patient's own immune system overreacting to the bacteria. Which specific host-derived cytokine is considered the most potent stimulator of osteoclast activation and bone resorption?",
+                "options": [
+                    "Interleukin-1 (IL-1)",
+                    "Histamine",
+                    "IgG antibodies",
+                    "Amylase"
+                ],
+                "correct": 0,
+                "rationale": "Interleukin-1 (IL-1) and Tumor Necrosis Factor-alpha (TNF-a) are pro-inflammatory cytokines secreted by macrophages. They are the 'nuclear launch codes' of the immune system, wildly stimulating osteoclasts to dissolve the jawbone in an attempt to distance the bone from the infected tooth."
+            },
+            {
+                "question": "44. During a root canal, you must completely dry the canals before packing them with sealer and gutta-percha. What is the universally accepted standard method for drying a root canal?",
+                "options": [
+                    "Blowing high-pressure air from the 3-way syringe directly down the canal.",
+                    "Leaving the tooth open to the air for 15 minutes.",
+                    "Using measured, sterile paper points.",
+                    "Flushing it with alcohol and lighting it on fire."
+                ],
+                "correct": 2,
+                "rationale": "You must use sterile, highly absorbent paper points that match the exact size of your final file. You NEVER blow compressed air down a root canal, as it will instantly force air and debris past the apex, causing a massive, painful air emphysema in the patient's face and neck."
+            },
+            {
+                "question": "45. After periodontal scaling and root planing (SRP), the gums heal. How does the gingival tissue physically reattach to the freshly planed, clean root surface?",
+                "options": [
+                    "By forming a new periodontal ligament.",
+                    "By growing new cementum.",
+                    "Via a Long Junctional Epithelium.",
+                    "It never attaches; a gap remains permanently."
+                ],
+                "correct": 2,
+                "rationale": "Unless you perform Guided Tissue Regeneration with a membrane, standard SRP does NOT regenerate new bone or a new PDL. The fast-growing epithelial cells drop down and stick to the clean root via hemidesmosomes, forming a 'Long Junctional Epithelium'. The pocket shrinks, but true regeneration did not occur."
+            },
+            {
+                "question": "46. You are performing a root canal on a tooth with a severely curved root. You are using stainless steel hand files. To prevent 'zipping' or tearing open the apical foramen, what specific technique must you apply to the file before inserting it?",
+                "options": [
+                    "Heat it with a torch to make it flexible.",
+                    "Pre-curve the apical 3-4 mm of the file to match the curvature seen on the radiograph.",
+                    "Spin it at 5,000 RPM.",
+                    "Dip it in composite resin."
+                ],
+                "correct": 1,
+                "rationale": "Stainless steel wants to be straight. If you push a straight file into a curved canal, the tip will dig into the outer wall, drill a hole right through the side of the root, and turn the tiny apical foramen into a massive teardrop-shaped zipper. You MUST manually put a smooth bend in the tip of the file first."
+            },
+            {
+                "question": "47. Which specific class of drugs is frequently prescribed as a sub-antimicrobial dose (e.g., Periostat 20mg) in periodontics, not to kill bacteria, but strictly to inhibit the destructive collagenase (MMP) enzymes produced by the host immune system?",
+                "options": [
+                    "Penicillins",
+                    "Fluoroquinolones",
+                    "Tetracyclines (specifically Doxycycline)",
+                    "Macrolides"
+                ],
+                "correct": 2,
+                "rationale": "Doxycycline is incredibly unique. At a tiny 20mg dose, it doesn't kill any bacteria (so it doesn't cause resistance). Instead, it acts chemically to block Matrix Metalloproteinases (collagenases), stopping the immune system from melting its own periodontal collagen."
+            },
+            {
+                "question": "48. During apical surgery (apicoectomy), the surgeon cuts off the bottom 3 mm of the root. Why is it absolutely mandatory to resect specifically the apical 3 mm?",
+                "options": [
+                    "To make the tooth easier to extract later.",
+                    "Because the vast majority of apical deltas, microscopic accessory canals, and lateral branches that harbor trapped bacteria are located in the apical 3 mm.",
+                    "To avoid the maxillary sinus.",
+                    "Because the bur is exactly 3 mm wide."
+                ],
+                "correct": 1,
+                "rationale": "The bottom of the root is not a single tube; it's a massive, tangled web of tiny exits (the apical delta). It is impossible to clean these with a file. By chopping off the bottom 3mm, you eliminate 98% of these hidden bacterial caves, allowing you to place a clean retrograde filling."
+            },
+            {
+                "question": "49. A patient is referred for severe gingival enlargement. They are currently taking Nifedipine. What specific class of cardiovascular medication is Nifedipine, which is famous for causing this side effect?",
+                "options": [
+                    "Beta-blocker",
+                    "ACE inhibitor",
+                    "Calcium Channel Blocker (CCB)",
+                    "Diuretic"
+                ],
+                "correct": 2,
+                "rationale": "Nifedipine, Amlodipine, and Diltiazem are Calcium Channel Blockers. They block calcium influx into smooth muscle, relaxing blood vessels. However, they alter fibroblast metabolism in the gums, causing massive, fibrotic overgrowth that frequently requires surgical removal (gingivectomy)."
+            },
+            {
+                "question": "50. When performing cold testing on a tooth using Endo-Ice (dichlorodifluoromethane), where is the absolute most accurate and ideal location on the tooth to place the frozen cotton pellet?",
+                "options": [
+                    "The incisal edge.",
+                    "The cervical third of the facial surface, near the gingival margin.",
+                    "The middle third of the facial surface.",
+                    "The lingual pit."
+                ],
+                "correct": 2,
+                "rationale": "The middle third of the facial crown is the thickest, most uniform area of enamel directly over the pulp horns, providing the most reliable, reproducible response. The cervical third is too thin and close to the gums (causing false positives), and the incisal edge is too thick/calcified."
+            }
         ];
     </script>
 
