@@ -5,66 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokki's Board Prep</title>
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Instant Dark Mode Check (Prevents white flash on load) -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 <body>
-    <div class="quiz-container">
-        <div class="home-screen">
-            <h1>Tokki's Board Prep 🦷</h1>
-            <p>Select a mock exam block or tool to begin reviewing:</p>
-            
-            <div class="tools-nav">
-                <a href="search.html" class="tool-btn">🔍 Search Questions</a>
-                <a href="glossary.html" class="tool-btn">📖 Dental Glossary</a>
-            </div>
 
-            <div class="day-section">
-                <h2>Day 1: Anatomy, Pathology & Restorative</h2>
-                <div class="block-links">
-                    <a href="day1/day1-block1.html" class="block-btn">
-                        <span>Block 1: Anatomy & Physiology</span>
-                    </a>
-                    <a href="day1/day1-block2.html" class="block-btn">
-                        <span>Block 2: Pathology & Microbiology</span>
-                    </a>
-                    <a href="day1/day1-block3.html" class="block-btn">
-                        <span>Block 3: Restorative & Public Health</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="day-section">
-                <h2>Day 2: Prosthodontics, Surgery & Pharmacology</h2>
-                <div class="block-links">
-                    <a href="day2/day2-block1.html" class="block-btn">
-                        <span>Block 1: Prosthodontics & Dental Materials</span>
-                    </a>
-                    <a href="day2/day2-block2.html" class="block-btn">
-                        <span>Block 2: Roentgenology & Oral Surgery</span>
-                    </a>
-                    <a href="day2/day2-block3.html" class="block-btn">
-                        <span>Block 3: Anesthesiology & Pharmacology</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="day-section">
-                <h2>Day 3: Specialized Care & Ethics</h2>
-                <div class="block-links">
-                    <a href="day3/day3-block1.html" class="block-btn">
-                        <span>Block 1: Pediatric Dentistry & Orthodontics</span>
-                    </a>
-                    <a href="day3/day3-block2.html" class="block-btn">
-                        <span>Block 2: Jurisprudence & Practice Mgt</span>
-                    </a>
-                    <a href="day3/day3-block3.html" class="block-btn">
-                        <span>Block 3: Periodontics & Endodontics</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="app-footer">made by xiao/angelo</div>
-
+    <div class="main-container">
+        
+        <!-- Header & Dark Mode Button -->
+        <div class="header-row">
+            <h1>Tokki's Board Prep</h1>
+            <button id="darkModeToggle" class="dark-mode-toggle">🌙 Dark Mode</button>
         </div>
+
+        <!-- Section 1: Study Tools -->
+        <h2 class="section-title">Power Tools</h2>
+        <div class="menu-grid">
+            <a href="search.html" class="menu-btn btn-tools">🔍 Search Questions</a>
+            <a href="glossary.html" class="menu-btn btn-tools">📚 Board Glossary</a>
+            <a href="flashcards.html" class="menu-btn btn-tools">🃏 Flashcards</a>
+        </div>
+
+        <!-- Section 2: The 900 Master Questions -->
+        <h2 class="section-title">Master Question Bank</h2>
+        <div class="menu-grid">
+            <a href="day1-block1.html" class="menu-btn">Day 1: Block 1</a>
+            <a href="day1-block2.html" class="menu-btn">Day 1: Block 2</a>
+            <a href="day1-block3.html" class="menu-btn">Day 1: Block 3</a>
+            
+            <a href="day2-block1.html" class="menu-btn">Day 2: Block 1</a>
+            <a href="day2-block2.html" class="menu-btn">Day 2: Block 2</a>
+            <a href="day2-block3.html" class="menu-btn">Day 2: Block 3</a>
+
+            <a href="day3-block1.html" class="menu-btn">Day 3: Block 1</a>
+            <a href="day3-block2.html" class="menu-btn">Day 3: Block 2</a>
+            <a href="day3-block3.html" class="menu-btn">Day 3: Block 3</a>
+        </div>
+
+        <!-- Section 3: DMSF Mock Exams (The New Section!) -->
+        <h2 class="section-title">DMSF Mock Board Exams</h2>
+        <div class="menu-grid">
+            <a href="dmsf-mocks/aug17-2026.html" class="menu-btn btn-dmsf">⭐ Aug 17 Mock Exam</a>
+            <!-- We will add more buttons here as she takes more tests! -->
+        </div>
+
+        <!-- Footer -->
+        <div class="app-footer">
+            built for Leane by xiao/angelo
+        </div>
+
     </div>
+
+    <!-- Dark Mode JavaScript Logic -->
+    <script>
+        const toggleBtn = document.getElementById('darkModeToggle');
+        
+        // Update button text if it loaded in dark mode
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            toggleBtn.innerText = '☀️ Light Mode';
+        }
+
+        // Toggle functionality when clicked
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                toggleBtn.innerText = '🌙 Dark Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                toggleBtn.innerText = '☀️ Light Mode';
+            }
+        });
+    </script>
 </body>
 </html>
