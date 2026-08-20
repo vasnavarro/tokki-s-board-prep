@@ -13,8 +13,9 @@
         
         <!-- INITIAL MODE SELECTION SCREEN -->
         <div class="home-screen" id="mode-selection">
-            <h1>Day 3: Block 2</h1>
-            <p>Dental Jurisprudence, Ethics, and Practice Management</p>
+            <h1>Day 3: Block 2</h1> <!-- CHANGE THIS FOR EACH FILE -->
+            <p>Dental Jurisprudence, Ethics, and Practice Management</p> <!-- CHANGE THIS FOR EACH FILE -->
+            
             <div class="day-buttons">
                 <button class="day-btn" onclick="startQuiz('study')">
                     <strong>Study Mode</strong><br>
@@ -24,7 +25,11 @@
                     <strong>Mock Board Mode</strong><br>
                     <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-light);">Strict 2-Hour Timer • Explanations hidden until the end</span>
                 </button>
-                <a href="../index.html" class="tool-btn" style="margin-top: 15px;">← Back to Main Menu</a>
+            </div>
+            
+            <!-- Centered, beautifully styled Back Button -->
+            <div style="text-align: center; margin-top: 10px;">
+                <a href="../index.html" class="nav-btn" style="background: var(--text-light); text-decoration: none; display: inline-block;">← Back to Main Menu</a>
             </div>
         </div>
 
@@ -55,16 +60,18 @@
             <h2>Block Complete!</h2>
             <p>You scored <strong id="score">0</strong> out of <span id="total">0</span>!</p>
             <div id="results-message" class="results-details"></div>
-            <a href="../index.html" class="day-btn" style="background-color: var(--primary); color: white; border: none; text-decoration: none;">Return to Main Menu</a>
+            <a href="../index.html" class="nav-btn" style="text-decoration: none; display: inline-block; margin-top: 20px;">Return to Main Menu</a>
         </div>
-        
-        <!-- App Footer -->
-        <div class="app-footer">made by xiao/angelo</div>
+
+        <!-- THE OFFICIAL DEDICATION FOOTER -->
+        <div class="app-footer">
+            Built for Tokki/Leane by Xiao/Angelo
+        </div>
 
     </div>
 
-    <!-- 1. PASTE YOUR 100 QUESTIONS HERE -->
     <script>
+        // Your massive const quizData = [ ... ] array stays perfectly safe right here!
         const quizData = [
             {
                 "question": "1. The practice of dentistry in the Philippines is officially governed and regulated by the Philippine Dental Act of 2007. What is the Republic Act number of this law?",
