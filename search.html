@@ -40,6 +40,7 @@
             border-radius: 10px;
             margin-bottom: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
         }
         .search-result-answer {
             background: var(--correct-light);
@@ -9991,57 +9992,45 @@
     
         ];
 
-        function filterQuestions() {
-            const query = document.getElementById('questionSearch').value.toLowerCase();
-            const resultsDiv = document.getElementById('search-results');
-            
-            // Clear results if the search bar is empty
-            if (query.trim() === '') {
-                resultsDiv.innerHTML = '';
-                return;
-            }
+        function searchQuestions() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
 
-            // Search through the question, the options, and the rationale
+            if (query === '') return;
+
             const filtered = globalQuestionBank.filter(item => {
-                const searchString = (item.question + " " + item.options.join(" ") + " " + item.rationale).toLowerCase();
-                return searchString.includes(query);
+                const qText = item.question ? item.question.toLowerCase() : '';
+                const ratText = item.rationale ? item.rationale.toLowerCase() : '';
+                return qText.includes(query) || ratText.includes(query);
             });
 
-            resultsDiv.innerHTML = '';
-            
             if (filtered.length === 0) {
-                resultsDiv.innerHTML = '<p style="color: var(--text-light);">No matching questions found.</p>';
+                resultsContainer.innerHTML = '<p style="color: var(--text-light); text-align: center;">No matching questions found.</p>';
                 return;
             }
 
-            // Limit results to 20 so the browser doesn't freeze if she types "the"
-            const displayLimit = Math.min(filtered.length, 20);
-
-            for (let i = 0; i < displayLimit; i++) {
-                const q = filtered[i];
+            filtered.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'search-result-card';
                 
-                // Get the text of the correct answer
-                const correctAnswerText = q.options[q.correct];
+                let optionsHtml = '<ul style="margin-left: 20px; margin-bottom: 10px; color: var(--text-color);">';
+                if (item.options) {
+                    item.options.forEach((opt, idx) => {
+                        let style = idx === item.correct ? 'font-weight: bold; color: var(--correct);' : '';
+                        optionsHtml += `<li style="${style}">${opt}</li>`;
+                    });
+                }
+                optionsHtml += '</ul>';
 
                 card.innerHTML = `
-                    <div class="search-result-question">${q.question}</div>
-                    <div class="search-result-answer">✓ Answer: ${correctAnswerText}</div>
-                    <div class="rationale-box" style="display:block; margin-top: 0;">
-                        <strong>Explanation:</strong> ${q.rationale}
-                    </div>
+                    <div style="font-weight: 600; margin-bottom: 10px; color: var(--text-color);">${item.question}</div>
+                    ${optionsHtml}
+                    <div class="search-result-answer">✓ Correct Answer: ${item.options && item.options[item.correct] ? item.options[item.correct] : ''}</div>
+                    <div style="color: var(--text-color); font-size: 0.95rem; line-height: 1.5;"><strong>Explanation:</strong> ${item.rationale}</div>
                 `;
-                resultsDiv.appendChild(card);
-            }
-            
-            if (filtered.length > 20) {
-                const note = document.createElement('p');
-                note.style.color = 'var(--text-light)';
-                note.style.fontSize = '0.9rem';
-                note.innerText = `Showing 20 of ${filtered.length} results. Keep typing to narrow it down!`;
-                resultsDiv.appendChild(note);
-            }
+                resultsContainer.appendChild(card);
+            });
         }
     </script>
 </body>
