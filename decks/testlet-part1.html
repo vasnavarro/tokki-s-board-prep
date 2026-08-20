@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokki's Board Prep - Testlet Part I</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
+    <style>
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            height: 400px;
+            margin: 30px 0;
+            cursor: pointer;
+        }
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flashcard-container.is-flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-light);
+            background: var(--container-bg);
+            overflow-y: auto;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+            border-color: var(--primary);
+        }
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+        .card-content {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            line-height: 1.5;
+            text-align: center;
+        }
+        .card-rationale {
+            font-size: 0.95rem;
+            font-weight: normal;
+            margin-top: 15px;
+            color: var(--text-light);
+            text-align: left;
+            border-top: 1px solid var(--primary-light);
+            padding-top: 15px;
+        }
+        .deck-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        
+        <div class="quiz-header">
+            <div>
+                <h2>Testlet Part I 🗂️</h2>
+                <p id="cardCounter" style="color: var(--text-light); font-size: 0.9rem;">Card 1 of X</p>
+            </div>
+            <a href="../flashcards.html" class="back-btn">← Back to Decks</a>
+        </div>
+
+        <p style="text-align: center; color: var(--text-light); font-size: 0.85rem;">Click the card to flip it over.</p>
+
+        <!-- THE 3D FLASHCARD -->
+        <div class="flashcard-container" id="flashcard" onclick="flipCard()">
+            <div class="flashcard-inner">
+                <!-- FRONT OF CARD -->
+                <div class="flashcard-front">
+                    <div class="card-category" id="cardCategory">Category</div>
+                    <div class="card-content" id="cardFrontText">Front text goes here...</div>
+                </div>
+                <!-- BACK OF CARD -->
+                <div class="flashcard-back">
+                    <div class="card-content" id="cardBackAnswer" style="color: var(--primary); margin-bottom: 10px;">Answer goes here...</div>
+                    <div class="card-rationale" id="cardBackRationale">Rationale goes here...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="deck-controls">
+            <button class="nav-btn" onclick="prevCard()" id="prevBtn" disabled>← Previous</button>
+            <button class="nav-btn" onclick="nextCard()" id="nextBtn">Next →</button>
+        </div>
+
+        <div class="app-footer">
+            Built for Tokki/Leane by Xiao/Angelo
+        </div>
+
+    </div>
+
+    <script>
+        // THE TESTLET PART I DATA (Cases 1, 2, and 3)
+        const deckData = [
+            // --- CASE SCENARIO 1 ---
+            {
+                category: "Testlet 1: Case 1",
+                front: "The patient (45 YRS, Female) presents with localized swelling around tooth #2. There is an abscess, and a large carious lesion that extends to the pulp. Her medical history indicates Hypothyroidism and she takes Synthroid.<br><br>Which of the following is the most common cause of this patient's autoimmune disease?<br><br>A. Graves' disease<br>B. Thyroid adenoma<br>C. Pituitary adenoma<br>D. Hashimoto's thyroiditis",
+                answer: "D. Hashimoto's thyroiditis",
+                rationale: "Hashimoto's thyroiditis is the most common cause of hypothyroidism in the United States. It is an autoimmune disorder where antibodies attack the thyroid gland."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "Which of the following is the primary etiologic factor of dental caries?<br><br>A. Lactobacillus sp.<br>B. P. gingivalis<br>C. Actinomyces sp.<br>D. S. mutans<br>E. T. denticola",
+                answer: "D. S. mutans",
+                rationale: "Streptococcus mutans is considered the primary bacterial species responsible for the initiation of dental caries."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "Each of the following are symptoms of hypothyroidism EXCEPT one. Which one is the EXCEPTION?<br><br>A. Cold intolerance<br>B. Weight gain<br>C. Mental slowing<br>D. Dry skin<br>E. Restlessness",
+                answer: "E. Restlessness",
+                rationale: "Restlessness (along with heat intolerance, weight loss, and tachycardia) is a symptom of HYPERthyroidism, not hypothyroidism."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "In primary hypothyroidism, the pituitary does not make enough TSH. Hypothyroidism affects males more than females.<br><br>A. Both statements are true<br>B. Both statements are false<br>C. The first statement is true, the second is false<br>D. The first statement is false, the second is true",
+                answer: "B. Both statements are false",
+                rationale: "In PRIMARY hypothyroidism, the thyroid gland itself fails, leading the pituitary to pump out HIGH levels of TSH to try and stimulate it. Hypothyroidism affects females significantly more often than males."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "From the following list select the THREE symptoms associated with this patient's autoimmune disorder (Hypothyroidism).<br><br>A. Weight loss<br>B. Dry skin<br>C. Diarrhea<br>D. Tearing<br>E. Puffiness of face<br>F. Hair loss",
+                answer: "B. Dry skin, E. Puffiness of face, F. Hair loss",
+                rationale: "Hypothyroidism slows down the body's metabolism, resulting in dry skin, myxedema (puffiness of the face), and hair loss."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "The abscess around tooth #2 may result in which of the following life-threatening situations?<br><br>A. Hyperalgesia<br>B. Hypoalgesia<br>C. Ludwig's angina<br>D. Non-vital pulp<br>E. Referred pain",
+                answer: "C. Ludwig's angina",
+                rationale: "An untreated dental abscess in the posterior maxilla or mandible can spread through fascial spaces, potentially leading to Ludwig's Angina or cavernous sinus thrombosis."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "Which of the following nerve fibers is responsible for the patient's sharp pain around tooth #2?<br><br>A. A alpha<br>B. A beta<br>C. A delta<br>D. B<br>E. C",
+                answer: "C. A delta",
+                rationale: "A-delta fibers are myelinated and responsible for transmitting sharp, fast, localized pain. C-fibers are unmyelinated and transmit dull, aching, poorly localized pain."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "If the patient elects root canal therapy for tooth #2, which of the following best describes the MOST likely presentation of the pulp canals?<br><br>A. Three canals, one in each root<br>B. Four canals, two in the mesial-buccal, one in the distal-buccal, one in the palatal<br>C. Four canals, one in the mesial-buccal, two in the distal-buccal, one in the palatal",
+                answer: "B. Four canals, two in the mesial-buccal, one in the distal-buccal, one in the palatal",
+                rationale: "Maxillary first and second molars frequently have a fourth canal (MB2) located within the mesiobuccal root."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "Which of the following is an acute inflammatory lesion consisting of a localized collection of pus surrounded by a fibrous wall?<br><br>A. Abscess<br>B. Granuloma<br>C. Cyst<br>D. Cellulitis",
+                answer: "A. Abscess",
+                rationale: "An abscess is defined as a localized collection of pus surrounded by inflamed tissue."
+            },
+            {
+                category: "Testlet 1: Case 1",
+                front: "If the patient elects to have tooth #2 extracted, sectioning may be required. The practitioner should be aware of which of the following furcations?<br><br>A. One<br>B. Two - mesial and distal<br>C. Two - buccal and lingual<br>D. Three - mesial, distal, buccal",
+                answer: "D. Three - mesial, distal, buccal",
+                rationale: "Maxillary molars possess three roots (MB, DB, and Palatal), creating three furcation entrances: Mesial, Distal, and Buccal."
+            },
+
+            // --- CASE SCENARIO 2 ---
+            {
+                category: "Testlet 1: Case 2",
+                front: "The patient (19 YRS, Male) presents with pain around tooth #18. Oral exam shows swelling and erythema around partially erupted #17. He has a history of Asthma and uses an Albuterol inhaler.<br><br>He was hospitalized 3 years ago due to a severe asthma attack. This can lead to death from which of the following?<br><br>A. Respiratory alkalosis<br>B. Metabolic alkalosis<br>C. Respiratory acidosis<br>D. Metabolic acidosis",
+                answer: "C. Respiratory acidosis",
+                rationale: "A severe asthma attack restricts airflow, preventing the exhalation of CO2. The buildup of CO2 in the blood lowers the pH, leading to lethal respiratory acidosis."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Before extracting tooth #17, surgery is done to expose the entire crown. Which of the following should the dentist expect to see?<br><br>A. The buccal-lingual and mesial-distal dimensions of the crown are the same<br>B. The crown of tooth #17 is smaller than the crown of tooth #16<br>C. The mesial-distal dimension of the crown is greater than the buccal-lingual dimension",
+                answer: "C. The mesial-distal dimension of the crown is greater than the buccal-lingual dimension",
+                rationale: "Mandibular molars are generally wider mesio-distally than bucco-lingually."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Formoterol Fumarate is a beta-adrenergic agonist used to maintain and treat asthma. Select the THREE items associated with beta-adrenergic agonists.<br><br>A. Constricts bronchial smooth muscle<br>B. Relaxes bronchial smooth muscle<br>C. Stimulates the enzyme adenylate cyclase<br>D. Induces negative inotropic output of cardiac muscle<br>E. Induces positive inotropic output of cardiac muscle",
+                answer: "B. Relaxes bronchial smooth muscle, C. Stimulates the enzyme adenylate cyclase, E. Induces positive inotropic output of cardiac muscle",
+                rationale: "Beta-agonists (like albuterol) bind to Beta-2 receptors, activating adenylate cyclase to relax bronchial muscles (bronchodilation). They can also stimulate Beta-1 receptors in the heart, increasing heart rate (positive inotropic/chronotropic effects)."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Nitrous oxide is safe to administer to people with asthma, especially if their asthma is triggered by anxiety. Asthmatics taking chronic steroids require corticosteroid augmentation.<br><br>A. Both statements are true<br>B. Both statements are false<br>C. The first statement is true, the second is false<br>D. The first statement is false, the second is true",
+                answer: "A. Both statements are true",
+                rationale: "Nitrous oxide is safe and recommended for anxious asthmatics. Patients on chronic systemic steroids may experience adrenal suppression and require a 'stress dose' (augmentation) prior to stressful dental procedures."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "If tooth #17 is infected, then the infection will spread to each of the following fascial spaces EXCEPT one. Which one is the EXCEPTION?<br><br>A. Temporal<br>B. Parotid<br>C. Masseteric<br>D. Buccopharyngeal",
+                answer: "B. Parotid",
+                rationale: "Infections from mandibular third molars typically spread into the pterygomandibular, submandibular, masseteric, or temporal spaces, but rarely directly into the parotid space."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "When sectioning tooth #17 to separate the roots and simplify extraction, which of the following best describes how the cut should be made?<br><br>A. Mesio-distally through the crown at the level of the CEJ<br>B. Mesio-distally through the crown and furcation<br>C. Bucco-lingually through the crown and furcation",
+                answer: "C. Bucco-lingually through the crown and furcation",
+                rationale: "Mandibular molars have mesial and distal roots. To separate them, the tooth must be sectioned bucco-lingually right through the center of the crown down into the furcation."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Initially, lymphatic fluid from the area of infected tooth #17 will drain to which of the following nodes?<br><br>A. Submental<br>B. Submandibular<br>C. Superficial cervical<br>D. Buccal<br>E. Deep cervical",
+                answer: "E. Deep cervical",
+                rationale: "The mandibular third molars drain directly into the deep cervical lymph nodes, bypassing the submandibular nodes that the other posterior teeth use."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Which of the following immunoglobulins is most active in this patient's respiratory difficulties?<br><br>A. IgD<br>B. IgM<br>C. IgG<br>D. IgE<br>E. IgA",
+                answer: "D. IgE",
+                rationale: "IgE is the primary antibody responsible for Type I hypersensitivity (allergic) reactions, including asthma attacks."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Treatment of this patient's respiratory symptoms includes each of the following EXCEPT one. Which one is the EXCEPTION?<br><br>A. Beta-2 agonist inhalers<br>B. Steroids<br>C. Mast cell stabilizers<br>D. Parasympathetic stimulation",
+                answer: "D. Parasympathetic stimulation",
+                rationale: "Parasympathetic stimulation causes bronchoconstriction and increases mucous production, which would severely worsen an asthma attack."
+            },
+            {
+                category: "Testlet 1: Case 2",
+                front: "Common manifestations of an asthma attack include each of the following EXCEPT one. Which one is the EXCEPTION?<br><br>A. Decreased surfactant<br>B. Airway edema<br>C. Increased mucous secretion<br>D. Increased airway resistance<br>E. Bronchospasm",
+                answer: "A. Decreased surfactant",
+                rationale: "Surfactant production is an alveolar function and is not primarily affected during an acute asthma attack, which instead features airway edema, mucous, and bronchospasm."
+            },
+
+            // --- CASE SCENARIO 3 ---
+            {
+                category: "Testlet 1: Case 3",
+                front: "The patient (28 YRS, Male) presents with bilateral TMJ pain upon closing. Tooth #30 has a fractured DL cusp. He has Hypertension and takes Lisinopril/HCTZ.<br><br>Untreated hypertension may result in each of the following EXCEPT one. Which one is the EXCEPTION?<br><br>A. Cardiac failure<br>B. Liver failure<br>C. Transient ischemic attack<br>D. Left ventricular hypertrophy<br>E. Renal failure",
+                answer: "B. Liver failure",
+                rationale: "Hypertension directly damages the heart (hypertrophy/failure), blood vessels (strokes/TIA), and the kidneys (renal failure), but is not a primary cause of liver failure."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "From the following list select THREE items associated with hypertension.<br><br>A. Decreased smooth muscle cell growth<br>B. Smoking<br>C. Decreased total cross-sectional area of capillaries and arteries<br>D. Obesity<br>E. Physical activity<br>F. Increased arteriolar and capillary density",
+                answer: "B. Smoking, C. Decreased total cross-sectional area of capillaries and arteries, D. Obesity",
+                rationale: "Hypertension is heavily correlated with smoking, obesity, and an increase in peripheral vascular resistance (decreased cross-sectional area)."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "The patient's blood pressure is 155/90. This is classified as:<br><br>A. Normal<br>B. Prehypertension<br>C. Hypertension, Stage 1<br>D. Hypertension Stage 2",
+                answer: "C. Hypertension, Stage 1",
+                rationale: "Stage 1 Hypertension is defined as a systolic pressure of 140-159 mmHg or a diastolic pressure of 90-99 mmHg."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "Which region of the articular surface of the patient's TMJ is unlikely to be present?<br><br>A. Fibrocartilaginous layer<br>B. Fibrous articular layer<br>C. Proliferative zone<br>D. Subarticular zone<br>E. Calcified cartilage",
+                answer: "A. Fibrocartilaginous layer",
+                rationale: "The TMJ is unique because its articular surfaces are lined with dense, avascular, fibrous connective tissue, not hyaline or fibrocartilage."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "The occlusal shape of a mandibular first molar can be best described as:<br><br>A. Rhomboidal<br>B. Circular<br>C. Square<br>D. Trapezoidal<br>E. Rectangular",
+                answer: "D. Trapezoidal",
+                rationale: "When viewed from the occlusal aspect, the mandibular first molar exhibits a roughly trapezoidal or pentagonal outline, being much wider mesially than distally."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "The protrusive pathway of the mandibular cusps on the maxillary posterior teeth is toward the:<br><br>A. Mesial<br>B. Distal<br>C. Facial<br>D. Lingual",
+                answer: "B. Distal",
+                rationale: "When the mandible slides forward (protrusion), the mandibular posterior teeth slide anteriorly, meaning their cusps track DISTALLY across the maxillary teeth."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "If the patient delays treatment of tooth #30, which of the following is the most likely consequence?<br><br>A. Supraeruption of tooth #3<br>B. Loss of canine protected occlusion<br>C. Loss of vertical dimension<br>D. Mesial drift of tooth #31",
+                answer: "A. Supraeruption of tooth #3",
+                rationale: "If tooth #30 (mandibular right first molar) is severely damaged or lost, the opposing tooth #3 (maxillary right first molar) will naturally supra-erupt downwards seeking contact."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "The temporomandibular joint can be classified as:<br><br>A. Synarthrosis<br>B. Amphiarthrosis<br>C. Fibrous<br>D. Cartilaginous<br>E. Synovial",
+                answer: "E. Synovial",
+                rationale: "The TMJ is a ginglymoarthrodial synovial joint, meaning it has a synovial membrane that secretes fluid to lubricate the joint space."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "The clicking noise the patient experiences is due to the condyle moving anteriorly past the disc. This noise can also be heard with lateral excursion to the contralateral side.<br><br>A. Both statements are true<br>B. Both statements are false<br>C. The first statement is true, the second is false<br>D. The first statement is false, the second is true",
+                answer: "A. Both statements are true",
+                rationale: "TMJ clicking is almost always an internal derangement where the disc is displaced anteriorly. The click happens when the condyle 'pops' back onto the disc during opening or contralateral lateral excursion."
+            },
+            {
+                category: "Testlet 1: Case 3",
+                front: "During your examination, you notice a vertical root fracture on #30. It is determined nonrestorable, and is extracted. Which of the following root morphologies would you expect to see?<br><br>A. The roots are narrowly separated<br>B. The distal root is broadest bucco-lingually<br>C. Only the mesial root exhibits a concavity<br>D. The root trunk is shorter than the mandibular second molar",
+                answer: "D. The root trunk is shorter than the mandibular second molar",
+                rationale: "The mandibular first molar has a very short root trunk compared to the second molar, meaning the furcation is much closer to the CEJ."
+            }
+        ];
+
+        let currentIndex = 0;
+        const flashcard = document.getElementById('flashcard');
+
+        function loadCard(index) {
+            flashcard.classList.remove('is-flipped');
+            
+            setTimeout(() => {
+                document.getElementById('cardCounter').innerText = `Card ${index + 1} of ${deckData.length}`;
+                document.getElementById('cardCategory').innerText = deckData[index].category;
+                document.getElementById('cardFrontText').innerHTML = deckData[index].front;
+                document.getElementById('cardBackAnswer').innerHTML = deckData[index].answer;
+                document.getElementById('cardBackRationale').innerHTML = `<strong>Explanation:</strong> ${deckData[index].rationale}`;
+
+                document.getElementById('prevBtn').disabled = index === 0;
+                document.getElementById('nextBtn').disabled = index === deckData.length - 1;
+            }, 150); 
+        }
+
+        function flipCard() {
+            flashcard.classList.toggle('is-flipped');
+        }
+
+        function nextCard() {
+            if (currentIndex < deckData.length - 1) {
+                currentIndex++;
+                loadCard(currentIndex);
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadCard(currentIndex);
+            }
+        }
+
+        // Load the first card on startup
+        loadCard(currentIndex);
+    </script>
+</body>
+</html>
