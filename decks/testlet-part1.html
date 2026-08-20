@@ -38,18 +38,22 @@
             backface-visibility: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 30px 20px; /* Slightly adjusted padding for mobile screens */
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             border: 3px solid var(--primary-light);
             background: var(--container-bg);
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* 📱 Magic fix for smooth iOS mobile scrolling */
+        }
+        .flashcard-front {
+            justify-content: center; /* Keeps the short front text perfectly centered */
         }
         .flashcard-back {
             transform: rotateY(180deg);
             border-color: var(--primary);
+            justify-content: flex-start; /* 📱 Stops long text from being pushed out of bounds at the top */
         }
         .card-category {
             position: absolute;
