@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokki's Board Prep - Radiology Deck</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
+    <style>
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            height: 400px;
+            margin: 30px 0;
+            cursor: pointer;
+        }
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flashcard-container.is-flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-light);
+            background: var(--container-bg);
+            overflow-y: auto;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+            border-color: var(--primary);
+        }
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+        .card-content {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            line-height: 1.5;
+            text-align: center;
+        }
+        .card-rationale {
+            font-size: 0.95rem;
+            font-weight: normal;
+            margin-top: 15px;
+            color: var(--text-light);
+            text-align: left;
+            border-top: 1px solid var(--primary-light);
+            padding-top: 15px;
+        }
+        .deck-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        
+        <div class="quiz-header">
+            <div>
+                <h2>Radiology Deck ☢️</h2>
+                <p id="cardCounter" style="color: var(--text-light); font-size: 0.9rem;">Card 1 of X</p>
+            </div>
+            <a href="../flashcards.html" class="back-btn">← Back to Decks</a>
+        </div>
+
+        <p style="text-align: center; color: var(--text-light); font-size: 0.85rem;">Click the card to flip it over.</p>
+
+        <!-- THE 3D FLASHCARD -->
+        <div class="flashcard-container" id="flashcard" onclick="flipCard()">
+            <div class="flashcard-inner">
+                <!-- FRONT OF CARD -->
+                <div class="flashcard-front">
+                    <div class="card-category" id="cardCategory">Category</div>
+                    <div class="card-content" id="cardFrontText">Front text goes here...</div>
+                </div>
+                <!-- BACK OF CARD -->
+                <div class="flashcard-back">
+                    <div class="card-content" id="cardBackAnswer" style="color: var(--primary); margin-bottom: 10px;">Answer goes here...</div>
+                    <div class="card-rationale" id="cardBackRationale">Rationale goes here...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="deck-controls">
+            <button class="nav-btn" onclick="prevCard()" id="prevBtn" disabled>← Previous</button>
+            <button class="nav-btn" onclick="nextCard()" id="nextBtn">Next →</button>
+        </div>
+
+        <div class="app-footer">
+            Built for Tokki/Leane by Xiao/Angelo
+        </div>
+
+    </div>
+
+    <script>
+        // RADIOLOGY DECK DATA
+        const deckData = [
+            {
+                category: "Image Characteristics",
+                front: "The area from which x-rays emanate is called the:<br><br>• Target<br>• Focal spot<br>• Intensifying screen<br>• Cone",
+                answer: "• Focal spot",
+                rationale: "The focal spot is the area of tungsten on the anode that receives the impact of the speeding electrons and converts them into x-ray photons. It is one of three factors influencing image sharpness (the others are film composition and movement)."
+            },
+            {
+                category: "Image Characteristics",
+                front: "Which type of structure inhibits the passage of x-rays?<br><br>• Radiopaque<br>• Radiolucent",
+                answer: "• Radiopaque",
+                rationale: "Radiopaque structures (like metals, enamel, dentin, and bone) absorb radiation, allowing less to reach the film. They appear white on the processed film. Radiolucent structures (like soft tissue and air space) allow radiation to pass through, appearing gray to black."
+            },
+            {
+                category: "Miscellaneous",
+                front: "It is best to retain dental radiographs for how many years?<br><br>• 2 years<br>• 4 years<br>• 6 years<br>• Indefinitely",
+                answer: "• Indefinitely",
+                rationale: "Legally, dental radiographs are the property of the dentist and should be retained indefinitely. Patients do have a right to reasonable access, including having copies forwarded to another dentist."
+            },
+            {
+                category: "Miscellaneous",
+                front: "Osteoradionecrosis is more common:<br><br>• In the mandible<br>• In the maxilla",
+                answer: "• In the mandible",
+                rationale: "Osteoradionecrosis (necrosis of bone produced by ionizing radiation) is more common in the mandible, probably because of the richer vascular supply to the maxilla and the fact that the mandible is more frequently irradiated."
+            },
+            {
+                category: "Miscellaneous",
+                front: "Your dental hygienist has a patient that says she needs bite-wing x-rays because it has been six months since the last films were taken. Your hygienist should respond in which manner?",
+                answer: "• Tell the patient that dental x-rays are taken only when needed as judged by each patient's needs",
+                rationale: "Decisions about the frequency of dental x-rays are determined by the dentist based on each patient's unique needs, not simply a 6-month calendar schedule. Guidelines published by the ADA aid in this prescription."
+            },
+            {
+                category: "Normal Anatomy",
+                front: "The image of the coronoid process of the mandible often appears in periapical x-rays of:<br><br>• The incisor region of the mandible<br>• The molar region of the mandible<br>• The incisor region of the maxilla<br>• The molar region of the maxilla",
+                answer: "• The molar region of the maxilla",
+                rationale: "As the mouth is opened, the coronoid process moves forward and comes into view most often when the mouth is opened to its fullest extent. It appears as a tapered or triangular radiopacity superimposed on or below the maxillary molars."
+            },
+            {
+                category: "Processing",
+                front: "X-ray developer contains all of the following except:<br><br>• A developing agent<br>• An antioxidant preservative<br>• A clearing agent<br>• An accelerator<br>• A restrainer",
+                answer: "• A clearing agent",
+                rationale: "A clearing agent (such as sodium thiosulfate/hypo) is found in the FIXER, not the developer. The developer uses agents like hydroquinone to change exposed crystals to black metallic silver."
+            },
+            {
+                category: "Processing",
+                front: "X-ray fixer contains all of the following except:<br><br>• A clearing agent<br>• An antioxidant preservative<br>• An accelerator<br>• An acidifier<br>• A hardener",
+                answer: "• An accelerator",
+                rationale: "An accelerator (an alkali like sodium carbonate) is found in the DEVELOPER. The fixing solution contains a clearing agent, preservative, acidifier, and a hardener (potassium alum)."
+            },
+            {
+                category: "Radiation Physics",
+                front: "The amount of material that is required to reduce the intensity of an x-ray beam to half is called the:<br><br>• Value layer<br>• Intensity value layer<br>• Half-value layer<br>• Full-value layer",
+                answer: "• Half-value layer",
+                rationale: "The half-value layer (HVL) is an indicator of the penetrating quality of an x-ray beam. In oral diagnostic radiography, the HVL is approximately 2 mm of aluminum."
+            },
+            {
+                category: "Radiation Characteristics",
+                front: "Increasing the kilovoltage (kVp) causes the resultant x-ray to have:<br><br>• Decreased density<br>• More latitude<br>• A shorter scale of contrast<br>• A longer scale of contrast",
+                answer: "• A longer scale of contrast",
+                rationale: "Increasing kilovoltage produces more penetrating x-rays, reducing subject contrast and creating a longer scale of contrast (more shades of gray). Decreasing kilovoltage increases subject contrast (shorter scale)."
+            },
+            {
+                category: "Radiation Characteristics",
+                front: "The quantity of radiation produced is controlled by:<br><br>• Kilovoltage (kVp)<br>• Milliamperage (mA)<br>• Exposure time<br>• Milliamperage (mA) and exposure time",
+                answer: "• Milliamperage (mA) and exposure time",
+                rationale: "Milliamperage (mA) controls the quantity or number of x-rays produced. Exposure time controls the length of time x-rays are produced. Kilovoltage (kVp) controls the quality or penetrating power."
+            }
+        ];
+
+        let currentIndex = 0;
+        const flashcard = document.getElementById('flashcard');
+
+        function loadCard(index) {
+            flashcard.classList.remove('is-flipped');
+            
+            setTimeout(() => {
+                document.getElementById('cardCounter').innerText = `Card ${index + 1} of ${deckData.length}`;
+                document.getElementById('cardCategory').innerText = deckData[index].category;
+                document.getElementById('cardFrontText').innerHTML = deckData[index].front;
+                document.getElementById('cardBackAnswer').innerHTML = deckData[index].answer;
+                document.getElementById('cardBackRationale').innerHTML = `<strong>Explanation:</strong> ${deckData[index].rationale}`;
+
+                document.getElementById('prevBtn').disabled = index === 0;
+                document.getElementById('nextBtn').disabled = index === deckData.length - 1;
+            }, 150); 
+        }
+
+        function flipCard() {
+            flashcard.classList.toggle('is-flipped');
+        }
+
+        function nextCard() {
+            if (currentIndex < deckData.length - 1) {
+                currentIndex++;
+                loadCard(currentIndex);
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadCard(currentIndex);
+            }
+        }
+
+        loadCard(currentIndex);
+    </script>
+</body>
+</html>
