@@ -3,28 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Questions</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Tokki's Board Prep - Search</title>
+    
+    <!-- Connects to your global CSS file -->
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <!-- INSTANT DARK MODE CHECK -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
+    <!-- Search Bar Specific Styling -->
+    <style>
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            outline: none;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        #searchInput:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(140, 82, 255, 0.2);
+        }
+        .search-result-card {
+            background: var(--bg-color);
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .search-result-answer {
+            background: var(--correct-light);
+            color: var(--correct);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 15px 0;
+            border: 1px solid var(--correct);
+        }
+    </style>
 </head>
 <body>
 
     <div class="quiz-container">
-        <div class="home-screen">
-            <h1>Search Database 🔍</h1>
-            <p>Type a keyword to find specific board questions and rationales:</p>
-            
-            <input type="text" id="questionSearch" class="search-bar" placeholder="e.g., 'Amalgam', 'Nerve', 'Caries'..." onkeyup="filterQuestions()">
-            
-            <div id="search-results">
-                <!-- Results will pop up here -->
+        
+        <!-- HEADER -->
+        <div class="quiz-header">
+            <div>
+                <h2>Search Database 🔍</h2>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Type a keyword to find specific board questions and rationales:</p>
             </div>
-
-            <a href="index.html" class="tool-btn" style="margin-top: 20px;">← Back to Main Menu</a>
+            <a href="index.html" class="back-btn">← Back to Main Menu</a>
         </div>
-        <div class="app-footer">made by xiao/angelo</div>
+
+        <!-- SEARCH BAR -->
+        <input type="text" id="searchInput" placeholder="e.g., 'Amalgam', 'Nerve', 'Caries'" onkeyup="searchQuestions()">
+
+        <!-- RESULTS WILL APPEAR HERE -->
+        <div id="searchResults"></div>
+
+        <!-- THE OFFICIAL DEDICATION FOOTER -->
+        <div class="app-footer">
+            Built for Tokki/Leane by Xiao/Angelo
+        </div>
+
     </div>
 
     <script>
+        // YOUR JAVASCRIPT ARRAY (const globalQuestionBank) STAYS SAFELY DOWN HERE!
         // PASTE ALL YOUR QUESTIONS IN HERE LATER! (Here are 3 samples to test it)
         const globalQuestionBank = [
             {
