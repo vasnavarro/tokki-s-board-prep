@@ -4,369 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tokki's Board Prep - Glossary</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Connects to your global CSS file -->
+    <link rel="stylesheet" href="css/style.css"> 
+    
     <!-- INSTANT DARK MODE CHECK -->
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
+
     <style>
-        .search-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
+        .search-container { margin: 20px 0; display: flex; justify-content: center; }
         #glossarySearch {
-            width: 100%;
-            max-width: 600px;
-            padding: 15px;
-            font-size: 1.1rem;
-            border: 2px solid var(--primary-light);
-            border-radius: 12px;
-            outline: none;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            width: 100%; max-width: 600px; padding: 15px; font-size: 1.1rem;
+            border: 2px solid var(--primary-light); border-radius: 12px;
+            outline: none; background-color: var(--bg-color); color: var(--text-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease;
         }
-        #glossarySearch:focus {
-            box-shadow: 0 6px 12px rgba(140, 82, 255, 0.3);
-            border-color: var(--primary);
-        }
+        #glossarySearch:focus { box-shadow: 0 6px 12px rgba(140, 82, 255, 0.3); border-color: var(--primary); }
         .glossary-card {
-            background: var(--bg-color);
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary);
-            transition: background-color 0.3s ease;
+            background: var(--bg-color); padding: 15px 20px; border-radius: 12px;
+            margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary); transition: background-color 0.3s ease;
         }
-        .glossary-term {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .glossary-def {
-            color: var(--text-color);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-        .search-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-        #glossarySearch {
-            width: 100%;
-            max-width: 600px;
-            padding: 15px;
-            font-size: 1.1rem;
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            outline: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        #glossarySearch:focus {
-            box-shadow: 0 6px 12px rgba(112, 161, 255, 0.3);
-            border-color: #5352ed;
-        }
-        .glossary-card {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary);
-        }
-        .glossary-term {
-            color: var(--primary-dark);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .glossary-def {
-            color: var(--text-color);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
+        .glossary-term { color: var(--primary); font-size: 1.2rem; margin-bottom: 8px; display: block; }
+        .glossary-def { color: var(--text-color); line-height: 1.6; font-size: 0.95rem; }
     </style>
 </head>
 <body>
 
     <div class="quiz-container">
-        
-        <div class="quiz-header" style="justify-content: center; position: relative;">
-            <a href="index.html" class="back-btn" style="position: absolute; left: 0;">← Back</a>
-            <h2>Board Term Glossary</h2>
+        <div class="quiz-header">
+            <h2>Board Term Glossary 📚</h2>
+            <a href="index.html" class="back-btn">← Back to Main Menu</a>
         </div>
 
         <div class="search-container">
-            <input type="text" id="glossarySearch" placeholder="Search for a term, syndrome, or definition..." onkeyup="filterGlossary()">
+            <input type="text" id="glossarySearch" placeholder="Search for a term..." onkeyup="filterGlossary()">
         </div>
 
-        <div id="glossary-results">
-            <!-- Glossary terms will be generated here by JavaScript -->
-        </div>
+        <div id="glossary-results"></div>
 
-        <div class="app-footer">made by xiao/angelo</div>
-
+        <div class="app-footer">Built for Tokki/Leane by Xiao/Angelo</div>
     </div>
 
     <script>
         const glossaryData = [
-            // --- PATHOLOGY & SYNDROMES ---
             { term: "Abfraction", definition: "A non-carious cervical lesion (V-shaped notch at the gumline) caused by heavy occlusal stress and tooth flexure (bruxism/clenching)." },
-            { term: "Ameloblastoma", definition: "A highly aggressive, benign odontogenic tumor classically presenting as a 'soap bubble' or 'honeycomb' multilocular radiolucency in the posterior mandible." },
-            { term: "Bell's Palsy", definition: "Unilateral facial paralysis caused by damage or inflammation to the Facial Nerve (CN VII). The patient cannot smile or close their eye on the affected side." },
-            { term: "Cleidocranial Dysplasia", definition: "A genetic disorder characterized by absent clavicles (collarbones), delayed skull fusion, and massive numbers of impacted supernumerary teeth." },
-            { term: "Combination Syndrome (Kelly's Syndrome)", definition: "Severe anatomical destruction caused when a complete upper denture opposes natural lower anterior teeth. Causes massive bone loss in the anterior maxilla and overgrowth of the tuberosities." },
-            { term: "Concrescence", definition: "A developmental anomaly where two fully formed, separate teeth become perfectly fused together STRICTLY by their cementum." },
-            { term: "Dens Evaginatus", definition: "An extra cusp growing outward from the central groove of a premolar (Leong's premolar), containing a tiny pulp horn that easily snaps off and causes necrosis." },
-            { term: "Dens in Dente (Dens Invaginatus)", definition: "Enamel folding deeply inward before mineralization, most commonly affecting the maxillary lateral incisor. Highly prone to severe, rapid decay." },
-            { term: "Eagle Syndrome", definition: "Calcification of the stylohyoid ligament causing a 'bone spear' to poke the carotid artery and nerves, resulting in severe pain when turning the head or swallowing." },
-            { term: "Erythroplakia", definition: "A clinical term for a red patch on the oral mucosa that cannot be diagnosed as any other specific disease. Extremely high risk of being malignant (Oral Cancer)." },
-            { term: "Frey's Syndrome", definition: "Sweating and flushing on the side of the face while eating, caused by severed parasympathetic nerves miswiring into sympathetic sweat glands after parotid gland surgery." },
-            { term: "Fusion", definition: "Two separate developing tooth buds physically fuse together into one giant tooth, resulting in ONE LESS tooth in the normal arch count." },
-            { term: "Gemination", definition: "A single developing tooth bud attempts to split into two, resulting in a giant, bifid crown but a normal root. The tooth count in the arch remains NORMAL." },
-            { term: "Leukoplakia", definition: "A white patch on the oral mucosa that cannot be rubbed off and cannot be characterized as any other disease. Considered a premalignant lesion." },
-            { term: "Ludwig's Angina", definition: "A rapidly spreading, bilateral, life-threatening cellulitis of the floor of the mouth that pushes the tongue back and suffocates the patient. Usually originates from a mandibular molar infection." },
-            { term: "Osteogenesis Imperfecta", definition: "A genetic defect in Type I Collagen causing 'brittle bone disease', blue sclera (whites of the eyes), and frequently associated with Dentinogenesis Imperfecta." },
-            { term: "Papillon-Lefèvre Syndrome", definition: "An autosomal recessive condition causing severe periodontitis (resulting in the loss of all primary and permanent teeth by age 14) and hyperkeratosis (thick scaling) on the palms and soles." },
-            { term: "Pemphigus Vulgaris", definition: "A severe, potentially fatal autoimmune disease where autoantibodies destroy desmosomes, causing intraepithelial blisters and a positive Nikolsky sign (skin rubs off easily)." },
-            { term: "Pierre Robin Sequence", definition: "A congenital triad consisting of Micrognathia (tiny jaw), Glossoptosis (tongue blocking the airway), and a U-shaped Cleft Palate." },
-            { term: "Sjogren's Syndrome", definition: "A systemic autoimmune disease characterized by the destruction of exocrine glands, resulting in profound xerostomia (dry mouth) and xerophthalmia (dry eyes)." },
-            { term: "Trigeminal Neuralgia", definition: "A neuropathic condition characterized by excruciating, lightning-like facial pain triggered by light touch to specific areas of the face (Tic Douloureux)." },
-            
-            // --- THE LATIN LEGAL JARGON ---
-            { term: "Subpoena duces tecum", definition: "A court order requiring a person to bring physical evidence, such as dental records or radiographs, to court under penalty of law." },
-            { term: "Ignorantia juris non excusat", definition: "A legal doctrine meaning 'ignorance of the law excuses no one'. Failing to know a law exists is never a valid defense." },
-            { term: "Dura lex sed lex", definition: "A legal maxim meaning 'the law is harsh, but it is the law'. It must be applied exactly as written, even if the penalty seems overly strict." },
-            { term: "Caveat emptor", definition: "Meaning 'Let the buyer beware'. A commercial principle that does NOT apply to dentistry because patients lack medical knowledge and must trust the doctor (Fiduciary duty)." },
-            { term: "Res gestae", definition: "Meaning 'Things done'. Spontaneous exclamations made during the shock of an accident (e.g., 'Oops, I broke it!'). Highly credible evidence in a malpractice court." },
-            
-            // --- BUSINESS & PRACTICE MANAGEMENT ---
-            { term: "Contributory Negligence", definition: "A legal defense where the patient's own negligence (like ignoring post-op instructions) contributed to their injury, potentially eliminating the dentist's liability." },
-            { term: "Capitation", definition: "An HMO payment system where the dentist is paid a fixed, flat monthly fee per assigned patient, regardless of whether they ever receive treatment." },
-            { term: "Upcoding", definition: "A fraudulent practice of billing an insurance company for a more complex and expensive procedure than what was actually performed." },
-            { term: "Fee Splitting", definition: "The highly unethical and illegal practice of giving or receiving a commission or kickback simply for referring a patient to another doctor." },
-
-            // --- JURISPRUDENCE & ETHICS ---
-            { term: "Autonomy", definition: "The ethical principle recognizing the patient's absolute right to make their own informed decisions regarding their body and treatment." },
-            { term: "Beneficence", definition: "The ethical duty to actively 'do good', promote the patient's welfare, and act in their best interest." },
-            { term: "Non-maleficence", definition: "The ethical core of medicine: 'First, do no harm.' It dictates protecting the patient from unnecessary risk or injury." },
-            { term: "Res Ipsa Loquitur", definition: "Legal doctrine meaning 'The thing speaks for itself.' Used when negligence is so obvious (e.g., leaving a bur in the jaw) that it requires no expert to prove it." },
-            { term: "Respondeat Superior", definition: "Legal doctrine meaning 'Let the master answer.' Makes the dentist/clinic owner legally liable for the mistakes of their assistants or employees." },
-            { term: "Veracity", definition: "The ethical duty to be completely truthful and honest in all dealings with patients, the public, and colleagues." },
-
-            // --- ANATOMY & LANDMARKS ---
-            { term: "Curve of Wilson", definition: "The side-to-side (mediolateral) anatomical curve of the occlusal plane, viewed from the front, caused by the inward tilt of the lower posterior teeth." },
-            { term: "Camper's Line (Alar-Tragus Line)", definition: "An imaginary line from the bottom of the nose to the tragus of the ear. The posterior occlusal plane of a denture must be perfectly parallel to it." },
-            { term: "Stensen's Duct", definition: "The main excretory duct of the Parotid salivary gland. It pierces the buccinator and opens on the buccal mucosa near the maxillary second molar." },
-            { term: "Wharton's Duct", definition: "The main excretory duct of the Submandibular salivary gland, opening at the sublingual caruncle. The most common site for salivary stones." },
-            { term: "Spheno-occipital Synchondrosis", definition: "A massive cartilaginous growth center at the base of the skull responsible for the forward, anteroposterior growth of the craniofacial complex." },
-            { term: "Meckel's Cartilage", definition: "Embryological cartilage belonging to the First Pharyngeal Arch. It serves as a template for the mandible, malleus, and incus." },
-            { term: "Lingula", definition: "A bony spine over the mandibular foramen that serves as the attachment for the sphenomandibular ligament. The primary target area for an IANB." },
-            { term: "Cusp of Carabelli", definition: "A non-functional, fifth supplemental cusp located on the mesiolingual (ML) cusp of the permanent maxillary first molar." },
-            { term: "Mamelons", definition: "Three rounded protuberances on the incisal edges of newly erupted permanent incisors, representing the three developmental lobes." },
-            { term: "Oblique Ridge", definition: "A massive ridge of enamel found only on maxillary molars, diagonally connecting the mesiolingual and distobuccal cusps." },
-
-            // --- MICROBIOLOGY & PERIODONTICS ---
-            { term: "Orange Complex Bacteria", definition: "Bridge bacteria in plaque biofilm (like Prevotella intermedia) that prepare the environment for the highly destructive Red Complex." },
-            { term: "Aggregatibacter actinomycetemcomitans (Aa)", definition: "The primary, highly virulent bacterial pathogen responsible for Localized Aggressive Periodontitis (Grade C) in healthy teenagers." },
-            { term: "Porphyromonas gingivalis", definition: "The most notorious 'Red Complex' pathogen. A virulent obligate anaerobe that drives severe, chronic periodontitis." },
-            { term: "Matrix Metalloproteinases (MMPs)", definition: "Host-derived collagenase enzymes released by macrophages that physically melt and destroy the periodontal ligament and bone during an immune response." },
-            { term: "Gingival Crevicular Fluid (GCF)", definition: "An inflammatory exudate derived from blood plasma that seeps out of the sulcus to flush bacteria out of the periodontal pocket." },
-            { term: "Col", definition: "The non-keratinized, saddle-like depression of interdental gingiva connecting the facial and lingual papillae. The absolute most susceptible site for initial gingivitis." },
-            { term: "Fremitus", definition: "The palpable or visible vibration and movement of a tooth when it is subjected to heavy occlusal biting forces." },
-
-            // --- PATHOLOGY & ORAL SURGERY ---
-            { term: "Garre's Osteomyelitis", definition: "Also called Proliferative Periostitis. A reactive 'onion-skin' (laminated) thickening of the jawbone in children caused by a chronic dental abscess." },
-            { term: "Stafne Bone Defect", definition: "A benign, static, round radiolucency below the mandibular canal caused by the submandibular salivary gland resting against the jawbone." },
-            { term: "Odontogenic Myxoma", definition: "A benign but highly infiltrative jaw tumor that classically presents as a 'tennis racket' or 'honeycomb' radiolucency on an x-ray." },
-            { term: "Turner's Tooth", definition: "Enamel hypoplasia of a single permanent tooth caused by trauma or severe infection of the overlying primary baby tooth." },
-            { term: "Epstein Pearls", definition: "Harmless, tiny, white keratin cysts found along the midline raphe of the hard palate in newborns." },
-            { term: "Bohn's Nodules", definition: "Harmless mucous gland remnants found on the buccal or lingual aspects of the gum ridges in newborns." },
-            { term: "Le Fort Fractures", definition: "Massive facial trauma classifications. Le Fort I (floating palate), Le Fort II (pyramidal nose/maxilla), Le Fort III (craniofacial separation)." },
-            { term: "Pterygomandibular Space", definition: "The fascial space between the medial pterygoid muscle and the medial ramus of the mandible. The exact target site for depositing local anesthetic during an IANB." },
-
-            // --- RADIOLOGY & PHARMACOLOGY ---
-            { term: "Bremsstrahlung Radiation", definition: "Braking radiation. The primary source of x-ray photons produced when high-speed electrons abruptly slow down and hit the brakes near a tungsten nucleus." },
-            { term: "Compton Scatter", definition: "The most common x-ray interaction with matter, where an x-ray knocks out an outer electron and scatters into the room. The primary radiation hazard to the dentist." },
-            { term: "Bisphosphonates", definition: "A class of drugs used for osteoporosis and cancer that permanently paralyze osteoclasts, placing the patient at severe risk for BRONJ after tooth extractions." },
-            { term: "Plasmatic Circulation", definition: "The survival mechanism for a Free Gingival Graft during the first 48 hours, where the tissue survives by drinking plasma from the wound bed before blood vessels connect." },
-
-            // --- ORTHODONTICS & PEDIATRICS ---
-            { term: "Distal Step", definition: "A primary molar relationship where the lower second molar sits further back than the upper. 100% guarantees an Angle Class II permanent malocclusion." },
-            { term: "Ectopic Eruption", definition: "A tooth erupting on the wrong path. Most commonly, the permanent maxillary 1st molar getting stuck under the primary 2nd molar, resorbing its roots." },
-            { term: "Nance Appliance", definition: "An orthodontic appliance with an acrylic button resting on the hard palate, used for massive anchorage to prevent upper molars from drifting forward." },
-            { term: "Hyrax Expander", definition: "A heavy orthodontic appliance with a central jackscrew used for Rapid Palatal Expansion (RPE) to physically tear open the midpalatal suture." },
-            { term: "Frankl Scale", definition: "A behavioral rating scale in pediatric dentistry ranging from 1 (Definitely Negative/Combative) to 4 (Definitely Positive/Happy)." },
-
-            // --- INSTRUMENTS & ENDODONTICS ---
-            { term: "Universal Curette", definition: "A periodontal scaler with TWO cutting edges and a blade face at 90 degrees to the terminal shank (e.g., Columbia 13/14)." },
-            { term: "Gracey Curette", definition: "An area-specific periodontal scaler with only ONE cutting edge and an offset blade face at 70 degrees, designed for deep subgingival root planing." },
-            { term: "Gates Glidden Drills", definition: "Football-shaped rotary burs used strictly to open, flare, and achieve straight-line access in the coronal third of a root canal." },
-            { term: "Lentulo Spiral", definition: "A loosely coiled, flexible wire instrument used in a slow-speed handpiece to spin and evenly distribute sealer or calcium hydroxide deep into a root canal." },
-            { term: "Barbed Broach", definition: "An endodontic hand instrument with sharp, backward-facing barbs used specifically to snag and pull out the intact, bulky pulpal nerve tissue in one piece." },
-            { term: "Forceps #150", definition: "The 'Universal Upper' extraction forceps designed specifically for maxillary incisors, canines, and premolars." },
-            { term: "Forceps #23 (Cowhorn)", definition: "Mandibular extraction forceps with sharp, paired, pointed beaks designed to slide perfectly into the root bifurcation of lower molars." },
-
-            // --- DENTAL MATERIALS & RESTORATIVE ---
-            { term: "Camphorquinone", definition: "The most common photoinitiator in composite resins. It activates when exposed to blue light at a wavelength of approximately 468 nm." },
-            { term: "Gamma-2 Phase", definition: "The Tin-Mercury phase of traditional dental amalgam. It is the absolute weakest phase and the primary cause of corrosion and marginal creep." },
-            { term: "High-Copper Amalgam", definition: "Modern amalgam containing 12% to 30% copper, specifically designed to completely eliminate the weak Gamma-2 phase." },
-            { term: "Delayed Expansion", definition: "A severe, painful swelling of a zinc-containing amalgam filling occurring weeks after placement, caused by moisture contamination (saliva) reacting with zinc to form hydrogen gas." },
-            { term: "Spherical Amalgam", definition: "Amalgam alloy made of tiny, round particles. It flows like ball bearings, requires significantly less condensation pressure, and requires a larger condenser tip." },
-            { term: "Zinc Phosphate", definition: "A classic luting cement mixed on a chilled glass slab over a wide area to dissipate its violently exothermic (heat-releasing) and highly acidic setting reaction." },
-            { term: "Zinc Oxide Eugenol (ZOE)", definition: "A cement known for its profound palliative (soothing/obtundent) effect on a hyperemic pulp. It strictly CONTRAINDICATES the use of composite resins because eugenol prevents polymerization." },
-            { term: "Hydrofluoric Acid", definition: "A highly dangerous, glass-eating acid used EXCLUSIVELY to etch the internal surface of a ceramic/porcelain crown before cementation." },
-            { term: "Silane", definition: "A chemical coupling agent that acts as a magic bridge, linking the inorganic silica in a porcelain crown to the organic plastic of the composite resin cement." },
-            { term: "Microfilled Composite", definition: "A composite resin with incredibly tiny filler particles. It polishes to a flawless, mirror-like finish but has very low physical strength." },
-            { term: "Bis-GMA", definition: "The classic, bulky base resin monomer that makes up the organic plastic matrix of most dental composite restorative materials." },
-            { term: "10-MDP", definition: "An incredibly effective acidic monomer found in universal/self-etch adhesives that chemically bonds directly to the calcium in the tooth's hydroxyapatite." },
-            { term: "Oxygen-Inhibited Layer", definition: "The sticky, uncured top layer of a composite resin exposed to the air. It is crucial because it allows the NEXT layer of composite to chemically stick to it." },
-
-            // --- PHARMACOLOGY & SYSTEMIC CONDITIONS ---
-            { term: "NAPQI", definition: "The highly toxic liver metabolite created during an Acetaminophen (Tylenol) overdose that destroys the liver when glutathione stores run out." },
-            { term: "Reye's Syndrome", definition: "A rapidly fatal condition characterized by brain swelling and liver failure, triggered by giving Aspirin to children suffering from a viral infection (like chickenpox)." },
-            { term: "Disulfiram-like Reaction", definition: "Violent vomiting, flushing, and heart palpitations caused by consuming alcohol while taking the antibiotic Metronidazole (Flagyl)." },
-            { term: "Red Man Syndrome", definition: "An intense, red flushing and itching of the face/neck caused by a massive histamine release when IV Vancomycin is infused too rapidly." },
-            { term: "Pseudomembranous Colitis", definition: "A severe, bloody, and potentially fatal colon infection caused by the overgrowth of C. difficile. Notoriously triggered by the antibiotic Clindamycin." },
-            { term: "Serotonin Syndrome", definition: "A life-threatening condition (causing 108°F fevers and seizures) triggered by mixing an MAOI antidepressant with drugs like Meperidine (Demerol) or Tramadol." },
-            { term: "S2 License", definition: "A specialized license issued by the Philippine Drug Enforcement Agency (PDEA) required for a dentist to legally prescribe dangerous drugs and narcotics." },
-            { term: "Phentolamine Mesylate", definition: "Marketed as OraVerse. A local anesthetic reversal agent that acts as a vasodilator (alpha-blocker) to quickly flush numbness out of the soft tissues." },
-            { term: "Dantrolene", definition: "The life-saving intravenous skeletal muscle relaxant that serves as the absolute direct antidote for Malignant Hyperthermia." },
-            { term: "Albuterol", definition: "A short-acting, selective Beta-2 adrenergic agonist used in emergency inhalers to instantly relax the bronchioles during an asthma attack." },
-            { term: "Pilocarpine", definition: "A direct-acting cholinergic (parasympathomimetic) agonist prescribed to forcefully stimulate saliva production in patients with severe Sjogren's Syndrome or radiation dry mouth." },
-            { term: "Atropine", definition: "An anticholinergic (muscarinic antagonist) drug used in oral surgery to completely shut down salivary gland production, creating a bone-dry working field." },
-
-            // --- RADIOLOGY & ORAL SURGERY ---
-            { term: "Inverted Y (of Ennis)", definition: "A classic radiographic landmark seen near the maxillary canine/premolar roots. It is the intersection of the floor of the nasal cavity and the anterior wall of the maxillary sinus." },
-            { term: "Hamular Notch", definition: "The soft tissue depression situated strictly between the maxillary tuberosity and the hamulus of the medial pterygoid plate. Critical for the posterior seal of an upper denture." },
-            { term: "Focal Trough", definition: "The 3D, horseshoe-shaped 'zone of sharpness' inside a panoramic x-ray machine. Teeth placed outside this zone will appear blurry, stretched, or squished." },
-            { term: "Film Fog", definition: "A gray, hazy appearance on a radiograph that lacks sharp contrast. Caused by accidental light leaks in the darkroom, expired film, or scattered radiation." },
-            { term: "Silver Halide Crystals", definition: "The microscopic, light-and-x-ray-sensitive chemical compounds suspended in the gelatin emulsion of a traditional x-ray film." },
-            { term: "Canine Space", definition: "The fascial space where an infection from a maxillary canine drains (above the levator anguli oris), completely obliterating the nasolabial fold and causing swelling up to the eye." },
-            { term: "Primary Intention", definition: "Wound healing where the surgical edges are perfectly sutured together, resulting in fast healing and minimal scarring." },
-            { term: "Secondary Intention", definition: "Wound healing where the gap cannot be closed (like an extraction socket). The hole must slowly fill in with a blood clot and granulation tissue from the bottom up." },
-
-            // --- ORTHODONTICS & PEDIATRICS ---
-            { term: "Translation", definition: "Bodily orthodontic movement. The crown and the root move the exact same distance in the exact same direction. Extremely difficult to achieve, requires a 'couple' force." },
-            { term: "Tipping", definition: "Orthodontic movement where the crown moves in one direction, and the root moves in the exact opposite direction. The simplest form of tooth movement." },
-            { term: "Center of Resistance", definition: "The biological balance point of a tooth embedded in bone. It is fixed and never moves, located roughly halfway down the embedded root." },
-            { term: "Center of Rotation", definition: "The arbitrary point around which a tooth actually spins or rotates when an orthodontic force is applied to it." },
-            { term: "Lip Bumper", definition: "An orthodontic appliance in the lower arch that holds the tight lower lip away from the teeth, allowing the tongue to naturally push the incisors forward and expand the arch." },
-            { term: "Serial Extraction", definition: "A planned, chronological removal of teeth (Primary Canines, Primary 1st Molars, Permanent 1st Premolars) to relieve incredibly severe crowding in a child." },
-            
-            // --- ENDODONTICS & PERIODONTICS ---
-            { term: "C-Shaped Canal", definition: "A highly complex, fused root canal anatomy that looks like a giant ribbon. Statistically most common in Asian populations, specifically in the Mandibular Second Molar." },
-            { term: "Danger Zone", definition: "The extremely thin dentin on the distal wall of the mesial root of a mandibular first molar. Over-filing here instantly causes a catastrophic strip perforation into the furcation." },
-            { term: "Ledge", definition: "A procedural error. An artificial, dead-end shelf created in the dentin wall by forcing a straight, stiff file into a curved root canal." },
-            { term: "Zipping", definition: "A procedural error. Tearing open the tiny apical foramen with a stiff file, transporting the hole and turning it into a massive, unsealable teardrop shape." },
-            { term: "Glickman Classification", definition: "The grading system (I through IV) used strictly to measure the severity of bone loss in the furcation of multi-rooted teeth using a curved Nabers probe." },
-            { term: "Miller Classification", definition: "The grading system (Class 1 to 3) used to measure the clinical mobility of a tooth horizontally and vertically." },
-            { term: "Extrusion", definition: "The physical pulling or traumatic displacement of a tooth upward and OUT of its bony socket." },
-            { term: "Intrusion", definition: "The most severe traumatic luxation injury. The tooth is violently smashed upward, deep INTO the jawbone, crushing the PDL." },
-            { term: "Test Cavity", definition: "The absolute last-resort diagnostic test. Drilling a small hole through the enamel into the dentin without local anesthesia to definitively check if the pulp is alive or dead." },
-            { term: "Walking Bleach", definition: "An internal bleaching technique for discolored, endodontically treated teeth. Sodium Perborate is sealed inside the empty pulp chamber for several days." },
-            { term: "RC-Prep", definition: "A paste-like endodontic lubricant packed with EDTA, used to chemically soften calcified canals and physically lubricate tiny hand files so they don't break." },
-
-            // --- PROSTHODONTICS & OCCLUSION ---
-            { term: "Vertical Dimension of Rest (VDR)", definition: "The vertical distance between the upper and lower jaws when the patient's muscles of mastication are completely relaxed." },
-            { term: "Vertical Dimension of Occlusion (VDO)", definition: "The vertical distance between the upper and lower jaws when the teeth (or denture teeth) are fully closed and touching." },
-            { term: "Freeway Space", definition: "The mandatory 2 to 4 mm of space between the teeth when the jaw is at rest. Calculated as: VDR - VDO = Freeway Space." },
-            { term: "Hanau's Quint", definition: "The five factors that must be perfectly balanced to maintain complete denture stability: Condylar Guidance, Incisal Guidance, Compensating Curve, Occlusal Plane, and Cuspal Inclination." },
-            { term: "Ante's Law", definition: "A critical rule in fixed bridges stating that the combined root surface area of all abutment teeth must be equal to or greater than the root surface area of the missing teeth being replaced." },
-            { term: "Buccal Shelf", definition: "The primary stress-bearing area for a mandibular complete denture. It is composed of dense cortical bone that resists vertical chewing forces perfectly." },
-            { term: "Retromolar Pad", definition: "A soft tissue mass at the back of the mandibular ridge that must be covered by a denture for support. The bone underneath it rarely ever resorbs." },
-            { term: "Vibrating Line", definition: "The imaginary line marking the transition between the immovable hard palate and the movable soft palate. The Posterior Palatal Seal is carved exactly here." },
-            { term: "Facebow Transfer", definition: "A procedure used to capture the exact 3D spatial relationship of the patient's maxillary arch to their jaw joints (condyles) and transfer it to the articulator." },
-            { term: "Ovate Pontic", definition: "The most highly esthetic bridge pontic design. It is egg-shaped and sits perfectly recessed into a concavity in the healing gums, appearing as if it's growing out of the tissue." },
-            { term: "BULL Rule", definition: "Buccal Upper, Lingual Lower. A rule used during occlusal adjustment. If there is a working-side interference, you grind away the non-functional (BULL) cusps." },
-
-            // --- BIOSTATISTICS & PUBLIC HEALTH ---
-            { term: "Reliability (Precision)", definition: "The ability of a test to produce the exact same, consistent results upon repeated trials, regardless of whether those results are actually correct." },
-            { term: "Validity (Accuracy)", definition: "The ability of a test to measure exactly what it physically intends to measure (hitting the bullseye)." },
-            { term: "P-value", definition: "The probability that the results of a study occurred purely by chance. To be statistically significant, it must be less than 0.05 (less than 5% chance of a fluke)." },
-            { term: "Standard Deviation", definition: "A statistical measure of how 'spread out' or scattered the data points are from the mean (average)." },
-            { term: "Randomized Controlled Trial (RCT)", definition: "The absolute gold standard of epidemiological research. The researcher actively controls the variables and randomly assigns patients to treatment or placebo groups to eliminate bias." },
-            { term: "Prospective Cohort Study", definition: "An observational study that takes a group of healthy people and follows them FORWARD in time to see who develops a disease based on their exposures." },
-            { term: "Case-Control Study", definition: "A retrospective study that works BACKWARD. It takes sick people (cases) and compares them to healthy people (controls) to figure out what risk factors they were exposed to." },
-            { term: "Odds Ratio (OR)", definition: "The statistical metric calculated in a Case-Control study to determine the strength of the association between a risk factor and a disease." },
-            { term: "Hawthorne Effect", definition: "A phenomenon where patients artificially improve their behavior (e.g., brushing better) simply because they know researchers are watching them." },
-            { term: "Health Belief Model (HBM)", definition: "A psychological model stating a patient will only change their habits if they truly believe they are susceptible to a disease and that the benefits of the treatment outweigh the hassle." },
-            { term: "OHI-S (Simplified Oral Hygiene Index)", definition: "A fast, epidemiological index that evaluates plaque and calculus on only 6 specific 'index' teeth to represent the entire mouth." },
-            { term: "CPITN (Community Periodontal Index of Treatment Needs)", definition: "An index heavily utilized by the WHO. It requires a special ball-tipped periodontal probe to prevent piercing inflamed tissue during mass screenings." },
-            { term: "def Index", definition: "Decayed, extracted (due to caries), and filled index. Used strictly to measure caries experience in the PRIMARY (baby) dentition." },
-            { term: "Type IV Dental Examination", definition: "The most basic public health screening exam, utilizing only a tongue depressor and available room lighting." },
-            { term: "Optimal Water Fluoridation", definition: "Universally standardized at 0.7 parts per million (ppm) to provide maximum caries protection with minimal risk of fluorosis." },
-
-            // --- PERIODONTICS & FLAP SURGERY ---
-            { term: "Mucogingival Junction (MGJ)", definition: "The distinct, scalloped anatomical line separating the tough, pink attached gingiva from the loose, dark-red alveolar mucosa. (Absent on the hard palate)." },
-            { term: "1-Wall Defect (Hemiseptal)", definition: "A periodontal bone defect where only one bony wall remains. Extremely poor prognosis for bone grafting." },
-            { term: "2-Wall Defect (Crater)", definition: "The most common periodontal bone defect (making up 33% of defects). It is a bowl-shaped dip between two teeth with the facial and lingual walls remaining." },
-            { term: "3-Wall Defect (Trough)", definition: "A deep, narrow periodontal defect with three bony walls intact. It holds bone grafts perfectly and has the absolute highest success rate for Guided Tissue Regeneration." },
-            { term: "Subepithelial Connective Tissue Graft (CTG)", definition: "The absolute gold standard surgical procedure for esthetic root coverage. Tissue is harvested from inside the palate and tunneled under the receding gums." },
-            { term: "Apically Positioned Flap", definition: "A surgical flap where the gums are pushed downward and sutured lower on the root. Often used during Crown Lengthening to expose more tooth structure." },
-
-            // --- OPERATIVE DENTISTRY & ENDO ---
-            { term: "Affected Dentin", definition: "The inner layer of carious dentin. It is stained and leathery but contains NO live bacteria and the collagen is intact. It MUST be left in the tooth to remineralize and heal." },
-            { term: "Infected Dentin", definition: "The outer, mushy layer of carious dentin that is dead, irreversibly denatured, and packed with bacteria. It must be completely drilled away." },
-            { term: "Direct Pulp Cap", definition: "Placing a medicament (historically Calcium Hydroxide, now MTA) directly onto a pinpoint, bleeding pulpal exposure to stimulate the nerve to build a dentin bridge." },
-            { term: "Mineral Trioxide Aggregate (MTA)", definition: "An absolute miracle material in endodontics. It sets in the presence of blood/moisture, creates a flawless seal, and is so biocompatible that cementum grows directly over it." },
-            { term: "Resistance Form", definition: "Shaping the cavity walls to protect both the filling and the tooth from FRACTURING under heavy biting forces (e.g., flat floors, rounded internal corners)." },
-            { term: "Retention Form", definition: "Shaping the cavity walls to prevent the filling from physically FALLING OUT or being dislodged (e.g., converging walls for amalgam)." },
-            { term: "Isthmus", definition: "The narrowest, most fragile connection between the occlusal prep and the proximal box in a Class II cavity. Extremely prone to fracture if not cut 1.5mm deep." },
-            { term: "Bevel", definition: "A 45-degree angle sliced onto an enamel margin. It exposes the ends of the enamel rods for massive bond strength in composites, or allows gold to be burnished thin." },
-            { term: "HEMA (Primer)", definition: "An amphiphilic (bifunctional) molecule used in bonding. One end chases water out of the dentin collagen, and the other end pulls the hydrophobic resin in." },
-
-            // --- PHARMACOLOGY FINAL BATCH ---
-            { term: "Clavulanic Acid", definition: "A 'suicide inhibitor' mixed with Amoxicillin (to make Augmentin). It has no antibacterial power itself; it just sacrifices itself to destroy the bacteria's Beta-Lactamase enzyme." },
-            { term: "Clopidogrel (Plavix)", definition: "An antiplatelet drug that permanently blocks ADP receptors on platelets, making them too slippery to clump together and form a clot." },
-            { term: "DOACs (Apixaban / Rivaroxaban)", definition: "Direct Oral Anticoagulants. Unlike Warfarin, they directly inhibit Factor Xa in the clotting cascade and do not require routine INR blood testing." },
-            { term: "Levothyroxine (Synthroid)", definition: "A synthetic thyroid hormone. If a patient is severely uncontrolled (hyperthyroid), giving them Epinephrine can trigger a fatal Thyroid Storm." },
-            { term: "Propofol", definition: "The 'milk of amnesia'. The preferred IV general anesthetic for outpatient oral surgery due to its 10-second onset, ultra-fast recovery, and powerful anti-nausea effects." },
-            { term: "Ketamine", definition: "A unique dissociative anesthetic that blocks NMDA (Glutamate) receptors. The patient's eyes remain open, but they are entirely disconnected from reality and pain." },
-            { term: "Nitroglycerin", definition: "Administered sublingually during an angina attack. It releases Nitric Oxide, causing massive venodilation, pooling blood in the legs to instantly relieve strain on the heart." },
-            { term: "Corticosteroids", definition: "The most powerful anti-inflammatory drugs available. They block Phospholipase A2, completely shutting off the entire supply of arachidonic acid (stopping all prostaglandins and leukotrienes)." },
-            { term: "Diffusion Hypoxia", definition: "A dangerous lack of oxygen occurring when Nitrous Oxide is turned off without giving 100% oxygen. The N2O rushes back into the lungs, physically pushing all the oxygen out." },
-            { term: "Second Gas Effect", definition: "A phenomenon where administering a fast-acting gas (Nitrous Oxide) alongside a slower gas (like Halothane) physically vacuums the slower gas into the blood much faster than it could normally absorb." }
+            { term: "Ameloblastoma", definition: "A highly aggressive, benign odontogenic tumor classically presenting as a 'soap bubble' or 'honeycomb' multilocular radiolucency." },
+            { term: "Bell's Palsy", definition: "Unilateral facial paralysis caused by damage/inflammation to the Facial Nerve (CN VII). Patient cannot smile or close their eye on the affected side." },
+            { term: "Cleidocranial Dysplasia", definition: "Genetic disorder with absent clavicles, delayed skull fusion, and massive numbers of impacted supernumerary teeth." },
+            { term: "Combination Syndrome", definition: "Severe anatomical destruction when complete upper denture opposes natural lower anterior teeth. Causes anterior maxillary bone loss and tuberosity overgrowth." },
+            { term: "Concrescence", definition: "Developmental anomaly where two fully formed, separate teeth are perfectly fused together STRICTLY by cementum." },
+            { term: "Dens Evaginatus", definition: "Extra cusp growing outward from the central groove of a premolar (Leong's premolar), containing a tiny pulp horn that easily snaps off." },
+            { term: "Dens in Dente", definition: "Enamel folding deeply inward before mineralization, most commonly affecting the maxillary lateral incisor." },
+            { term: "Eagle Syndrome", definition: "Calcification of the stylohyoid ligament causing a 'bone spear' to poke the carotid artery/nerves, causing severe pain when turning the head." },
+            { term: "Erythroplakia", definition: "A clinical red patch on oral mucosa that cannot be diagnosed as any other disease. Extremely high risk of malignancy (Oral Cancer)." },
+            { term: "Frey's Syndrome", definition: "Sweating and flushing on the side of the face while eating, caused by severed parasympathetic nerves miswiring into sweat glands after parotid surgery." },
+            { term: "Fusion", definition: "Two developing tooth buds physically fuse into one giant tooth, resulting in ONE LESS tooth in the arch count." },
+            { term: "Gemination", definition: "A single tooth bud attempts to split into two, resulting in a giant, bifid crown but a normal root count." },
+            { term: "Leukoplakia", definition: "A white patch on oral mucosa that cannot be rubbed off and cannot be characterized as any other disease. Considered a premalignant lesion." },
+            { term: "Ludwig's Angina", definition: "A rapidly spreading, bilateral, life-threatening cellulitis of the floor of the mouth that pushes the tongue back and suffocates the patient." },
+            { term: "Osteogenesis Imperfecta", definition: "Genetic defect in Type I Collagen causing 'brittle bone disease', blue sclera, and Dentinogenesis Imperfecta." },
+            { term: "Papillon-Lefèvre Syndrome", definition: "Autosomal recessive condition causing severe periodontitis (loss of all teeth by age 14) and hyperkeratosis on palms and soles." },
+            { term: "Pemphigus Vulgaris", definition: "Autoimmune disease where antibodies destroy desmosomes, causing intraepithelial blisters and a positive Nikolsky sign." },
+            { term: "Pierre Robin Sequence", definition: "Congenital triad: Micrognathia (tiny jaw), Glossoptosis (tongue blocking airway), and U-shaped Cleft Palate." },
+            { term: "Sjogren's Syndrome", definition: "Systemic autoimmune disease causing destruction of exocrine glands, resulting in profound xerostomia (dry mouth) and xerophthalmia (dry eyes)." },
+            { term: "Trigeminal Neuralgia", definition: "Neuropathic condition characterized by lightning-like facial pain triggered by light touch (Tic Douloureux)." },
+            { term: "Epinephrine Reversal", definition: "Paradoxical blood pressure drop when Epinephrine is given to a patient taking Alpha-blockers (leaving the Beta-2 receptors unopposed)." },
+            { term: "First-Pass Effect", definition: "The massive destruction of an oral drug by the liver before it ever reaches the systemic bloodstream." },
+            { term: "Malignant Hyperthermia", definition: "Lethal genetic reaction to volatile anesthetics/succinylcholine, causing muscle rigidity and extreme fever. Antidote is Dantrolene." },
+            { term: "Methemoglobinemia", definition: "Dangerous condition where iron in hemoglobin is oxidized, preventing oxygen transport (blood turns chocolate brown). Caused by Prilocaine/Benzocaine. Antidote is Methylene Blue." },
+            { term: "Christensen's Phenomenon", definition: "Natural separation (disclusion) of posterior teeth when the mandible slides forward into protrusion." },
+            { term: "Creep", definition: "Slow, gradual deformation of material (like amalgam) under constant, static load." },
+            { term: "Syneresis", definition: "Loss of water via evaporation, causing an alginate impression to shrink and distort if left sitting." },
+            { term: "Metamerism", definition: "Optical illusion where two colors look identical under one light source but completely different under another." },
+            { term: "Apical Delta", definition: "The highly complex, microscopic branching of tiny nerve exits at the very tip of the root." },
+            { term: "Biologic Width", definition: "Mandatory 2mm space of healthy tissue above the bone required for the junctional epithelium and connective tissue attachment." },
+            { term: "Phoenix Abscess", definition: "Acute, violent, painful flare-up of a previously painless, chronic apical infection." },
+            { term: "Flush Terminal Plane", definition: "Normal relationship in primary teeth where the distal surfaces of the upper and lower second primary molars are perfectly flat/aligned." },
+            { term: "Ugly Duckling Stage", definition: "Normal developmental phase where the erupting permanent canines push the roots of incisors together, causing crowns to temporarily flare apart (diastema)." },
+            { term: "Autonomy", definition: "Ethical principle recognizing the patient's absolute right to make their own informed decisions regarding treatment." },
+            { term: "Beneficence", definition: "Ethical duty to actively 'do good', promote welfare, and act in the patient's best interest." },
+            { term: "Res Ipsa Loquitur", definition: "Legal doctrine meaning 'The thing speaks for itself.' Used when negligence is so obvious that no expert is required to prove it." },
+            { term: "Respondeat Superior", definition: "Legal doctrine meaning 'Let the master answer.' Makes the dentist/clinic owner legally liable for mistakes made by their assistants." },
+            { term: "Sensitivity", definition: "Ability of a test to correctly identify individuals who ACTUALLY HAVE the disease (True Positive Rate)." },
+            { term: "Specificity", definition: "Ability of a test to correctly identify individuals who DO NOT HAVE the disease (True Negative Rate)." },
+            { term: "ALARA", definition: "Guiding principle of radiation safety: 'As Low As Reasonably Achievable' to minimize patient exposure." },
+            { term: "SLOB Rule", definition: "Clark's Rule: 'Same Lingual, Opposite Buccal.' If the x-ray tube moves and the object appears to move in the SAME direction, the object is on the Lingual." }
         ];
 
-        // Sort terms alphabetically A-Z automatically
         glossaryData.sort((a, b) => a.term.localeCompare(b.term));
 
         function displayGlossary(terms) {
             const container = document.getElementById('glossary-results');
             container.innerHTML = '';
-            
-            if (terms.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-light); text-align: center;">No terms found.</p>';
-                return;
-            }
-
             terms.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'glossary-card';
-                card.innerHTML = `<strong class="glossary-term">${item.term}</strong>
-                                  <span class="glossary-def">${item.definition}</span>`;
+                card.innerHTML = `<strong class="glossary-term">${item.term}</strong><span class="glossary-def">${item.definition}</span>`;
                 container.appendChild(card);
             });
         }
 
         function filterGlossary() {
             const query = document.getElementById('glossarySearch').value.toLowerCase();
-            const filtered = glossaryData.filter(item => {
-                return item.term.toLowerCase().includes(query) || item.definition.toLowerCase().includes(query);
-            });
+            const filtered = glossaryData.filter(item => item.term.toLowerCase().includes(query) || item.definition.toLowerCase().includes(query));
             displayGlossary(filtered);
         }
 
-        // Render everything perfectly when the page first opens
         window.onload = () => displayGlossary(glossaryData);
     </script>
 </body>
