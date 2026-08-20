@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokki's Board Prep - Flashcards</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- INSTANT DARK MODE CHECK -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Header -->
+        <div class="header-row">
+            <h2>Dental Decks 🃏</h2>
+            <a href="index.html" class="back-btn">← Back to Main Menu</a>
+        </div>
+
+        <p style="color: var(--text-light); margin-bottom: 25px; text-align: center;">
+            Select a subject deck to begin reviewing front-and-back flashcards.
+        </p>
+
+        <!-- Testlets Section -->
+        <h2 class="section-title">Clinical Testlets</h2>
+        <div class="menu-grid">
+            <a href="decks/testlet-part1.html" class="menu-btn" style="background-color: #e84393;">🗂️ Testlet Part I</a>
+            <!-- We will add the button for Testlet Part II right here later! -->
+        </div>
+
+        <!-- 2017 Decks Section -->
+        <h2 class="section-title">Subject Decks (2017)</h2>
+        <div class="menu-grid">
+            <a href="#" class="menu-btn btn-tools" style="cursor: default;">More decks coming soon...</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="app-footer">
+            Built for Tokki/Leane by Xiao/Angelo
+        </div>
+
+    </div>
+
+</body>
+</html>
