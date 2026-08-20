@@ -22,6 +22,48 @@
             max-width: 600px;
             padding: 15px;
             font-size: 1.1rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            outline: none;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        #glossarySearch:focus {
+            box-shadow: 0 6px 12px rgba(140, 82, 255, 0.3);
+            border-color: var(--primary);
+        }
+        .glossary-card {
+            background: var(--bg-color);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: background-color 0.3s ease;
+        }
+        .glossary-term {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .glossary-def {
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .search-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        #glossarySearch {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            font-size: 1.1rem;
             border: 2px solid var(--primary);
             border-radius: 12px;
             outline: none;
