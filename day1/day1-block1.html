@@ -12,8 +12,9 @@
         
         <!-- INITIAL MODE SELECTION SCREEN -->
         <div class="home-screen" id="mode-selection">
-            <h1>Day 1: Block 1</h1>
-            <p>General & Oral Anatomy and Physiology</p>
+            <h1>Day X: Block Y</h1> <!-- CHANGE THIS FOR EACH FILE -->
+            <p>Subject Name Goes Here</p> <!-- CHANGE THIS FOR EACH FILE -->
+            
             <div class="day-buttons">
                 <button class="day-btn" onclick="startQuiz('study')">
                     <strong>Study Mode</strong><br>
@@ -24,8 +25,10 @@
                     <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-light);">Strict 2-Hour Timer • Explanations hidden until the end</span>
                 </button>
             </div>
-            <div style="text-align: center; margin-top: 15px;">
-                <a href="../index.html" class="tool-btn">← Back to Main Menu</a>
+            
+            <!-- Centered, beautifully styled Back Button -->
+            <div style="text-align: center; margin-top: 10px;">
+                <a href="../index.html" class="nav-btn" style="background: var(--text-light); text-decoration: none; display: inline-block;">← Back to Main Menu</a>
             </div>
         </div>
 
@@ -59,10 +62,15 @@
             <a href="../index.html" class="nav-btn" style="text-decoration: none; display: inline-block; margin-top: 20px;">Return to Main Menu</a>
         </div>
 
+        <!-- THE OFFICIAL DEDICATION FOOTER -->
+        <div class="app-footer">
+            Built for Tokki/Leane by Xiao/Angelo
+        </div>
+
     </div>
 
-    <!-- PASTE YOUR 100 QUESTIONS HERE -->
     <script>
+        // Your massive const quizData = [ ... ] array stays perfectly safe right here!
         const quizData = [
     {
         "question": "1. Which of the following permanent teeth typically features a prominent mesial concavity extending from the cervical third of the crown down onto the root, making it highly susceptible to perforation during root canal therapy?",
