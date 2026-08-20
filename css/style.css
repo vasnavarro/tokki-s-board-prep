@@ -1,246 +1,162 @@
+/* --- GOOGLE FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* --- LIGHT MODE VARIABLES (THE PURPLE THEME) --- */
 :root {
-    --primary: #0284c7;
-    --primary-hover: #0369a1;
-    --bg-color: #f0f4f8;
-    --card-bg: #ffffff;
-    --text-dark: #334155;
-    --text-light: #64748b;
-    --correct: #22c55e;
-    --wrong: #ef4444;
-    --rationale-bg: #e0f2fe;
-    --rationale-text: #0369a1;
+    --primary: #8c52ff;         /* Vibrant Purple */
+    --primary-dark: #5e17eb;    /* Deep Purple for hover states */
+    --primary-light: #e2d4ff;   /* Soft purple for highlights */
+    
+    --bg-color: #f4f7f6;        /* Light grayish-white background */
+    --text-color: #2d3436;      /* Dark gray text */
+    --text-light: #636e72;      /* Lighter gray for secondary text */
+    --container-bg: #ffffff;    /* White cards/containers */
+    
+    --correct: #00b894;         /* Green for right answers */
+    --incorrect: #d63031;       /* Red for wrong answers */
+    --accent-gold: #fbc531;     /* Gold for the DMSF section */
+}
+
+/* --- DARK MODE VARIABLES --- */
+[data-theme="dark"] {
+    --bg-color: #121212;        /* Very dark gray background */
+    --text-color: #dfe6e9;      /* Off-white text */
+    --text-light: #b2bec3;      /* Muted gray text */
+    --container-bg: #1e1e24;    /* Slightly lighter dark gray for cards */
+    --primary-light: #3d236b;   /* Darkened purple for highlights */
+}
+
+/* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
-    color: var(--text-dark);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 20px;
     min-height: 100vh;
-    margin: 0;
-    padding: 20px;
 }
 
-.quiz-container {
-    background-color: var(--card-bg);
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+/* --- MAIN CONTAINER --- */
+.main-container {
     width: 100%;
-    max-width: 750px;
-    padding: 40px;
-    box-sizing: border-box;
+    max-width: 800px;
+    background: var(--container-bg);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease;
 }
 
-/* --- Navigation Hub & Mode Selection Styles --- */
-.home-screen { text-align: center; }
-.home-screen h1 { color: var(--primary); margin-bottom: 10px; font-size: 2.2rem; }
-.home-screen p { color: var(--text-light); margin-bottom: 25px; font-size: 1.1rem; }
-
-/* The fix for your Mode Selection Screen */
-.day-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.day-btn {
-    background-color: var(--bg-color);
-    border: 2px solid #cbd5e1;
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    font-family: inherit;
-}
-
-.day-btn:hover {
-    background-color: var(--primary);
-    border-color: var(--primary);
-    transform: translateY(-2px);
-}
-
-.day-btn strong {
-    font-size: 1.25rem;
-    color: var(--primary);
-    transition: color 0.2s ease;
-}
-
-.day-btn:hover strong,
-.day-btn:hover span {
-    color: white !important;
-}
-
-/* Used in Main Menu (index.html) */
-.tools-nav {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.tool-btn {
-    background-color: #e2e8f0;
-    color: var(--text-dark);
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-    display: inline-block;
-}
-
-.tool-btn:hover { background-color: #cbd5e1; }
-
-.day-section {
-    background-color: var(--bg-color);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.day-section h2 {
-    color: var(--primary);
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #cbd5e1;
-    padding-bottom: 10px;
-}
-
-.block-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.block-btn {
-    background-color: var(--card-bg);
-    border: 1px solid #cbd5e1;
-    color: var(--text-dark);
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.2s ease;
+/* --- HEADER & TITLES --- */
+.header-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-light);
 }
 
-.block-btn:hover {
-    border-color: var(--primary);
+h1 {
     color: var(--primary);
-    transform: translateX(5px);
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-/* --- Quiz Engine Styles --- */
-.quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
-.back-btn { background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 0.95rem; font-weight: 600; padding: 0; text-decoration: none; }
-.back-btn:hover { color: var(--primary); }
-.progress { font-size: 0.9rem; color: var(--text-light); font-weight: 600; }
-.timer { font-size: 1rem; color: var(--wrong); font-weight: bold; background: #fee2e2; padding: 5px 10px; border-radius: 6px;}
+h2.section-title {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin: 25px 0 15px 0;
+}
 
-.question { font-size: 1.15rem; font-weight: 600; margin-bottom: 25px; line-height: 1.6; }
-.options { display: flex; flex-direction: column; gap: 12px; }
+/* --- BUTTONS & MENUS --- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
 
-.option-btn { background-color: var(--bg-color); border: 2px solid transparent; border-radius: 8px; padding: 15px 20px; font-size: 1rem; color: var(--text-dark); cursor: pointer; text-align: left; transition: all 0.2s ease; line-height: 1.4; font-family: inherit; }
-.option-btn:hover:not(:disabled) { background-color: #e2e8f0; border-color: #cbd5e1; }
-.option-btn:disabled { cursor: default; }
-.option-btn.correct { background-color: #dcfce7; border-color: var(--correct); color: #166534; }
-.option-btn.wrong { background-color: #fee2e2; border-color: var(--wrong); color: #991b1b; }
+.menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
 
-.rationale-box { margin-top: 25px; padding: 20px; border-radius: 8px; background-color: var(--rationale-bg); color: var(--rationale-text); border-left: 4px solid var(--primary); font-size: 0.95rem; line-height: 1.5; }
-.rationale-box strong { display: block; margin-bottom: 8px; font-size: 1.05rem; }
+.menu-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(140, 82, 255, 0.3);
+}
 
-.controls { margin-top: 30px; display: flex; justify-content: space-between; }
-.nav-btn { background-color: #cbd5e1; color: var(--text-dark); border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; font-family: inherit; }
-.nav-btn:hover:not(:disabled) { background-color: #94a3b8; }
-.nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-#next-btn { background-color: var(--primary); color: white; }
-#next-btn:hover:not(:disabled) { background-color: var(--primary-hover); }
+/* Specific button styles */
+.btn-tools {
+    background-color: var(--text-light);
+}
+.btn-tools:hover {
+    background-color: var(--text-color);
+}
+.btn-dmsf {
+    background-color: var(--accent-gold);
+    color: #2d3436; /* Dark text for contrast against gold */
+}
+.btn-dmsf:hover {
+    background-color: #e1b12c;
+    box-shadow: 0 6px 12px rgba(251, 197, 49, 0.3);
+}
 
-/* --- Results Screen --- */
-.results-screen { text-align: center; }
-.results-screen h2 { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
-.results-screen p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 25px; }
-.results-details { text-align: left; margin-bottom: 30px; padding: 20px; background-color: var(--bg-color); border-radius: 8px; border: 1px solid #e2e8f0; font-size: 1rem; color: var(--text-dark); }
+/* --- DARK MODE TOGGLE --- */
+.dark-mode-toggle {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-/* --- Footer Style --- */
+.dark-mode-toggle:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Fix for Dark Mode active state button */
+[data-theme="dark"] .dark-mode-toggle {
+    border-color: var(--primary-light);
+    color: var(--primary-light);
+}
+[data-theme="dark"] .dark-mode-toggle:hover {
+    background: var(--primary-light);
+    color: #121212;
+}
+
+/* --- FOOTER --- */
 .app-footer {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
     padding-top: 15px;
-    border-top: 1px solid #e2e8f0;
-    font-size: 0.85rem;
+    border-top: 1px solid var(--primary-light);
     color: var(--text-light);
-    letter-spacing: 0.5px;
-}
-/* --- Search & Glossary Styles --- */
-.search-bar {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-    border: 2px solid #cbd5e1;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    box-sizing: border-box;
-    outline: none;
-    transition: border-color 0.2s ease;
-    font-family: inherit;
-}
-
-.search-bar:focus {
-    border-color: var(--primary);
-}
-
-.glossary-card {
-    background: var(--bg-color);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border-left: 4px solid var(--primary);
-    text-align: left;
-}
-
-.glossary-term {
-    font-size: 1.2rem;
-    color: var(--primary);
-    font-weight: bold;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.search-result-card {
-    background: var(--bg-color);
-    border: 1px solid #cbd5e1;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.search-result-question {
-    font-weight: 600;
-    margin-bottom: 15px;
-    font-size: 1.05rem;
-    line-height: 1.5;
-}
-
-.search-result-answer {
-    color: #166534;
-    font-weight: bold;
-    margin-bottom: 15px;
-    background: #dcfce7;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid var(--correct);
+    font-size: 0.85rem;
 }
